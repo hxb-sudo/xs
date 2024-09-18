@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第156章 下次再来！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“还有这好处？”</p>
 <p>体悟片刻。</p>
 <p>楚询徐徐睁开眼睛，神色流露异色，他的精神力在这时候暴涨了不少，无论用来参悟天地法则，还是用来观摩经文都将领悟的更加清澈，时间也会缩短，对他来说相当于服用了一株圣人级的灵魂大药。</p>
@@ -113,12 +113,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './195.html'
+				}else if (start - end < -100) {
+					window.location.href = './193.html'
 				}
-				
 			})
 		}
 	</script>

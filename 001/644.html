@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第482章 退走！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>荒州。</p>
 <p>一片死寂。</p>
 <p>目睹着普贤菩萨将玄净的尸体捞走而未对楚询动手，那些修为不弱的人都感受到强烈的心颤，不免颤音道：“他已这般强了吗？”</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './645.html'
+				}else if (start - end < -100) {
+					window.location.href = './643.html'
 				}
-				
 			})
 		}
 	</script>

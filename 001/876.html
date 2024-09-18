@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第668章 动手！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“他又是谁？”独孤绝却紧蹙眉头，他去过道州可并不晓得这位准帝是何方神圣，也知道道教修行颇为散乱，哪里都是修行地，有些隐世也真长。</p>
 <p>“不用想了，他不是这个时代的人！”楚询淡淡道，他一眼便看出了这披着五脏道袍的道士浑浊的灵魂，那是不知尘封了多少世，也让他眯眼想到了逍遥天尊。</p>
 <p>“呵呵！”</p>
@@ -122,12 +122,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './877.html'
+				}else if (start - end < -100) {
+					window.location.href = './875.html'
 				}
-				
 			})
 		}
 	</script>

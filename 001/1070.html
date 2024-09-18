@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第856章 我父亲是风涅！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>轰隆~~~</p>
 <p>未得允许，擅自闯入风氏跟基地还是以如此霸道的行为，自然引得阵道的反击，一尊闪烁着五行轮转的金色大阵从下方的地底首接闪耀，释放出可怕的光束。</p>
 <p>这不是刚刚楚询击毁的外围阵法，而是内部阵法爆发，也是象征着风氏跟基地最强的防御手段，凝聚可怕的微波几欲碾碎楚询。</p>
@@ -81,12 +81,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1071.html'
+				}else if (start - end < -100) {
+					window.location.href = './1069.html'
 				}
-				
 			})
 		}
 	</script>

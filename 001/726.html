@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第539章 当我护道者摆设！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>掌握时间大道。</p>
 <p>又掌握此类的帝法，两者叠加在一起，让白陆离这位曾经的辰州圣地的圣子爆发出难以想象的威力，杨辰纵使是辰州的天命之子也有无力时刻，但他内心并无绝望，而是看向了虚无的某一处地方。</p>
 <p>他知道。</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './727.html'
+				}else if (start - end < -100) {
+					window.location.href = './725.html'
 				}
-				
 			})
 		}
 	</script>

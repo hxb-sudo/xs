@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第518章 乱战！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>环视四周。</p>
 <p>放眼望去。</p>
 <p>战场虽焦灼却不曾到达准帝身陨的这一层次，也随着目光追寻，骇然道：“并非是此地，是外界有准帝身陨！”</p>
@@ -125,12 +125,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './697.html'
+				}else if (start - end < -100) {
+					window.location.href = './695.html'
 				}
-				
 			})
 		}
 	</script>

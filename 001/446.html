@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第338章 提亲！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唯有剑之道果，完好无损！”楚询轻声道，依仗着体内的青莲剑意，虽然也有压制却是限制最少的，若是参悟出一门究极剑法，再面对这魔神时未必会败！</p>
 <p>这样想着。</p>
 <p>心中也释然不少。</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './447.html'
+				}else if (start - end < -100) {
+					window.location.href = './445.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第320章 弟子的成长！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“楚询！”萧容鱼眼神温柔，还有放松的神色，这趟两人分别许久，即便修行岁月转瞬即逝，仍然感受漫长的等待与煎熬。</p>
 <p>“哈哈哈！”</p>
 <p>“老夫还有事！”</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './421.html'
+				}else if (start - end < -100) {
+					window.location.href = './419.html'
 				}
-				
 			})
 		}
 	</script>

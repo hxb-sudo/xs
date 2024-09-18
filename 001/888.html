@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第680章 帝境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>陈旧的道袍上沾满了血，发丝上，手指上，皆尽有帝血在流淌，可却掩盖不住那狰狞的疯狂，歇斯底里的咆哮，声音震动九天：“啊啊啊啊啊~！”</p>
 <p>他大呼。</p>
 <p>透着惊悚。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './889.html'
+				}else if (start - end < -100) {
+					window.location.href = './887.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第837章 第一支挑衅小队！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“队长，有没有感受到这些人的目光都很怪异！”走出药园后，叶依依便敏锐的察觉这些人的眼神看向他们很怪，透着贪婪，还有渴望，更多的则是压抑心底的欲望。</p>
 <p>“呵，还不是想杀人夺宝！”紫姨却是嗤笑，这种事在混乱星域却见怪不怪，德不配位，人不配财，没有一定的实力却拿着大把的资金招摇过市，这和送死有什么区别，现在他们就是摸不准她们的实力才不敢动手。</p>
 <p>瘦死的骆驼比马大。</p>
@@ -83,12 +83,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1052.html'
+				}else if (start - end < -100) {
+					window.location.href = './1050.html'
 				}
-				
 			})
 		}
 	</script>

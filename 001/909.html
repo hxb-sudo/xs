@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第698章 修复大道！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>一朵圣洁的花朵从天空上飘落，晃晃悠悠的飘荡在慕雪的肩头，让它指尖夹起这枚花瓣时透着意外，仰望着上空，只见到天穹上有朵朵的花瓣如覆盖神霞，带着神采，飘落在天地间，落在那些悟道人的肩上，头上。</p>
 <p>“天花乱坠！”</p>
 <p>慕雪轻声自语，眼中并无过多意外，见识过不止一次的天地异象诞生，她很平静的看向地面，轻声自语道：“天花乱坠，地涌金莲！”</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './910.html'
+				}else if (start - end < -100) {
+					window.location.href = './908.html'
 				}
-				
 			})
 		}
 	</script>

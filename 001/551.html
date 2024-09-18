@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第412章 儒州发力！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>他们皆在，一双双蕴含着智慧的眸子望去，却有人未曾看到人群当中的楚询，眼神当中弥漫着几分失落，楚询还是不肯来儒州避难吗？</p>
 <p>“他不肯来！”张继摇头，将楚询所言重复一遍。</p>
 <p>“好！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './552.html'
+				}else if (start - end < -100) {
+					window.location.href = './550.html'
 				}
-				
 			})
 		}
 	</script>

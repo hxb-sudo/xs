@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第191章 弟子排名！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“我们也去吧！”</p>
 <p>随着最后一位学员进入封闭式的空间内，洛棠前辈也面含微笑道，这一年间他们同样要待在里面，既可监视考生，也可让考生有困惑时前来提问。</p>
 <p>“好！”</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './239.html'
+				}else if (start - end < -100) {
+					window.location.href = './237.html'
 				}
-				
 			})
 		}
 	</script>

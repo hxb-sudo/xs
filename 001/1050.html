@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第836章 影苍的心动！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>消息传的很快。</p>
 <p>“什么，林白小队获得了核心药园的三分之一区域！”延意小队听到这个消息的时候，第一反应是不敢置信，觉得在开什么玩笑，那处药园他去过可是由崇行坐镇，只能悻悻离去，现在你告诉他削弱的林白小队获得三分之一？</p>
 <p>“千真万确，不知道楚询给崇行殿下灌了什么迷魂药，听说是崇行殿下亲自划分的三分之一区域，里面有许多珍贵的大药，有些揉捏在一起能炼制加大几成突破七境的把握！”</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1051.html'
+				}else if (start - end < -100) {
+					window.location.href = './1049.html'
 				}
-				
 			})
 		}
 	</script>

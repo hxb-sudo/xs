@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第544章 仁善！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>但随着翻阅。</p>
 <p>一点点的阅读。</p>
 <p>楚询的眼中隐约浮现了松动，自己所坚持的信念有些被冲击，觉得吞道人所言并非虚假，而他身前则模糊的像是出现斑驳的画面。</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './733.html'
+				}else if (start - end < -100) {
+					window.location.href = './731.html'
 				}
-				
 			})
 		}
 	</script>

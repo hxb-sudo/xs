@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第317章 拱火大师！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“太漫长了！”楚询轻声道，这若是在两州之间建立一座庞大的阵法便好了，只是顷刻间便催动阵法横渡无数万里，瞬息降临荒州，这个念头涌现便有些无法克制，若是往常对他来说比较困难，如今随着对阵法之道的精通，这已经不是问题。</p>
 <p>那在儒帝大坟感受的邋遢老人，他在阵法之道的传承简直不亚于一篇帝法，甚至更加珍贵，随着不断的吃透在阵法之道的造诣极速猛增，并且那位邋遢老人传授的阵法当中也有大挪移之术，相当恐怖。</p>
 <p>“试试！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './416.html'
+				}else if (start - end < -100) {
+					window.location.href = './414.html'
 				}
-				
 			})
 		}
 	</script>

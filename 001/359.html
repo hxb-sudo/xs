@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第278章 脱困！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>阵法符文瞬间涌去。</p>
 <p>一时间。</p>
 <p>层层困幻被剥削，他们这才发现原来儒雅书生距离他们如此遥远，本以为已经站在一起说话，而现在望去儒雅书生竟在遥远的十里之外，哪怕是后者也发现这个问题，脸上流露出愕然，道：“我刚刚距离你们如此遥远？”</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './360.html'
+				}else if (start - end < -100) {
+					window.location.href = './358.html'
 				}
-				
 			})
 		}
 	</script>

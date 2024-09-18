@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第723章 杀招‘湮灭’（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>56号小院内。</p>
 <p>黄奕提酒进来，看着那还在庭院内悠哉悠哉修行的楚询，心中的窝火与淤气便气不打一处来，落座后，自顾自的灌了一大口酒，愤懑道：“我看六殿下属实是欺人太甚，仗着家族背景，胡作非为！”</p>
 <p>而对好友的生气楚询也看在眼中，在如今所有人都远离自己的情况下，对方还留在这里，多少带着真感情，也笑着道：“还在生气？”</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './936.html'
+				}else if (start - end < -100) {
+					window.location.href = './934.html'
 				}
-				
 			})
 		}
 	</script>

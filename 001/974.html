@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第762章 使用奖励！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗡！”</p>
 <p>当楚询轻轻挥斩出流水剑式时，身材精壮的白发老者全身汗毛根根倒竖，嗅到强烈的危险，他不知发生了什么，可这种预感没错，无数次拯救自己从死亡边缘爬出，他知道坚信就没错，周身也形成场域要对抗烟雨剑域的封锁。</p>
 <p>更想从中脱离。</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './975.html'
+				}else if (start - end < -100) {
+					window.location.href = './973.html'
 				}
-				
 			})
 		}
 	</script>

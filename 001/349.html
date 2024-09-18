@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第271章 白陆离的另一面！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗤~！”</p>
 <p>在强大的瞳术之下，一切破绽都将毫无隐匿，原本细微的破绽也在无限放大，如眼下已经凝成巨大的破绽，在言出法随的加持下，那道帝指肆意的撕裂手掌的缝隙，无限扩散，几乎是转瞬便覆盖整只手掌。</p>
 <p>秦南看到这一幕心中并无任何欢喜，反而带着格外的凝重，白陆离的讥讽与嘲笑依旧挂在脸上，可他想不到对方还有什么底牌。</p>
@@ -99,12 +99,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './350.html'
+				}else if (start - end < -100) {
+					window.location.href = './348.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第335章 青莲剑意！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“第一本！”</p>
 <p>【青莲剑意，养意性传承，不断的吸纳剑道体系，无论是修行剑法，还是感悟剑经都能融于青莲剑意当中，在剑道不断提升的同时，剑意同样跟随增长！】</p>
 <p>“极好！”</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './444.html'
+				}else if (start - end < -100) {
+					window.location.href = './442.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第621章 他要弑帝！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“砰砰砰砰~！”那是心脏跳动的声音，却又不是心脏跳动的感觉，那是全身血液细胞在共同的跳动，颤鸣，到了这般境界早己不再依靠体内的某个器官，每一粒微弱的细胞都能共振出心脏的能力。</p>
 <p>亿万万西散在西肢百骸间的细胞在共同共振，让心脏破裂的损伤降至最小，同时手中紧握的那柄帝剑也刺入轮回之主的心脏。</p>
 <p>“噗！”</p>
@@ -99,12 +99,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './826.html'
+				}else if (start - end < -100) {
+					window.location.href = './824.html'
 				}
-				
 			})
 		}
 	</script>

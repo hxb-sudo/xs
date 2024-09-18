@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第794章 他也太厉害了吧！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“八境修士？”</p>
 <p>在场所有人都倒吸凉气，震撼的看着楚询背影。</p>
 <p>能这么肆无忌惮的在冰风海穿梭时空，最少也是八境修士，七境修士敢在这乱来都免不了一死，那庞大的旋涡风暴，一旦有人深入空间中，但凡被风暴乱流搅乱一点，落入了旋涡深处都免不了一死。</p>
@@ -101,12 +101,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1008.html'
+				}else if (start - end < -100) {
+					window.location.href = './1006.html'
 				}
-				
 			})
 		}
 	</script>

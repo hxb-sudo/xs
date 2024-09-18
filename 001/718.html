@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第531章 恢复清醒！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>混沌朦胧。</p>
 <p>若是之前，楚询脑海中存在着大量的灰物，乃是不祥的一种象征，先前的自身失控便是由他们造成，而今这一道光束便是撕裂黑暗当中的黎明，让那混乱的心神得以在这狭隘的空间内自由，保持少许的清醒。</p>
 <p>在这清醒的少许空间内，他似感受了一股前所未有的力量，那是他修行至今都不曾感应的最为纯粹的能量。</p>
@@ -113,12 +113,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './719.html'
+				}else if (start - end < -100) {
+					window.location.href = './717.html'
 				}
-				
 			})
 		}
 	</script>

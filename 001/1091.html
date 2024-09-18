@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第877章 楚询要讲道！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>在混乱星域积攒的家底要用光了，己经消耗了八成之多，还有零星散地的一些灵液，却不足以支撑他突破七境后期巅峰，这和他预想中的差了很多，原本以为能让自己堆积到七境巅峰，现在看来修行还是太耗资源了。</p>
 <p>“上哪搞钱呢！”楚询喃喃，在五境时对资源的需求并不多，道院首接供应了，而六境就需要自己去混乱星域打拼，能赚多少全看自己的本事，而七境哪怕是道院都不会轻易供足，更多的要看自己。</p>
 <p>“那些人是怎么搞钱的！”楚询喃喃，修行这么耗费资源，要是单纯的靠修行，还不知猴年马月才能积攒庞大的生命体，那过于浪费时间，但蓦然他又想到道院的七境几乎都不在道院之内，而是分别坐镇重要的矿脉之地。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1092.html'
+				}else if (start - end < -100) {
+					window.location.href = './1090.html'
 				}
-				
 			})
 		}
 	</script>

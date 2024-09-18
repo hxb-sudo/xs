@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第331章 未来的路！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“了不起！”</p>
 <p>道宫宫主手持天机阁小书册，盯着末尾有关楚询的介绍，方正的脸颊笑容更甚，就连眼角的鱼尾纹都驱散不少，当日儿子拜楚询为师他便注意到了，还亲自去拜访过，那时正值楚询感悟剑之道果，不曾想转眼数载楚询已位列圣人榜。</p>
 <p>既赞叹。</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './439.html'
+				}else if (start - end < -100) {
+					window.location.href = './437.html'
 				}
-				
 			})
 		}
 	</script>

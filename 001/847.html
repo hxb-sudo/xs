@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第643章 屠龙者终成恶龙！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“咻！”</p>
 <p>化作血云离去的姬氏老祖很不甘心，秦皇朝那处疆域太肥沃了，拥有无尽的养料，若是吞噬可远非其他地方的小州可比，但那道帝袍身影却让他忌惮非凡，也豁然明白禹陵之主最忌惮的三人中，为何会将秦皇列为其一。</p>
 <p>只是准帝。</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './848.html'
+				}else if (start - end < -100) {
+					window.location.href = './846.html'
 				}
-				
 			})
 		}
 	</script>

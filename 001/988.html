@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第776章 到手！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询微微一笑。</p>
 <p>不曾解释。</p>
 <p>驼背老翁却在胆寒，他不清楚对方是真在吹牛，还是真有这个实力，要知道楚询的第三式己让他们觉得夸张，倘若还有第西式那他在五境当中的积攒到底有多厚？</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './989.html'
+				}else if (start - end < -100) {
+					window.location.href = './987.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第601章 情报！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唰！”</p>
 <p>那古装男子却是想都不想的暴退离去，将裹尸布将他覆盖，凭借着帝气遮盖身上气息，逃遁离开，对这个如疯子般的人很是忌惮，连禁区至尊的人都敢杀，恐怕真心投靠禹陵也庇护不住他。</p>
 <p>禹陵守陵人也在跑，他己感受到主人复苏的气息，没必要与这个怪胎死磕，大声道：“你我之间并无深仇大恨，何必不能一笑泯恩仇？”也知单纯的言语蛊惑无用，随即又道：“我愿告诉你，复苏的禁区都有谁，属于何等性格。”</p>
@@ -101,12 +101,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './800.html'
+				}else if (start - end < -100) {
+					window.location.href = './798.html'
 				}
-				
 			})
 		}
 	</script>

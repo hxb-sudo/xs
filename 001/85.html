@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第90章 成圣！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>轰隆隆！</p>
 <p>乌漆嘛黑的天空下，一条条庞大的雷霆游走在云层中，有的雷霆探出一个脑袋，恍若复苏的巨龙，在无情而冷漠的俯视楚询。</p>
 <p>还有的雷霆闪耀出狰狞的面孔，俯瞰这个微弱而渺小的人族，竟敢挑衅雷劫，当真是大逆不道。</p>
@@ -108,12 +108,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './86.html'
+				}else if (start - end < -100) {
+					window.location.href = './84.html'
 				}
-				
 			})
 		}
 	</script>

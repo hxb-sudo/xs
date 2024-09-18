@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第60章 圣人显！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>东临宗楚询也从虚无中走出，见到后者，各势力的反应不同，有的是意外，有的则是窃喜，至于并非萧容鱼前来他们反而不在意，楚询的修为更高，话语权也更重，由他定夺不亚于萧掌门拿定注意。</p>
 <p>“嗯？”</p>
 <p>楚询蹙着眉头，寒风呼啸，到了他这个境界早已寒暑不侵，可在这里却感受阵阵森寒，不是源自天气，而是雪山殿被覆灭的寒气，刺骨阴冷。</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './36.html'
+				}else if (start - end < -100) {
+					window.location.href = './34.html'
 				}
-				
 			})
 		}
 	</script>

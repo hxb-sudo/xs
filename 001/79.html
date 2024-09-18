@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第87章 东临宗封宗！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>放在往日他们断然不会有这样念想，可叶倾城的离去对他们来说不亚于天塌了，整个世界都昏暗了，连圣女都叛逃宗门，还有谁不可能走？</p>
 <p>况且，姜尘肩负的又不仅仅是东临宗，还有姜氏，已经正式官宣立他为嫡长子，大好的前程摆在那里，没必要再趟这趟浑水，因此即便姜尘选择离去，他们也不会怪罪，只是心中，恐有强烈的失落。</p>
 <p>在期待中。</p>
@@ -98,12 +98,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './80.html'
+				}else if (start - end < -100) {
+					window.location.href = './78.html'
 				}
-				
 			})
 		}
 	</script>

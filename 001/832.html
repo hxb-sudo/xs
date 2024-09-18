@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第628章 弟子成就准帝！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>妖龙也舔了舔嘴唇，它也在趁乱收集楚询的气血，鲜甜的滋味，还有浓郁的生机，与它所吞噬的任何大药都不同，贪婪盯着他道：“将大药交出来，可保你一命！”</p>
 <p>“想要吗，跪下来！”楚询踉跄的立身在那，身体透着虚弱，那是早先一次次的伤势外加两位大帝的威压冲击，根本非此境修士可敌，可骨气依旧铮铮。</p>
 <p>“执迷不悟！”</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './833.html'
+				}else if (start - end < -100) {
+					window.location.href = './831.html'
 				}
-				
 			})
 		}
 	</script>

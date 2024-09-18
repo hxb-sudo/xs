@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第660章 慕雪！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>而对方看到楚询时也很意外，她安静的立身在那，衣着淡紫色的古装衣裙，气质典雅而安静，像是古代里的深闺大小姐。</p>
 <p>实际上她也确实来自漫长的古代，见到楚询时她也很意外，这个本该己经死去的人又重新现世，并站在她的身前，让她那长长的睫毛轻微眨动。</p>
 <p>“是你！”</p>
@@ -109,12 +109,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './869.html'
+				}else if (start - end < -100) {
+					window.location.href = './867.html'
 				}
-				
 			})
 		}
 	</script>

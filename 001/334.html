@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第256章 阵法略懂！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗯！”</p>
 <p>楚询温和点头，这座阵法论复杂到不是最麻烦的，真正困难的是属于天地间自然诞生的阵法，很新奇，所以就浪费了点时间。</p>
 <p>璃圣。</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './335.html'
+				}else if (start - end < -100) {
+					window.location.href = './333.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第647章 广法圆寂！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>帝血不断凋零。</p>
 <p>到后续。</p>
 <p>逍遥天尊都发毛了，想退走，但广法菩萨却是献祭了自己，不依不饶的缠着他，最后更是广发宏愿，极尽升华下重创逍遥天尊。</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './855.html'
+				}else if (start - end < -100) {
+					window.location.href = './853.html'
 				}
-				
 			})
 		}
 	</script>

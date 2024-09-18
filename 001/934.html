@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第722章 沽名钓誉之辈！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“六殿下！”</p>
 <p>面色微红的常陵连忙从御空中下来，对这位衣着华贵衣袍的贵公子很是客气，而同行的一群人也齐齐躬身行礼道：“六殿下！”</p>
 <p>“嗯！”</p>
@@ -106,12 +106,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './935.html'
+				}else if (start - end < -100) {
+					window.location.href = './933.html'
 				}
-				
 			})
 		}
 	</script>

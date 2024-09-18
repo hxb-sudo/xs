@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第253章 界心令群友汇聚！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>等待中。</p>
 <p>并没有太久，一道身上沐浴金色火焰的女子正在从远方横渡而来，她的速度极快，只用了短暂几息便从视野的尽头，来到了身前，距离荒天宫宫主不足十丈距离。</p>
 <p>她安然的悬浮在半空，身上衣着金色琉璃的衣袍，配上那圣洁的火焰宛若仙子，并且这套特殊的衣衫寻常人完全驾驭不住，而在她身上却截然不同，只能衬托的她高贵的气场。</p>
@@ -106,12 +106,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './332.html'
+				}else if (start - end < -100) {
+					window.location.href = './330.html'
 				}
-				
 			})
 		}
 	</script>

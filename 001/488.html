@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第366章 对峙！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“哼！”</p>
 <p>剑州一群剑修瞳孔锐利，他们身上隐隐弥漫出可怕的锐利，不仅是纯粹而刚直的剑修，还因柳剑便是他们剑州的剑修，怎么能容忍外界如此欺辱。</p>
 <p>“万仞山！”</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './489.html'
+				}else if (start - end < -100) {
+					window.location.href = './487.html'
 				}
-				
 			})
 		}
 	</script>

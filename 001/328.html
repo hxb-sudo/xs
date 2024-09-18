@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第250章 第二种道果！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>生命阵法！</p>
 <p>幻道阵法！</p>
 <p>无数种阵法在罗列出来，让楚询在阵法之道上的造诣源源不断的飙升，并且他隐隐觉得自己好像触摸到一层神秘的触觉，每次想抓都抓不到，反而是沉浸下去钻研时这种感觉又在不断涌来，这让他恍然：“这是，碰到了阵法一道的源头？”</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './329.html'
+				}else if (start - end < -100) {
+					window.location.href = './327.html'
 				}
-				
 			})
 		}
 	</script>

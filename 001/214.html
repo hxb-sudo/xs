@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第173章 星空法相！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“咚！”</p>
 <p>整座大殿内传来剧烈的震颤，宛若有星辰自九天降临砸在这座宫殿内，衣着锦绣星辰衣袍的老者周身蔓延着星辰法则，恍惚中，形成错觉一颗颗星辰竟凝成实质，环绕在他的周身，为之旋转，带着轨迹。</p>
 <p>“这不是错觉！”楚询却很清楚，这是将星辰法则修行到大成地步，形成的星辰场域，而刚刚那股震颤波动也是星辰法则所导致。</p>
@@ -106,12 +106,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './215.html'
+				}else if (start - end < -100) {
+					window.location.href = './213.html'
 				}
-				
 			})
 		}
 	</script>

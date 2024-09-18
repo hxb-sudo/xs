@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第258章 第三枚道果！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>璃圣则没有想那么多，脸上涌现狂喜，喃喃道：“那力之法则的果实足足有十枚，我们可以平分！”</p>
 <p>“好！”</p>
 <p>荒天宫宫主也点头，那十枚力之大道的果实，若是放在斗战宫足以让一个接近大圣道果的人直接蜕变为大圣境，哪怕不给斗战宫使用，放在荒宫也是底蕴之一，可以在未来作为交换，换取到自己需要的东西。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './337.html'
+				}else if (start - end < -100) {
+					window.location.href = './335.html'
 				}
-				
 			})
 		}
 	</script>

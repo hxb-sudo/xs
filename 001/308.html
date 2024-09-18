@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第236章 荒天宫叶凰临！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>藏经阁。</p>
 <p>陈浔安静端坐在那，宛若小学生般聆听楚长老的讲道，而他追求的仍然是阵法之道，相比于检修的攻杀之道，他愈发好奇阵法一道，尤其是楚长老在这方面上的造诣，每一次聆听都如同醍醐灌顶，更有庆幸念头。</p>
 <p>还好。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './309.html'
+				}else if (start - end < -100) {
+					window.location.href = './307.html'
 				}
-				
 			})
 		}
 	</script>

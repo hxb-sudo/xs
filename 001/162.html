@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第134章 第一位身陨者！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“阿弥陀佛！”</p>
 <p>若禅寺的佛圣不动声色的打量了场中的情况，心中也有明悟，哪怕对东域格局早有听闻，还不如亲眼所见，这楚圣虽然修行天赋卓绝，可与其他几位圣人关系一般啊，也念叨道：“既然楚圣也在，那就一并进去吧！”</p>
 <p>南天殿圣人。</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './163.html'
+				}else if (start - end < -100) {
+					window.location.href = './161.html'
 				}
-				
 			})
 		}
 	</script>

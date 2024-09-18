@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第388章 醉酒之道！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>这些路人甲还有那些压下赌注的势力无不是睁大了眼睛，尤其是楚询将武林盟曹盟主的排名挤下一位更是让无数人惊异到极点，没人能想到会是这样的结果，虽然楚询是圣人榜末尾的守门员，可大家都觉得实力有限。</p>
 <p>但此刻。</p>
 <p>却颠覆了他们认知。</p>
@@ -99,12 +99,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './519.html'
+				}else if (start - end < -100) {
+					window.location.href = './517.html'
 				}
-				
 			})
 		}
 	</script>

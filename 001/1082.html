@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第868章 反目！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“不提也罢！”武馆主摇摇头，只希望某天靳永惹了什么大祸，不要牵连他的弟子便好。</p>
 <p>楚询也是神情平静，该提醒的都提醒了，每个人要走什么路是自己决定的，他也干预不了，况且兄弟二人对他来说更是过客，观人生百态，亦是一种修行。</p>
 <p>……</p>
@@ -75,12 +75,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1083.html'
+				}else if (start - end < -100) {
+					window.location.href = './1081.html'
 				}
-				
 			})
 		}
 	</script>

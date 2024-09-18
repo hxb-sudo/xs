@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第525章 名声鹊起！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>而按照他的推测，楚询所批阅的经文，应当有四个层次：尚可，中流，高级，极善四个水准，而今翻阅诸多所观望的书籍，最高评价只有中流。</p>
 <p>这让他怅然。</p>
 <p>难不成。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './710.html'
+				}else if (start - end < -100) {
+					window.location.href = './708.html'
 				}
-				
 			})
 		}
 	</script>

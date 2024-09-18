@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第397章 秦皇朝的威慑！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>庭院内。</p>
 <p>寂静的可怕。</p>
 <p>似是有无数道目光都在注视，在注视着秦皇朝第九子秦笙的死去，这是悲哀的，也是无声的，而他们却从这底下预知了接下来即将发生的恐怖事情，秦皇亲子有一人死在此地，无论是天机城还是荒州都将承受秦皇朝的问责。</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './532.html'
+				}else if (start - end < -100) {
+					window.location.href = './530.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第356章 赠剑！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>曹盟主更甚。</p>
 <p>当感知那剑意时便对楚询的好感骤然飙升到不可思议的地步，尤其是当楚询所说还有准帝法更是令他颇为感慨，虽然武林盟也有准帝法，甚至是帝道剑法，但能这么大大方方的丢出一本，赠与有缘人，还是外州，仅此一点便令他钦佩。</p>
 <p>剑州。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './474.html'
+				}else if (start - end < -100) {
+					window.location.href = './472.html'
 				}
-				
 			})
 		}
 	</script>

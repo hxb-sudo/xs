@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第74章 东临宗圣人出关！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>那是一位中年男子，面目威严，脸如刀削，连发髻都有棱角，此时他不再那么刺目，光芒内敛，令人可以看清他的样貌伴随的则是阵阵压力。</p>
 <p>“圣人！”</p>
 <p>“仙道宗圣人！”</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './57.html'
+				}else if (start - end < -100) {
+					window.location.href = './55.html'
 				}
-				
 			})
 		}
 	</script>

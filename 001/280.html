@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第218章 第八层！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>第七层。</p>
 <p>出现的是无尽的汪洋，一位女性强者安然的矗立在水平面上，随着她一念之间可以调动整个汪洋的力量，用来镇压敌人，并且上来就是全力以赴，没有任何废话。</p>
 <p>“大河剑意！”</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './281.html'
+				}else if (start - end < -100) {
+					window.location.href = './279.html'
 				}
-				
 			})
 		}
 	</script>

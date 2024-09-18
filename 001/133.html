@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第115章 师父，我入魔了！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>直接碾碎。</p>
 <p>到了楚询这个境界，寻常修行者若要杀掉，一道眸光便可，蕴含无尽的威能，根本不是普通人能承受，会震慑他们的心神，而落在下方看到那警戒的黑袍人四周还有一具具干尸，眼中的温怒更盛。</p>
 <p>以他的修为自然能感应这些干尸生前都是普通人，并无修行波动，却被魔族肆意掳掠，当做美食，饥渴了便吸取气血，而自身又无修为，只能眼睁睁看着气血流逝，一点点干枯，最终化作枯骨，可悲又可气。</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './134.html'
+				}else if (start - end < -100) {
+					window.location.href = './132.html'
 				}
-				
 			})
 		}
 	</script>

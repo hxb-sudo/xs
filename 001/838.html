@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第634章 再临姬氏！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>禹陵禁区也并非是什么等闲之辈，身为曾经的大帝亲自为自己布置的主场，刹那间就迸发无尽的盖世神威，有数不尽的神霞冲天而起，在洞穿那只庞大的手掌，爆发出堪比帝境的可怕沙发里！</p>
 <p>“阵道？”楚询微微凝眉，旋即也有冷笑，在他面前班门弄斧未免太可笑了，意念涌动庞大的山河都可搬运，何况是小小的阵道几乎是刹那间，禹陵的庞大阵法便被瓦解，另一只手摁下时，庞大的禹陵彻底磨灭。</p>
 <p>轰隆隆！</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './839.html'
+				}else if (start - end < -100) {
+					window.location.href = './837.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第843章 三万积分！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“死！”</p>
 <p>“死了？”</p>
 <p>崇行呆呆的看着这幕，脸颊上的肥肉都在轻微的颤抖，当他来到时二人己战的难解难分，第八式都都用了，这也让崇行震撼，难怪楚询敢大摇大摆的出现在凤阳楼，这实力确实无惧林统，风啸他们的劫掠。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1058.html'
+				}else if (start - end < -100) {
+					window.location.href = './1056.html'
 				}
-				
 			})
 		}
 	</script>

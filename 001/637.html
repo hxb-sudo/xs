@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第476章 以一敌三！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>面对这些目光。</p>
 <p>战州战子不动声色道：“别看我，你行你上！”</p>
 <p>周围的人群一阵咂舌，也是面露古怪的望去，觉得这家伙说的没错，寻常天才掌握一种大道突破准帝已经极强，而这家伙却足足掌握一堆，不仅如此，还皆尽修行到可怕的地步。</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './638.html'
+				}else if (start - end < -100) {
+					window.location.href = './636.html'
 				}
-				
 			})
 		}
 	</script>

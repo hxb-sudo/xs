@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第68章 开阵！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗯？”</p>
 <p>“啊！”</p>
 <p>率先睁开眼睛的是姜贞山，这位满脸疲倦的中年男子，豁然睁开疲惫的眼眸，见到那位青色衣袍的老人安然的站在半空，这位素来要强的中年动容了，眼眶微微泛红，旋即释放无与伦比的璀璨，是从未有过的明亮。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './48.html'
+				}else if (start - end < -100) {
+					window.location.href = './46.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第727章 观看传承！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“肃静！”</p>
 <p>“肃静！”</p>
 <p>一道宏伟的声音落下，诸人收敛心中的震撼纷纷仰头望去，只见到衣着红色道袍的童颜鹤发老者降临，他盘坐在广场上空，一股宏大的气息从他体内流淌而出，诸人望去，宛若看到一轮明月悬挂在上方。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './940.html'
+				}else if (start - end < -100) {
+					window.location.href = './938.html'
 				}
-				
 			})
 		}
 	</script>

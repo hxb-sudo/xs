@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第312章 圣人榜变动！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>那些大儒们一脸茫然，心中带着困惑，难不成书院院长已经强大到这般程度，连他们的至圣学宫最强者都不是对手，转而就看到书院院长同样心情跌落的走出，面无表情的俯瞰下方中人，声音说不出的复杂道：“今日之事，尘封！”</p>
 <p>“咻！”</p>
 <p>他的身影也消失在这里。</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './407.html'
+				}else if (start - end < -100) {
+					window.location.href = './405.html'
 				}
-				
 			})
 		}
 	</script>

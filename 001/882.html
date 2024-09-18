@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第674章 非此界中人！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“他啊？”</p>
 <p>黑色龙袍的秦皇表情略带回味，看向他浅浅道：“你未发现，他本就非此界中人吗？”</p>
 <p>楚询表情微微一怔，也沉思的回想起叶无双，自荒州、东域、百国之地、弱势小国，边陲一角而崛起，却一路碾压所有天骄本就不正常，难不成真的有天才可以妖孽到这般，自幼便可风华绝代，睥睨无双？</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './883.html'
+				}else if (start - end < -100) {
+					window.location.href = './881.html'
 				}
-				
 			})
 		}
 	</script>

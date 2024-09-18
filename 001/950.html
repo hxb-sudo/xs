@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第738章 三剑！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>天魔三兄妹当中的妇人，款款踱步，她衣着紫色衣袍，行走间扭动柳腰丰臀，当真有几分姿色，只可惜年纪偏大面相己有三十余岁，真实年纪更是不知多大，她戏谑的看着楚询，嘲讽道：“在我们兄妹面前还敢动手，算你有几分胆量！”</p>
 <p>炽阳城主。</p>
 <p>城中修士。</p>
@@ -96,12 +96,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './951.html'
+				}else if (start - end < -100) {
+					window.location.href = './949.html'
 				}
-				
 			})
 		}
 	</script>

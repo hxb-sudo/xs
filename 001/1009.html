@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第796章 鸠鹤前辈！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“小师弟好厉害啊，连繁琐而麻烦的阵道都会，可以教教我嘛？”娇小玲珑的叶依依扑闪着灵动的眼眸，蕴含几分崇拜。</p>
 <p>“只是略懂。”楚询也轻声道，并且他发现走出九洲和他想象中不同，在九洲虽然也兼修阵道，但会的人还是蛮多，比如荒州东域陈浔家便是阵道世家，而走出九洲后也幻想着碰到儒州坟墓内遇到的‘邋遢老人’。</p>
 <p>也想过遇到极厉害的阵道大师，但让他惋惜的是太行道域擅长阵道的极少，或许是自己接触的人太少有些孤陋寡闻，但阵道在太行道域不景气却是实打实的。</p>
@@ -103,12 +103,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1010.html'
+				}else if (start - end < -100) {
+					window.location.href = './1008.html'
 				}
-				
 			})
 		}
 	</script>

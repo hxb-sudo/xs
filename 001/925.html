@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第713章 日记（下）！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>‘回到姬氏，长老们听闻我的所作所为对我很是赞赏，说：姬氏承载着荣耀，也理当守护九洲。’</p>
 <p>我很认可，他们敬我爱我尊重我，当遇到困难时我也当挺身而出，我好像知道修行的真谛了，不单单的为了撑起姬氏一片天，还要守护他们，一如我在外界所遇到的朋友小温与小睿，守护他们不被堕落魔修所侵害。</p>
 <p>这一次。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './926.html'
+				}else if (start - end < -100) {
+					window.location.href = './924.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第179章 赔礼道歉！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>不免他瞎想。</p>
 <p>实在是昔日的楚圣过于风华绝代。</p>
 <p>而今只是外出月余便再度回归，并已满头白发，哪怕气质愈发的仙风道骨，仍让他不免瞎想，喃喃道：“极有可能是圣火教，南天殿，若禅寺的高人动手！”</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './224.html'
+				}else if (start - end < -100) {
+					window.location.href = './222.html'
 				}
-				
 			})
 		}
 	</script>

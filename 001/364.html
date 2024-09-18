@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第282章 白嫖！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“镇压！”</p>
 <p>王也脸上的轻佻随着消失，化作的则是凝重，伴随着他的一念之间八尊古老的神佛雕像，攻杀过去，那老农挥洒出来的撒豆成兵根本抵挡不住！</p>
 <p>“道门绝学！”老农脸色微微色变，他看着年轻道袍的年轻人，从最初就知道这家伙是道家，只是万万没想到竟得到了道家真传，这小子的来历恐怕远比想象当中更恐怖。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './365.html'
+				}else if (start - end < -100) {
+					window.location.href = './363.html'
 				}
-				
 			})
 		}
 	</script>

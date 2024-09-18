@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第690章 再斩古天皇！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“你怎么不动手！”楚询同冷漠的看着三十左右的姬氏老祖，他基本上并未负伤，还保持最巅峰时刻，黑色战甲尚且不曾沾染血迹。</p>
 <p>“有区别吗？”</p>
 <p>他立身在那，身上却弥漫出一股极致的绝望，逍遥天尊就死在他们身前，指望着如今二人的修为还想斩他，无异于痴人说梦。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './901.html'
+				}else if (start - end < -100) {
+					window.location.href = './899.html'
 				}
-				
 			})
 		}
 	</script>

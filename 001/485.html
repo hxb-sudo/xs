@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第364章 速去查东临宗！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>消息散开。</p>
 <p>天机城客栈内那些聚集在一起闲散无聊之人，懒散的议论着今日之事，忽然有一路人闯入进来，大口的喘息，脸颊上出现汗滴道：“不好了，不好了，神州天才榜发生重大变故，荒州，荒州崛起了！”</p>
 <p>最初客栈内的目光纷纷凝视过去，听着那路人的话，首先反应便以为神州天才榜真来了什么了不得的天才，哪想到后面张口就是这句，让人们愕然至于，旋即哑笑起来，摇头道：“荒州不可能崛起的！”</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './486.html'
+				}else if (start - end < -100) {
+					window.location.href = './484.html'
 				}
-				
 			})
 		}
 	</script>

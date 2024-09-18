@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第59章 雪山殿！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>姜尘淳朴而厚道的憨笑，道：“我就知道什么事都瞒不过老师！”</p>
 <p>王鹤长老。</p>
 <p>姜长老。</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './33.html'
+				}else if (start - end < -100) {
+					window.location.href = './31.html'
 				}
-				
 			})
 		}
 	</script>

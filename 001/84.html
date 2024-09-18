@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第89章 渡劫！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>站在山巅，楚询体内的修为激荡，弥漫着强横的气息，让风云变幻，云层汹涌，只是转眼之间便有浓郁的黑云卷席上空，云层之中也有一道道狰狞咆哮的闪电雷霆游走，如那凶狠的雷龙。</p>
 <p>“咻！”</p>
 <p>一道雷霆划破天际，轰的一声砸下。</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './85.html'
+				}else if (start - end < -100) {
+					window.location.href = './83.html'
 				}
-				
 			})
 		}
 	</script>

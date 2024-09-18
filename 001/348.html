@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第270章 准帝法！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>顷刻间。</p>
 <p>二人碰撞了数十回合。</p>
 <p>在一次剧烈的交锋后，他们身影分别被震颤开来，两人拳上都沾染着血迹有自身也有敌人的，手臂在衣袍下的痉挛能证明彼此都有些损伤，秦南眼瞳微微收缩，此时他真的很想动用那受损的瞳术，若是动用刚刚的交锋他必定占据优势，甚至能重创他。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './349.html'
+				}else if (start - end < -100) {
+					window.location.href = './347.html'
 				}
-				
 			})
 		}
 	</script>

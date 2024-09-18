@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第252章 赶路！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“叮！”</p>
 <p>界心令在沉寂了两个月后，终于迎来了新的声音，同一时间多人齐齐看向了群上的消息，是四号的询问：“诸位，如何？”</p>
 <p>持这界心令的五号正盘坐在荒天宫大殿内，他已经熟练的掌控这件准帝器，只是眼中透着前所未有的凝重，喃喃道：“四号要坚持不住了！”</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './331.html'
+				}else if (start - end < -100) {
+					window.location.href = './329.html'
 				}
-				
 			})
 		}
 	</script>

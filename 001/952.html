@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第740章 认输！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“啊~！”能从声音中听到天魔三兄妹首领的惊恐，那样的极致毁灭剑意他挡住一次己付出极大代价，若是继续，他接下来便目睹了这样的‘湮灭’在爆发第二次，第三次，第西次，极致的恐惧一度将他淹没。</p>
 <p>他意识到再下去，他会死！</p>
 <p>恐惧淹没。</p>
@@ -80,12 +80,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './953.html'
+				}else if (start - end < -100) {
+					window.location.href = './951.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第298章 两个时辰！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“别着急！”</p>
 <p>简青竹脸上却挂起灿烂的微笑，若是楚询在里面耗时了十息以上的时间才解开第一关他会有所担心，而现在却带着自信的笑容，真正了解九号知道这是什么天才，旁人都被他的外貌所忽略，只有他知道九号是多么的年轻。</p>
 <p>不足百岁。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './382.html'
+				}else if (start - end < -100) {
+					window.location.href = './380.html'
 				}
-				
 			})
 		}
 	</script>

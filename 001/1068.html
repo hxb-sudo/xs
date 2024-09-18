@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第854章 逆伐七境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>轰隆隆~！</p>
 <p>剑光如劫。</p>
 <p>葬送在每一位风氏族人眼中，往日他们的高傲，狂妄的性格在眼下只化作惊恐，这一剑似要斩灭天地间的一切，无数阵法符文闪耀又在一一磨灭，爆发出耀眼的火光，而恐怖的剑潮依旧如此强盛，所有人都觉得犹如蝼蚁。</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1069.html'
+				}else if (start - end < -100) {
+					window.location.href = './1067.html'
 				}
-				
 			})
 		}
 	</script>

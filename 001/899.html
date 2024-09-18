@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第689章 逍遥天尊陨落！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“噗~！”</p>
 <p>拳尚未降临。</p>
 <p>他便有窒息的压迫，心神被狠狠震慑，古天皇紧咬舌尖从这种状态中挣脱，他惊骇道：“这是何等拳法，我仅仅是观望，却让我窒息，倘若这是针对我……！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './900.html'
+				}else if (start - end < -100) {
+					window.location.href = './898.html'
 				}
-				
 			})
 		}
 	</script>

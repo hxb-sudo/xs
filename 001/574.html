@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第429章 发飙的小道士！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“考虑好了吗！”姬元天高高的盘坐在那，身上的蓝色光团释放出压迫，在释放出自己强大的一面，眼瞳当中也有秩序的符文闪烁，宛若拒绝便要等待雷霆之怒。</p>
 <p>楚询微蹙眉头，知道姬元天已经不想再絮叨，恐怕是也担心自己的盟友在极短的时间内赶来，此刻已经动了杀意。</p>
 <p>“冥顽不灵！”</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './575.html'
+				}else if (start - end < -100) {
+					window.location.href = './573.html'
 				}
-				
 			})
 		}
 	</script>

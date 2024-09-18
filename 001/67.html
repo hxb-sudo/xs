@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第80章 极尽升华！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>满头白发褪去，新生的长发漆黑而弥漫光泽，散乱在胸前背后，刀削般的脸颊，英俊而年轻，瞳孔明亮而富有神色。</p>
 <p>漆黑的金属甲胄覆盖全身，只留下英俊面容，一柄漆黑的重剑落在掌心，这时的他恢复了巅峰与年轻。</p>
 <p>“前辈！”</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './68.html'
+				}else if (start - end < -100) {
+					window.location.href = './66.html'
 				}
-				
 			})
 		}
 	</script>

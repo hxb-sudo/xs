@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第661章 新战城！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“驭~！”</p>
 <p>马车极速停下。</p>
 <p>那手持鞭子的马夫也惊讶的看着幕雪，身为大人物的仆从也是见多了高高在上的神女，但这位不同，无论是气质还是容颜都是一等一的绝美，这让他流露贪婪心性，对着马车内的人低声道：“主子，碰到个极品尤物！”</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './870.html'
+				}else if (start - end < -100) {
+					window.location.href = './868.html'
 				}
-				
 			})
 		}
 	</script>

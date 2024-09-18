@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第102章 东凰钟！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“还撑得住！”</p>
 <p>仙道宗圣人眼神阴鸷，哪怕遭遇了这种劫难，皮肤衰老萎靡的不像话，却依旧在泛着冷笑，他受伤，楚询也好不到哪里去，他有盟友，楚询又有什么？</p>
 <p>四野。</p>
@@ -99,12 +99,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './107.html'
+				}else if (start - end < -100) {
+					window.location.href = './105.html'
 				}
-				
 			})
 		}
 	</script>

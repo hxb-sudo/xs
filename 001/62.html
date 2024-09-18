@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第77章 杀疯了！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询也是阵阵无言，再次感受了圣人的强大，那稚童般的少年在最后一刻爆发的都快濒临圣境了，可在夏阳手中依旧毫无还手之力，弹指即灭，却也清晰的认识一件事，东域的魔教恐怕积蓄的不是三两日。</p>
 <p>连仙道宗的半圣都有魔教修行之法，难保其他人没有。</p>
 <p>“看了这么久！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './63.html'
+				}else if (start - end < -100) {
+					window.location.href = './61.html'
 				}
-				
 			})
 		}
 	</script>

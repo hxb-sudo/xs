@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第833章 第九式雏形！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>这一式。</p>
 <p>正是第九式雏形。</p>
 <p>在楼上突破六境巅峰后又翻阅经书1000年，将第九式的雏形给悟了出来，只是还没定下究竟要走那一条路，而在第七层藏经阁时也实验过威力，确实很恐怖，原本他不想使用这一式雏形，用的多了，自然而然就会朝着这条路发展。</p>
@@ -98,12 +98,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1048.html'
+				}else if (start - end < -100) {
+					window.location.href = './1046.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第322章 风口浪尖！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗯？”</p>
 <p>武真君的眸子瞬间爆发出骇人的光芒，其压迫让身旁的火女都感受雄性的炽热，不由散发出朦胧的紫雾遮盖几身，而其余人就没这么好受了。</p>
 <p>他们纷纷暴退。</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './424.html'
+				}else if (start - end < -100) {
+					window.location.href = './422.html'
 				}
-				
 			})
 		}
 	</script>

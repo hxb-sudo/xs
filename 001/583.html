@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第436章 秦皇朝外援！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“还有两息！”余下的三人脸上透着空洞的苍白，他们没有把握拦住这二人，可神念感应到气息削弱的帝子，那瞳孔当中的悲伤顷刻化作无与伦比的怒火。</p>
 <p>“两息！”</p>
 <p>“不信挡不住！”</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './584.html'
+				}else if (start - end < -100) {
+					window.location.href = './582.html'
 				}
-				
 			})
 		}
 	</script>

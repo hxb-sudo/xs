@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第506章 独孤绝的挣扎！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“叶无双，到了！”望着那徐徐踱步而来的黑袍男子，在武道崖周围的人都感受到了窒息，就连上方那一位位天神般的法相，都从垂眸当中睁开了眼睛，缓缓俯瞰。</p>
 <p>神色各不相一。</p>
 <p>却很凝重。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './674.html'
+				}else if (start - end < -100) {
+					window.location.href = './672.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第574章 禁区的特性！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>林升。</p>
 <p>老妪。</p>
 <p>他们心中刚刚泛起一抹希冀，在板上钉钉大势所趋下，秦皇朝与姬氏的覆灭是板上钉钉，可如今雷霆的毁灭也随之而来，倘若羽化皇朝也勾结禁区，在九洲掀起大规模的拼撞后，本就残留无几的力量既要提防黑暗禁区，又要提防这么一座无上的皇朝。</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './768.html'
+				}else if (start - end < -100) {
+					window.location.href = './766.html'
 				}
-				
 			})
 		}
 	</script>

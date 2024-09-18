@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第570章 审讯！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“不~！”</p>
 <p>姬清眼眸弥漫无尽的惊恐，深深知道此人就是个疯子，孤身对抗秦皇朝与姬氏也就罢了，甚至中了黑色淤泥诅咒，不祥与诡异缠绕，他可不想与此人纠缠，疯了般道：“滚，滚，不要动我！”</p>
 <p>“呵！”</p>
@@ -113,12 +113,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './763.html'
+				}else if (start - end < -100) {
+					window.location.href = './761.html'
 				}
-				
 			})
 		}
 	</script>

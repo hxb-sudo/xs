@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第267章 秦南：东临宗，灭了吧！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>阵法深处。</p>
 <p>四号看到这幕却露出惬意笑容，早在最初他就观摩到九号的阵法极有可能是大圣道果级，如今也终于确定了，更可以肯定凭借阵法大圣的配合，以及几人的造诣来到这里并不困难，只是时间问题。</p>
 <p>“稍等片刻！”</p>
@@ -108,12 +108,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './346.html'
+				}else if (start - end < -100) {
+					window.location.href = './344.html'
 				}
-				
 			})
 		}
 	</script>

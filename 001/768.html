@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第575章 疯狂的想法！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“但那位追杀太祖太宗的大势力依旧不依不饶派出了十余名修士继续追杀，太祖太宗只能狼狈的逃，朝着禁区的深处，明知必死也在死里求生，很庆幸，太祖太宗碰到了禁区守陵人，更碰到了一缕神念复苏观察九洲局势的黑暗至尊！”</p>
 <p>“或是太祖太宗展露过人的心性与狠辣，得到了那位禁区至尊的欣赏，随手帮了太祖太宗一把，随后便在守陵人的教导下，修为一日千里，既有一位无上的前辈教导，又有禁区中数不尽的资源，因此当太祖太宗从禁区中踏出后修为早己天翻地覆。”</p>
 <p>“出禁区第一件事便是将那穷追不舍的势力灭宗，此举震动九洲，也是自那起太祖太宗真正在九洲立足，又有着与禁区之间的交易，太祖太宗几乎很顺利的便建立了羽化皇朝，经过一代代的沉淀，便有了如今的地位！”</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './769.html'
+				}else if (start - end < -100) {
+					window.location.href = './767.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第787章 徐峰拜访！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>不免又想到了两人初遇时，那时候楚询刚破五境没多久，气息还很微弱斩杀天魔三兄妹时他都很意外，很震惊，而今过了千年也数次听闻过楚询的战绩，无论是战风氏旁系老祖，还是斩天魔三兄妹都让他惊讶。</p>
 <p>可没有任何一个比现在更让他震撼，自己憋足了劲好不容易突破帝道六境，楚师弟竟不声不响的也破境了，当真是怪胎。</p>
 <p>“怪物！”他腹诽，也将小册不动声色的收起，原先还为自己突破帝道六境而沾沾自喜，现在只觉得碰到个怪物，但他心性也极好，很快便调整归来，也咂舌道：“说起来，我也应该恭喜师弟破境！”</p>
@@ -96,12 +96,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1000.html'
+				}else if (start - end < -100) {
+					window.location.href = './998.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第862章 破七境（下！）（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>修炼第七境。</p>
 <p>最重要的一点便是掌握一条道源。</p>
 <p>这点楚询在创造‘第八式青莲’时便己经掌控，而第九式更是完善延伸，那时候他便可以突破第七境，眼下又沉淀一段时间，盘踞在太行道尊曾经的修炼之地，也是距离这处星空大道本源最近，最清晰的地方。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1077.html'
+				}else if (start - end < -100) {
+					window.location.href = './1075.html'
 				}
-				
 			})
 		}
 	</script>

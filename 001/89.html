@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第92章 藏经阁第九层！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这便是师尊年轻时的样貌吗？”姜尘眼中满是惊叹，太惊艳了，哪怕是他丰神如玉，俊朗脱俗，可在老师面前依旧差了一些，那是气质上的洒脱，还有不拘的风流。</p>
 <p>“楚长老！”</p>
 <p>王鹤。</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './90.html'
+				}else if (start - end < -100) {
+					window.location.href = './88.html'
 				}
-				
 			})
 		}
 	</script>

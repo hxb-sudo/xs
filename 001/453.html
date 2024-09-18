@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第344章 突破大圣！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗤~！”</p>
 <p>楚询平静的看着它的尸首在青色莲花下湮灭成齑粉，那本来坚硬无比的肉身用铁链束缚漫长岁月，寻常刀刃都无法撕裂，却在这青莲下斩灭为虚无！</p>
 <p>“我竟然……！”</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './454.html'
+				}else if (start - end < -100) {
+					window.location.href = './452.html'
 				}
-				
 			})
 		}
 	</script>

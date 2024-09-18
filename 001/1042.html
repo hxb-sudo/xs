@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第828章 比拼耐心！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>风天华却呆呆的看着风啸急不可耐的样子，可他心底却泛起一股恐慌与莫名的空唠唠，他竟然……败了！</p>
 <p>刚刚那一剑！</p>
 <p>若非风啸。</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1043.html'
+				}else if (start - end < -100) {
+					window.location.href = './1041.html'
 				}
-				
 			})
 		}
 	</script>

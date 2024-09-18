@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第347章 剑七！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>如此狂傲的举动，自然引发坐镇这片区域的一流宗门瞩目，全真剑宗，剑州七大一流势力，在楚询来到最后一个宗门奔剑宗时，一位平平无奇的老者盘踞在那，他的身旁悬浮着七个剑匣子，每一道剑匣内都仰着一口剑。</p>
 <p>“老夫剑七！”那老人似料定了楚询会来，语气温吞吞道：“道友应当不是我剑州之人，不知何事竟让道友在剑州大开杀戒，若是听老夫一句话束手就擒，擒与思过崖囚禁六十年，倒可再让道友出来！”</p>
 <p>“囚禁我？”楚询笑了。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './460.html'
+				}else if (start - end < -100) {
+					window.location.href = './458.html'
 				}
-				
 			})
 		}
 	</script>

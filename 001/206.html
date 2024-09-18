@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第166章 对弈！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询也缓缓抬头。</p>
 <p>看向前方。</p>
 <p>一位中年男子缓缓踱步而来，临近此地，平静的眼眸骤然开阖露出骇然的目光，又幽幽收敛，即便如此，那恐怖的威压也让下方本就横七竖八躺在一地的人感受颤栗，即便是那些孩童也流露害怕情绪。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './207.html'
+				}else if (start - end < -100) {
+					window.location.href = './205.html'
 				}
-				
 			})
 		}
 	</script>

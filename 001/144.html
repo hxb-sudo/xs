@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第121章 宗门祭坛！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>散修老农。</p>
 <p>这二位也清楚明白这个道理，若是寻常，他们说了也就说了，大家实力相差无几哪怕摁着楚询的头吃亏，后者也只能认了，现在则不同了，绝对实力下，再敢聒噪这家伙真可能大巴掌甩来，当众掌掴，那可就丢人丢大了。</p>
 <p>“师尊！”</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './145.html'
+				}else if (start - end < -100) {
+					window.location.href = './143.html'
 				}
-				
 			})
 		}
 	</script>

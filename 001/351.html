@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第272章 以大欺小！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>也对这个人起了浓郁忌惮，那是与师尊一样，暗暗道：难怪是能与师尊交锋齐名，甚至被师尊记在心中的人。</p>
 <p>六十年的沉淀。</p>
 <p>短暂爆发。</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './352.html'
+				}else if (start - end < -100) {
+					window.location.href = './350.html'
 				}
-				
 			})
 		}
 	</script>

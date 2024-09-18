@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第262章 你配吗？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>叶凰身上却有更强烈与霸道的火焰之光流转，她丹凤美眸内冰冷淡漠，手掌拂过长枪，一缕缕枪意从体内释放，笼罩在枪身，盯着他道：“你配吗？”</p>
 <p>“轰~！”</p>
 <p>一道宛若太阳般的光泽绽放，释放出无与伦比的神辉，从九天上坠落，释放出耀眼的光泽，镇压时天穹为之暗淡，一切都为之失色，宛若太阳从九天上被一枪贯穿，携带大日的长枪向着前方刺去。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './341.html'
+				}else if (start - end < -100) {
+					window.location.href = './339.html'
 				}
-				
 			})
 		}
 	</script>

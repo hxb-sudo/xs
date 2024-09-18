@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第568章 武神退走！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“大可一试！”</p>
 <p>盘坐在那的妖邪青衫男子，脸上泛起桀骜神色。</p>
 <p>武神眼瞳愈发的冰冷，身上澎湃的气血在涌动，一缕缕冰冷到极致的寒意涌来，在虚无当中扩散，凝聚成的冰霜结出片片雪花，覆盖成蔚蓝形成的冰魄，但覆盖到一定位置后他却遏制了寒霜的克制。</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './761.html'
+				}else if (start - end < -100) {
+					window.location.href = './759.html'
 				}
-				
 			})
 		}
 	</script>

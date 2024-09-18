@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第507章 楚询VS叶无双！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“无妨！”</p>
 <p>叶无双语气平和，黑色衣袍披在身上，微风吹拂下那精致的侧脸，流露刀削般的脸庞，神色平和，语气也淡漠道：“片刻就好！”</p>
 <p>秦皇的意志缓缓褪去。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './676.html'
+				}else if (start - end < -100) {
+					window.location.href = './674.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第420章 齐东远！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“他是谁？”</p>
 <p>麻衣青年从秦皇朝帅帐内走出时吸引了不少目光，皆是流露好奇之色，却又知道此刻不会平白出现一位平平无奇之人，而令他们困惑的是在秦皇朝的情报当中并无此人的信息。</p>
 <p>秦皇朝的大军也是带着愤怒的目光看向荒州阵容，却又对此人充满信心，他们并没有因为一群阵法师以及几位大圣境的存在陨落而悲伤，反而化作了怒火，这是这支军队骄傲而自负的优良一面，士气轻易难以折损。</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './563.html'
+				}else if (start - end < -100) {
+					window.location.href = './561.html'
 				}
-				
 			})
 		}
 	</script>

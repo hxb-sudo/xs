@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第808章 猎杀楚询？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>林统嘴角勾勒起邪魅笑容，道：“这么迫不及待的动手，等不及天花灵果的成熟了？”</p>
 <p>小花，叶依依也纷纷紧皱眉头，有些不清楚对方打的什么算盘，触动阵法将他们引诱在此却又不着急动手，要知道有楚询在，这天花灵果就是他们的囊中之物，即便盛开也必然被他们所得。</p>
 <p>明摆着抢又抢不过，打也打不死他们，现在在这干耗着百害而无一利，并且时间拖得越久反而对他们越有帮助，楚询需要的是一朵完整的天花灵果。</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1023.html'
+				}else if (start - end < -100) {
+					window.location.href = './1021.html'
 				}
-				
 			})
 		}
 	</script>

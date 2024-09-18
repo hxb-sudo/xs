@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第747章 调令！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“恭喜，恭喜啊！”刚刚进入庭院徐峰便拱手道喜，脸上带着灿烂的笑意，道：“天魔三兄妹作恶多端，又苦于自身狡猾，稍有不对便舍了命逃弃，这次被楚小兄弟斩杀，当真可喜可贺，算为太行道域除了一颗毒瘤！”</p>
 <p>“过奖，过奖！”楚询也谦逊道，他可没有膨胀的认为除了天魔三兄妹就是一件了不得的功绩，虽说天魔三兄妹在太行道域拥有一定的凶名，可放眼太行道院这样的庞然大物，还是不值一提。</p>
 <p>“呵呵，徐长老这次拜访，不是单纯的恭喜吧！”楚询也挂着浅笑，对方可谓无事不登三宝殿，况且与他有一定的私交，不需要再像旁人般送上拜帖再拜访，若真是这样的小事，完全可以通过令牌道贺。</p>
@@ -98,12 +98,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './960.html'
+				}else if (start - end < -100) {
+					window.location.href = './958.html'
 				}
-				
 			})
 		}
 	</script>

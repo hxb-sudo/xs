@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第168章 他什么来历！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“狂徒！”</p>
 <p>老妪最先震怒，星辰宗莫说在南域，纵然是荒州只要不招惹荒天宫向来都是无敌，哪个势力不买几分薄面给他，而今一个从未听闻过的老家伙来到星辰宗便敢耀武扬威，当真以为她们都是吃素的。</p>
 <p>“一起动手！”</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './210.html'
+				}else if (start - end < -100) {
+					window.location.href = './208.html'
 				}
-				
 			})
 		}
 	</script>

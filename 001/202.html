@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第162章 前往外界！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>并且他还发现一件好事，那就是老人身份当真带来许多便利，不像那些年轻的天命之子，走到哪里都被人挑衅，他这老人不说走到哪里都有人关照，最起码行事方便不少，也无遭到人挑衅，就连这美食做的都更加熟软些，担心他吃不动。</p>
 <p>“是九霄公子！”</p>
 <p>“竟然从星辰宗出来了！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './203.html'
+				}else if (start - end < -100) {
+					window.location.href = './201.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第363章 东临宗爆火！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>在测试当中的姜尘，面如冠玉脸上挂着灿烂的笑容，眸子却是如此的纯粹与明亮，喃喃道：“补天教的传承已经被遗落太多年，是该被人重新忆起了！”</p>
 <p>他的身上有一道神华。</p>
 <p>扶摇直上。</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './485.html'
+				}else if (start - end < -100) {
+					window.location.href = './483.html'
 				}
-				
 			})
 		}
 	</script>

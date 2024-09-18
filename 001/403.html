@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第310章 道不可轻传！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>极其狼狈的坠落。</p>
 <p>万幸。</p>
 <p>这三位都非弱者，一句言出法随的力量便能让他们安然的盘坐在虚空之上，然，这一幕仍不知给下方那些人造成多大的震撼，强如儒教准帝，竟在双圣地的执牛耳者毫无抵抗，与他们一般连一个呼吸都撑不住，便纷纷抛出来。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './404.html'
+				}else if (start - end < -100) {
+					window.location.href = './402.html'
 				}
-				
 			})
 		}
 	</script>

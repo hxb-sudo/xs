@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第246章 斗战宫宫主的突破！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>咚！</p>
 <p>咚咚！</p>
 <p>斗战宫前早已凝聚了多位圣人九境，乃至圣人道果级，其中圣人九境的盖亚便在这里，只是此时他格外的沉默，脸上的表情无人能看出他在想着什么，总之，斗战宫宫内这些长老都若有若无的离他远点，这是一种本能。</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './324.html'
+				}else if (start - end < -100) {
+					window.location.href = './322.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第859章 风涅现！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“妖孽！”晋真元也战栗了，头皮发麻，他不想死，可面对八境前辈却是没有一点抵抗力，悲观的想着风涅将所有人灭了不怕遭到报应吗，可又悲催而绝望的发现‘风涅’己是太行道域的天，谁能奈何他？</p>
 <p>杀了所有人。</p>
 <p>便杀了！</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1074.html'
+				}else if (start - end < -100) {
+					window.location.href = './1072.html'
 				}
-				
 			})
 		}
 	</script>

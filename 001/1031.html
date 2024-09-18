@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第817章 六境后期！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“哈哈哈哈，好，楚询你的决定没错，我们将是你强大的后盾！”青墨粗狂的大块头上前，厚重的巴掌拍在楚询身上有抑制不住的喜色。</p>
 <p>紫姨脸上也带着笑意，道：“林白走了，我们小队也没有想象中的那般不堪，除了少数几个惹不起外，其余的都具备一战之力！”</p>
 <p>她很自信。</p>
@@ -113,12 +113,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1032.html'
+				}else if (start - end < -100) {
+					window.location.href = './1030.html'
 				}
-				
 			})
 		}
 	</script>

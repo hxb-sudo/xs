@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第67章 抱歉，来晚了！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“太危险了！”王鹤感叹道，哪怕这有点对不住姜氏，早先姜贞山缕缕站在东临宗这边，现在遇到危机不过去帮忙实在难以启齿，可想到东临宗眼下的囧地，他还是昧着良心劝阻，道：“真心不希望你去！”</p>
 <p>楚询轻轻摇头，道：“要去！”</p>
 <p>他知道王鹤长老担心什么，自己修为突飞猛进，这种突破恐怕圣人都极其忌惮，此次出行甚至可能遭遇圣人的伏杀，危机重重，但姜贞山待自己不错，尤其是大徒弟姜尘看在他的面子上也应过去。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './47.html'
+				}else if (start - end < -100) {
+					window.location.href = './45.html'
 				}
-				
 			})
 		}
 	</script>

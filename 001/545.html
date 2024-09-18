@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第408章 领取修为！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>按照这个速度的增长，纵使是哪些大圣境贸然接受，也将承受一定的波动，毕竟突兀灌入进来这么多修为，哪里是能轻易掌握的，但楚询在圣人九境的积攒太浓郁了，而到了大圣境才是厚积薄发。</p>
 <p>外加在儒州观书一年，全部时间都沉浸在观摩读书当中，自身的积累非常丰厚，纵然是眼下他那白衣分身也是日以继夜的翻看经文，胸中早有沟壑，只欠缺修为的补充，这如此浑厚的积攒对他来说，只是久旱逢甘霖。</p>
 <p>自然而然的吸收。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './546.html'
+				}else if (start - end < -100) {
+					window.location.href = './544.html'
 				}
-				
 			})
 		}
 	</script>

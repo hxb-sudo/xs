@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第458章 指点弟子！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“好！”</p>
 <p>“好！”</p>
 <p>“好啊，真的是补天教传承，并且是完整的！”黑衣长袍老者激动的面色涨红，兴奋溢于言表，可随着眼中便涌现难掩的失落，身为补天教的器灵，作为补天教最后的依仗它竟然遗失了部分传承，导致这门传承并未完善。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './613.html'
+				}else if (start - end < -100) {
+					window.location.href = './611.html'
 				}
-				
 			})
 		}
 	</script>

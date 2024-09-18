@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第849章 短暂重逢！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“我也来！”</p>
 <p>“还有我！”</p>
 <p>到后续即便是简青竹和王也都坐不住了，二人也上去表演才艺，身为儒道的言出法随，简青竹在这方面就和开挂了一般，哪怕是小道士王也都嘴角不断抽搐，到最后首接撂挑子不干了。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1064.html'
+				}else if (start - end < -100) {
+					window.location.href = './1062.html'
 				}
-				
 			})
 		}
 	</script>

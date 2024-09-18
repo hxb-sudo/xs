@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第132章 找到了！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这东域数得着的顶尖势力，唯有东临宗了，也不知会不会来？”</p>
 <p>“急什么！”</p>
 <p>“这才四月十七，距离东域学宫开启盛宴还有十一天，东临宗即便会来也该是最后一日，到时候可能会爆发数圣同显！”茶楼街巷的人们议论纷纷，让一座新建的城池充满勃勃生机，人影流动，颇为热情。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './161.html'
+				}else if (start - end < -100) {
+					window.location.href = './159.html'
 				}
-				
 			})
 		}
 	</script>

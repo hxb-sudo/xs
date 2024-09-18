@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第600章 再斩！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“诸位助我！”</p>
 <p>古装中年女子也在色变，察觉到楚询的杀心，心中既有汗毛倒竖也有凛然，未曾想到往日禁区至尊复苏前，她们便是代表的禁区之主，何人敢放肆，哪一个不是毕恭毕敬的将她们当做座上宾。</p>
 <p>可今朝却是例外，除了刚开始将天机阁给灭了，还没搜刮到好处便碰到这么个硬茬子，一个照面便用了主人赐下的宝物，更可气的是还被当众掌掴，这让古装女子极为恼怒，但此刻这些又都顾不上了，因为死亡的气息在逼近。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './799.html'
+				}else if (start - end < -100) {
+					window.location.href = './797.html'
 				}
-				
 			})
 		}
 	</script>

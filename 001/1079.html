@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第865章 古阳域！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>而临行前。</p>
 <p>楚询来到一间密室内，看着正在沉睡的王鹤，姜蕴，孙长老他们，垂暮朽朽的暮气正在逼出体内，取而代之的则是磅礴的生机，连他们的容颜都在逐渐年轻，等待再次苏醒将恢复朝气蓬勃的状态，也喃喃道：“我走了！”</p>
 <p>走出密室外，看着陈浔，万无青，乾韵，藏凯他们楚询也暗暗叹息，他们的天赋在九州属于不错，却不算最顶尖，即便有自己给他们遗留的资源，突破大帝也不是问题，可要将他们带出九州却难了。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1080.html'
+				}else if (start - end < -100) {
+					window.location.href = './1078.html'
 				}
-				
 			})
 		}
 	</script>

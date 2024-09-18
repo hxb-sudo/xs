@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第117章 师父，杀了我吧！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“魔君死了！”</p>
 <p>“魔教完了！”</p>
 <p>这些黑袍人中，不乏一些刚入魔教不久的修行者，本想走极端，不劳而获，哪想到刚入魔教没几日便遭到这般血洗，一个个脸色苍白萎靡，自家老大都死了，再不跑留在这干嘛，仓促中慌不择路。</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './138.html'
+				}else if (start - end < -100) {
+					window.location.href = './136.html'
 				}
-				
 			})
 		}
 	</script>

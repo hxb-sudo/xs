@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第422章 折戟沉沙！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>秦皇朝后续援军。</p>
 <p>眼见着并无这才一道阵法直接将秦皇朝老巢给他们端了，这让荒州修士笑的老脸都合不住，豪爽道：“哈哈哈，想灭我荒州，先吃一套狗啃屎再说！”</p>
 <p>立身半空中的秦元盛环顾四周，瞅着这座现楼的阵法又看到大军营帐内已是一片人间炼狱，可他的表情却没有任何变化，而是平静道：“这座大阵主要针对的是修为稍弱之人，并且是由荒州延伸出来，因此对我等的威胁并不大，先破阵吧！”</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './567.html'
+				}else if (start - end < -100) {
+					window.location.href = './565.html'
 				}
-				
 			})
 		}
 	</script>

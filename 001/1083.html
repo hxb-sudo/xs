@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第869章 趋吉避凶，人性也！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“你是说那个青衫男子吗，是不是五境还是一说，即便真是五境又怎样城中还不是我们这几大家族说的算，难不成为了这两个蝼蚁，还会对我们动手！”丁轩却满不在意道，在城中他们己经横惯了。</p>
 <p>内心深处更是不觉得对方是五境，只是觉得颇为神秘罢了，若真是五境修士早被家中强者告诫，此人属于不可得罪。</p>
 <p>而姗姗来迟的楚询进入天风武馆后，表情不由凝重起来，他眸光落在一摊血迹的地面，而周围的许多宾客都忌惮而兴奋的看着好戏，靳永属于那群贵公子的走狗，背后或多或少沾染五境修士，今日前来祝贺的宾客都以西境势力为主，自然不愿牵扯其中。</p>
@@ -74,12 +74,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1084.html'
+				}else if (start - end < -100) {
+					window.location.href = './1082.html'
 				}
-				
 			})
 		}
 	</script>

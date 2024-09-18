@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第616章 帝血！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“元神星辰！”</p>
 <p>楚询咬紧牙关，在识海当中组成星辰形状又在顷刻间分崩离析，彻底爆开，然，又在瞬息组成星链形状维护着识海，在一次次拼搏的抵挡轮回之主的进攻，可在识海的极限之地却蕴含着绝望情绪。</p>
 <p>差距。</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './821.html'
+				}else if (start - end < -100) {
+					window.location.href = './819.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第550章 广法菩萨！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>但凡是此方天地所修大道都会被禁止，就连儒教的吹牛逼大法有部分都是参考这门‘佛教大禁术’。</p>
 <p>“那还不快追！”有佛门罗汉急不可耐，凶手就在附近能眼睁睁的看着他溜走，这闯入佛教杀了位菩萨还能逃走，传出去佛教有何颜面在九洲立足，脸是打的啪啪响。</p>
 <p>“不急！”</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './742.html'
+				}else if (start - end < -100) {
+					window.location.href = './740.html'
 				}
-				
 			})
 		}
 	</script>

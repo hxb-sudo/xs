@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第709章 阵图！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“陷仙剑！”</p>
 <p>姬武开口，那第二柄剑也运转了，这柄煌煌璀璨如大日的金色神剑，释放出庚金属性，一剑斩下配合戮仙剑将荒天鼎硬生生斩成两截！</p>
 <p>“呼~！”</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './922.html'
+				}else if (start - end < -100) {
+					window.location.href = './920.html'
 				}
-				
 			})
 		}
 	</script>

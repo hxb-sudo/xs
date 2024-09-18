@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第369章 荒州之人，本座保了！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>万象宫宫主内心一沉，若仅仅是雷欧他自信可以从容离开，可若是加上这支军队便不好说了，别看这群人只是圣人之境，可他们行走时的脚步，都是经过精心排列，有阵法暗含天理，真当做一群寻常圣人屠杀是要吃大亏。</p>
 <p>“来了吗？”万象宫宫主沉声问道。</p>
 <p>“喊人？”</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './493.html'
+				}else if (start - end < -100) {
+					window.location.href = './491.html'
 				}
-				
 			})
 		}
 	</script>

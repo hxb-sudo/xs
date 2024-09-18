@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第54章 偷鸡不成蚀把米！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>想到自己现在也恢复了不少，在仙道宗凭借叶尘不断的供养，已经具备不少实力，可以筹谋直接取代叶尘，将那东西据为己有。</p>
 <p>也道：“年轻人不要好高骛远，那东西在不在还是一说，先上楼去瞅瞅，由我给你遮盖气息，短时间内不会被发现！”</p>
 <p>“多谢老师！”</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './25.html'
+				}else if (start - end < -100) {
+					window.location.href = './23.html'
 				}
-				
 			})
 		}
 	</script>

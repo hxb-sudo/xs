@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第88章 突破！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>根本不可能。</p>
 <p>从未听闻。</p>
 <p>哪怕对楚长老期许极高，也不敢有这样的想法，轻声笑道：“不过楚长老若能在三年内突破圣人也相当优秀了！”</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './83.html'
+				}else if (start - end < -100) {
+					window.location.href = './81.html'
 				}
-				
 			})
 		}
 	</script>

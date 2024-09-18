@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第295章 道心崩了！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>扫地老人张大了嘴巴，满脸惊愕，不可思议的看着老兄脑子在疯狂旋转，似是在说你们是不是搞错了，这是我老兄，只是普通的一个外州人士，怎会突破大儒。</p>
 <p>而看着青衫老人那蕴含智慧的眼睛，以及身上浓郁的儒道气息，就连外面这些前来祝贺的人都远远比不上，这让他更是惊讶中带着颤音，难道这位老兄真的突破大儒了？</p>
 <p>呼吸急促。</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './379.html'
+				}else if (start - end < -100) {
+					window.location.href = './377.html'
 				}
-				
 			})
 		}
 	</script>

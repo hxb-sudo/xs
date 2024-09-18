@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第691章 平定禁区！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询眼中闪烁悲哀。</p>
 <p>屠龙者终成恶龙。</p>
 <p>九洲的守护者有朝一日对九洲血腥的挥下屠刀，无情的屠戮众生生灵，何其残忍，只为了自己能短暂的长生，便不惜死去亿万万人，何其不辜，甚至于他对得起那些为他建立长生碑的百姓吗？</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './902.html'
+				}else if (start - end < -100) {
+					window.location.href = './900.html'
 				}
-				
 			})
 		}
 	</script>

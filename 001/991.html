@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第779章 六境的首战！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“师尊好强！”</p>
 <p>秦云站在远方，看着那正在修行悟道的师尊，安然的盘坐在那，青丝随意散落，根根长发犹如大江奔腾，若是落在流水星足以媲美最大的一条河流，庞大的手掌安放在双膝，整个身躯都散发着炽热的光。</p>
 <p>他太庞大。</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './992.html'
+				}else if (start - end < -100) {
+					window.location.href = './990.html'
 				}
-				
 			})
 		}
 	</script>

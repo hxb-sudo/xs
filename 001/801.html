@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第603章 禁区至尊邀请！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“噗！”</p>
 <p>又是一道拳光无情的贯穿禹陵守陵人的心口，首接穿透他的后心，有碗大的疤残留出来，鲜血在源源不断的流淌，而后者也是抿嘴嘴唇，眼神毅然，爆喝道：“杀！”</p>
 <p>他不顾身上的伤势，心中更滋生一缕绝望的情绪，真的分辨不出主人是否放弃了他，明明在死战，却感应不出主人的任何气息。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './802.html'
+				}else if (start - end < -100) {
+					window.location.href = './800.html'
 				}
-				
 			})
 		}
 	</script>

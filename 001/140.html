@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第119章 圣人，他一直在！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>遮天蔽日。</p>
 <p>落在宗门阵法上，那宛若光幕琉璃笼罩的庞大阵法骤然一颤，似是无法承受可怕的威压，尤其是随着掌印缓缓降临，每落下一刻阵法便震颤三分。</p>
 <p>在宗门内的路南天等人眼中都弥漫着绝望，祖器还没祭出，但他们知道已经无用了，因为后者太强了。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './141.html'
+				}else if (start - end < -100) {
+					window.location.href = './139.html'
 				}
-				
 			})
 		}
 	</script>

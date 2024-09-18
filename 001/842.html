@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第638章 身死！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>恐怖的火焰如同大道真火，不可忤逆。</p>
 <p>纵使是楚询。</p>
 <p>全身都在燃烧，心神，意志，灵魂，全部都被火光所吞没，炽热的灼烫让楚询的意识都有些朦胧与模糊，手中的刻刀也开始松懈，不如先前那般意志坚定。</p>
@@ -106,12 +106,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './843.html'
+				}else if (start - end < -100) {
+					window.location.href = './841.html'
 				}
-				
 			})
 		}
 	</script>

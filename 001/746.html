@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第555章 秦皇的澄清！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>然。</p>
 <p>秦皇朝，以身材瘦弱的小老头武神为首，目光犀利如剑的落在儒州，看到那青衫男子仗剑敌对佛门准帝，一股头皮发麻的震颤，直冲天灵盖，喃喃道：“此子，竟如此妖孽！”</p>
 <p>身中诡异不祥的诅咒，就连域外那些大势力的顶尖天骄都无法度过的劫难，他不过大圣境便已然度过，再看到此子只是大圣境修为却爆发这般战力，倘若让他更进一步，踏入准帝，又该是何等行列？</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './747.html'
+				}else if (start - end < -100) {
+					window.location.href = './745.html'
 				}
-				
 			})
 		}
 	</script>

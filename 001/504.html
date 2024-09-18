@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第379章 楚询降临天机城！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>自从掌握青莲剑意。</p>
 <p>身上的境界突破。</p>
 <p>剑意也在不断滋养，更是在剑州养剑，从哪养意的老人开始楚询便不断吞噬着剑州对手的剑意，眼下更是在剑州传道圣地，吸取了无数斑驳的剑意，他们荟萃在一起哪怕是青莲剑意也陷入饱和状态。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './505.html'
+				}else if (start - end < -100) {
+					window.location.href = './503.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第466章 他真的掌握大道了？（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“如此，便不用说了！”楚询平淡道，这种威胁或许在他人身上好使，可在荒州与秦皇朝决裂下丝毫作用也无，况且连年轻无巨头之一的陈飞龙都杀了，一个大圣境的镇北将军，有什么可在意的。</p>
 <p>秦恬面色苍白。</p>
 <p>再无血色。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './624.html'
+				}else if (start - end < -100) {
+					window.location.href = './622.html'
 				}
-				
 			})
 		}
 	</script>

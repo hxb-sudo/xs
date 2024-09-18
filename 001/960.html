@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第748章 新的收徒！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>太阳域。</p>
 <p>“这便是我要镇守的地方吗？”一袭青衫的楚询降临在一处虚空上，神识散开，俯瞰在附近无垠的星空上，脸上也带着奇色。</p>
 <p>按照调令。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './961.html'
+				}else if (start - end < -100) {
+					window.location.href = './959.html'
 				}
-				
 			})
 		}
 	</script>

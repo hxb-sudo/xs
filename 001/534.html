@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第399章 秦恬……救我！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“哦？”</p>
 <p>楚询眉头一跳，这更是让观战之人牙塞子疼，他们竟从楚询的口气中听出了惋惜，对一剑不曾斩掉二人为惋惜，不由头皮发麻道：“这家伙是什么怪物，这也太恐怖了！”</p>
 <p>暗暗窥视这一幕的银发蓝瞳小老头，本来还想趁机走出，可此时缩了缩脖子愣是不敢上前，更强烈后悔在圣人榜前高傲的姿态，心中既焦急又怨恨，你说你小子这么厉害还藏尼玛呀，搞的小老头现在骑虎难下。</p>
@@ -99,12 +99,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './535.html'
+				}else if (start - end < -100) {
+					window.location.href = './533.html'
 				}
-				
 			})
 		}
 	</script>

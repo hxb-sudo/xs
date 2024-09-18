@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第91章 化茧成蝶！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>神行宗的强者散发修为波动，那是人皇气息，一时间，引的天宝城无数人蜂拥过来，许多靠着茶楼酒肆看向这一幕的人都心惊肉跳，也吃惊感慨道：“没想到啊，早先听闻东临宗圣人陨落，便有意料这地方东临宗该保不住了，没想到这么快！”</p>
 <p>“东临宗这才消失半月！”</p>
 <p>“神行宗便动手了！”</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './89.html'
+				}else if (start - end < -100) {
+					window.location.href = './87.html'
 				}
-				
 			})
 		}
 	</script>

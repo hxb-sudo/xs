@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第372章 还不现身？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“呵！”</p>
 <p>“这么热闹啊！”</p>
 <p>一位看似和善的银发蓝瞳老者笑着走出，看似是刚到却不知看了多久戏，也笑呵呵的与在场诸位打招呼：“阴阳家的孩子一晃眼都这么大了，昔年还曾抱在怀中；道门的小家伙当年也见过两面，如今已成九洲大人物了！”</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './497.html'
+				}else if (start - end < -100) {
+					window.location.href = './495.html'
 				}
-				
 			})
 		}
 	</script>

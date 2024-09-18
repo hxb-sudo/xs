@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第818章 太暗星！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“咻咻咻！”</p>
 <p>当楚询赶到时，只差青墨没到，而在庭院中也未等多久，青墨方才降临，道：“太暗星的事轰动混乱星域，不仅仅是我太行道院，其余的顶尖势力与普通势力都被惊动了，己经有许多人出发了！”</p>
 <p>“太暗星！”</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1033.html'
+				}else if (start - end < -100) {
+					window.location.href = './1031.html'
 				}
-				
 			})
 		}
 	</script>

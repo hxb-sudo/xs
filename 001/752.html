@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第562章 你我同去！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>书院。</p>
 <p>经过最初的震惊后，人们逐渐习以为常，不再将此当做震撼的事，但每隔几日都有修士来此观望那入魔的青年，心中在不断咂舌，嘀咕道：“可惜我书院并无擅长时间大道，空间大道的儒修！”</p>
 <p>若是有修士精通此道，专门来此观摩，以青衫年轻人频频展露的手段，那还不是起飞，简直如同大道摆在眼前随意观摩，压根不需要去苦苦修行。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './753.html'
+				}else if (start - end < -100) {
+					window.location.href = './751.html'
 				}
-				
 			})
 		}
 	</script>

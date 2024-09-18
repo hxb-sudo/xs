@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第598章 异姓王方正死！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“咻！”</p>
 <p>异姓王方正哪怕身体化作血雾，仍为身死，换做是普通的准帝后期如至圣道宫掌舵者他们，即便是不死也相差无几，但秦皇朝的人都有炼体的修行之术，早己钻研到极致，只要还残留精血的澎湃生机，便能迅速重生。</p>
 <p>那滴落的血液迅速吸取天地间磅礴的生机，将他的身影凝实出来，只是此时他身上并没有再披上那冷酷的黑色甲胄，手中的大纛也散落在空中，唯有脸上透着苍白的萎靡。</p>
@@ -109,12 +109,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './797.html'
+				}else if (start - end < -100) {
+					window.location.href = './795.html'
 				}
-				
 			})
 		}
 	</script>

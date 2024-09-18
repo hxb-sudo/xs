@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第684章 成帝雷劫！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>杀气腾腾。</p>
 <p>“不要给我……！”慕雪也在生命精华的刺激下释放出回光返照的神采，但身前的这位清秀男子，却大男子主义的强势，道：“吃下去！”</p>
 <p>他强行将生命精华灌入她的口中。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './895.html'
+				}else if (start - end < -100) {
+					window.location.href = './893.html'
 				}
-				
 			})
 		}
 	</script>

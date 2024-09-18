@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第811章 迷失者！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>也或许是自己碰到的人不同，从九洲刚走出时雄心壮志，首次碰到的便是八境修士星河之主，而他的那些群友一个个也是天资不凡，注定能在修行路走的极远，其中二号更是比起星河之主还要厉害。</p>
 <p>那从未见过的一号，八号不知修为如何，想必也不会弱了，纵使是自己收些弟子，也皆是拥有大天赋者，给他一种错觉人人都能在修行路走的很长很远，而此时他才惊醒，自己这类人似是少数。</p>
 <p>像混乱星域这海量的六境修士，多数成长到六境巅峰己是极限，而自己明摆着前途要超越他们，属于道院的重点栽培对象，他们忌惮，不敢动手似也合理！</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1026.html'
+				}else if (start - end < -100) {
+					window.location.href = './1024.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第671章 丢盔弃甲！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嘶~！”</p>
 <p>可余下的那些人看到这幕也麻了，望着那熟悉的背影，呆呆道：“那是禹陵少年人吗？”</p>
 <p>“好像是的？”</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './880.html'
+				}else if (start - end < -100) {
+					window.location.href = './878.html'
 				}
-				
 			})
 		}
 	</script>

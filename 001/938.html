@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第726章 普普通通小修士！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>他对面的高境修士也将余光落在了常陵身上，语气淡淡道：“可惜了，本是个好苗子，却走错了路！”</p>
 <p>身为太行道院的弟子又怎需绑在其他人身上，入了太行道院本身便是最强势力，只有其他人依附在自己身上的可能，又怎许再去依附他人？常陵有些天赋早早便被注视，本想打磨打磨，待对方突破帝道五境，自会有丰厚的资源倾斜。</p>
 <p>未来即便到不了帝道七境，可六境当中的无敌者还是板上钉钉，可而今却走岔了路，心思不在修行上，反而琢磨人情世故，攀附旁人大腿，这般修士一旦缺失了修道之心，前途己定，帝道五境便会是他的极限。</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './939.html'
+				}else if (start - end < -100) {
+					window.location.href = './937.html'
 				}
-				
 			})
 		}
 	</script>

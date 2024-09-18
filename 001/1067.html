@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第853章 杀至风氏跟基地！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“杀我……弟子！”楚询声音沙哑，在一瞬间他纵使是安然的站立可脑海却早己天翻地覆，无数画面涌现，怒极而笑：“区区风天华，他也配？”他的弟子无一不是天命大反派，倘若只有一位还有被杀风险。</p>
 <p>可整支小队都是‘幽莲气运’，这支小队的气运程度堪比逆天，哪怕是真正逆天的天命之子之来了在这支小队面前也要吃瘪，而一区区风天华有什么资格杀他弟子！</p>
 <p>并且！</p>
@@ -108,12 +108,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1068.html'
+				}else if (start - end < -100) {
+					window.location.href = './1066.html'
 				}
-				
 			})
 		}
 	</script>

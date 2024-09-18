@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第211章 选择！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>翌日。</p>
 <p>洛棠前辈来了趟僻静的小院，在里面停留了一刻钟，没人知道二人商谈的是什么，可人们却隐隐期待白陆离最后的选择。</p>
 <p>考核日。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './270.html'
+				}else if (start - end < -100) {
+					window.location.href = './268.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第721章 六殿下拜访！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>那为首的黑袍青年脸色略微好转，这是他所培养的小群体，都是从弱小星辰走出背后无大家族势力，孤零零的傍在太行道院，被他收拢聚集，如今也冷淡道：“原想着他天赋极佳，结识一番也无妨，可这般傲气托大瞧不起我等，以后便不用理会了！”</p>
 <p>他淡淡嘲讽。</p>
 <p>眼角余光也在撇向诸位。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './934.html'
+				}else if (start - end < -100) {
+					window.location.href = './932.html'
 				}
-				
 			})
 		}
 	</script>

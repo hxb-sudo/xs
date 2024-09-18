@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第390章 言之凿凿！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这家伙！”胡子花白的长老也傻眼的看着这幕，他心想我这一辈子坐镇天机城什么样的风浪没有见过，现在他瞪着俩眼，只嘀咕……这特么还真没见过这样的！</p>
 <p>在剑塔内隐藏一些手段不是没有，可他们顶多不是藏着一个底牌或者两个底牌，都是最新创造出的绝招不曾对外展示，可你楚询未免有些太鸡贼了吧，所有人都知道你会阵法，你会儒教的言出法随。</p>
 <p>哪怕你不动用荒州绝学他们都认了。</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './522.html'
+				}else if (start - end < -100) {
+					window.location.href = './520.html'
 				}
-				
 			})
 		}
 	</script>

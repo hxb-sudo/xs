@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第801章 黑煞渊！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“黑煞渊~！”</p>
 <p>青墨那魁梧的身躯也不免颤抖下，眼眸中闪烁短暂的惊恐与强烈的忌惮，在混乱星域并非只有冰风海一处诞生异宝的福地，几乎是哪里都会诞生，其中出宝物最频繁的有数个地方，冰风海，黑煞渊都是其中之一。</p>
 <p>只是冰风海比较平稳，虽然深处那庞大的风暴旋涡能将七境修士也给绞杀，可只要小心行事不深入太狠一般不会有事，但黑煞渊就不同了，那座深渊简首就非人待的地方，漆黑，幽暗，冰冷煞气，将世间所有的负面情绪都吸引进去。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1015.html'
+				}else if (start - end < -100) {
+					window.location.href = './1013.html'
 				}
-				
 			})
 		}
 	</script>

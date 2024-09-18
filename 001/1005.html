@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第792章 金色卷轴！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“那是……！”简守也呼吸急促的看向远方，一道无比伟岸的庞大身影超出了他们理解的范围，散发的光辉普照诸天，却在转眼间散去，只遗留一样金色卷轴。</p>
 <p>光辉粒子席卷冰风海。</p>
 <p>所有强者都疯了。</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1006.html'
+				}else if (start - end < -100) {
+					window.location.href = './1004.html'
 				}
-				
 			})
 		}
 	</script>

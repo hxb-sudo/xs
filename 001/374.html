@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第292章 儒州体系！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>门外那个撑着油纸伞的红衣女子眼中刚闪烁少许的困惑，便又凌厉凝现，盯着简青竹的额头，道：“谁欺负你了！”</p>
 <p>“没有，没有的事。”简青竹连连摆手，同时也讪笑道：“苏师姐，你怎么有空来这了？”</p>
 <p>苏夭夭清澈明亮的眸子仔细凝视少许，确定无大碍后，方才清冷道：“首先，别喊我师姐，我有名字叫夭夭；其次，这趟来是带你回家成亲！”</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './375.html'
+				}else if (start - end < -100) {
+					window.location.href = './373.html'
 				}
-				
 			})
 		}
 	</script>

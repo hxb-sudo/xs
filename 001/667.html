@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第502章 东域诸势力的颤栗！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“可惜了！”</p>
 <p>叶无双轻声感慨，当年他击败楚询却碍于东临宗的老祖夏阳，并未对楚询动杀手，却也不再将楚询当敌人，认为被自己击败的人便永远不可能再追上自己，随后出了东域更是对此地的关心减少。</p>
 <p>只是后续知晓，那被自己击败的楚询竟一蹶不振自藏于藏经阁，这还让他一阵哑舍失笑，但随着走出荒州的时间越来越长，他对这个‘故人’还有几分说不出的感觉，似是这一声走来都太顺了，顺到让他看不到任何敌人。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './668.html'
+				}else if (start - end < -100) {
+					window.location.href = './666.html'
 				}
-				
 			})
 		}
 	</script>

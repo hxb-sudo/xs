@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第145章 请教修为？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>东临宗。</p>
 <p>这消息传来的时候，说实话，哪怕是萧掌门都蒙了，愣愣的站在大殿内，就在刚刚她还在和姜长老，王鹤长老，孙长老等人商议东临宗去多少人，那晓得还没开始出发，东域学宫就爆发这么劲爆的事。</p>
 <p>神女宗。</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './179.html'
+				}else if (start - end < -100) {
+					window.location.href = './177.html'
 				}
-				
 			})
 		}
 	</script>

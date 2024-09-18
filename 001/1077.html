@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第863章 地位！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>道院内。</p>
 <p>自从突破后，楚询便回归到属于自己的庭院，即便在太行道尊那座庭院当中，他每时每刻都在进步，对这处星空的本源感应无比清晰，可他知道那是属于太行道尊的并非是自己的，助自己突破一境己及其感激。</p>
 <p>而回到庭院的这些时间，楚询也并未如其他人般大肆的举办酒宴，他在道院所熟悉的故友寥寥无几，黄奕算一个，崇衍算一个，徐峰长老，血云长老勉强算一个，其余的都是点头之交，而真正属于他朋友的都在混乱星域。</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1078.html'
+				}else if (start - end < -100) {
+					window.location.href = './1076.html'
 				}
-				
 			})
 		}
 	</script>

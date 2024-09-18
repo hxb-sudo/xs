@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第231章 界心令的消息！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>当姜尘从传承中结束。</p>
 <p>已经是数日之后。</p>
 <p>但身上修为却发生翻天覆地的变化，旁人遥不可及的圣境在无声无息间便已经跨越，没有受到任何阻碍，并且自身体质也在发生变化，只觉得对天地法则的感应相当清晰，不再如之前透着一种朦胧感。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './302.html'
+				}else if (start - end < -100) {
+					window.location.href = './300.html'
 				}
-				
 			})
 		}
 	</script>

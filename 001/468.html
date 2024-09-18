@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第353章 他究竟是谁？（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“太剑宗！”</p>
 <p>天云古战场的围观之人不免心神震颤，这是属于太剑宗的独一修行法门，一百零八剑对应着天地间的一百零八星宿，不仅如此，还可演变成剑道阵法，阴阳，五行，八卦，天地人等多种运用之术，变化之多令人瞠目结舌。</p>
 <p>“挡住他，不能让他干扰到太剑宗宗主！”</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './469.html'
+				}else if (start - end < -100) {
+					window.location.href = './467.html'
 				}
-				
 			})
 		}
 	</script>

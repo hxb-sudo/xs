@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第357章 接地气！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>剑州。</p>
 <p>武林盟。</p>
 <p>属于剑州圣地，外界人士止步于外院，内院轻易无法进入，眼下曹盟主以及六位一流势力的掌舵人陪从，至于正一剑宗宗主则被遗留在天运古战场维持秩序，毕竟事情是从你管辖的区域发生，怎么善后也要你来处理。</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './476.html'
+				}else if (start - end < -100) {
+					window.location.href = './474.html'
 				}
-				
 			})
 		}
 	</script>

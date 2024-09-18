@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第497章 龙场悟道之地！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“对这里了解的多吗！”书院院长带着楚询走入一处圣地，进入这里此方的大道都明显浓郁多了，儒教的大道都对这里格外亲切，天地间环绕着浓郁的清气，若是有人在此读书，哪怕是愚笨蠢货也会开启智慧，化作智者。</p>
 <p>“昔日‘理圣’在此悟道，闭死关，破而后立，从而有了如今的书院，也是从那事起儒教体系才是真正崛起于九洲！”书院院长感慨。</p>
 <p>在当年。</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './661.html'
+				}else if (start - end < -100) {
+					window.location.href = './659.html'
 				}
-				
 			})
 		}
 	</script>

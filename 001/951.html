@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第739章 湮灭发威！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“帝道五境！”楚询平静回应，那第三剑斩下时他也动用全力了，虽不曾动用自己最强的三式杀招，但也用出了十分之力，不然又怎会如此轻松就将对方斩掉首级。</p>
 <p>“碰到个硬茬子！”天魔三兄妹当中的首领眯起眼盯着楚询，若是最初他的选择必然是放任对方离开，因为首至此刻他们也无过多恩怨，可现在不同，他隐隐感知这里的事情被附近的其他修行者感应到。</p>
 <p>有帝道五境的修士在窥视，倘若就这么放任对方离开，自己三兄妹的脸面又放在哪，况且，他若不动手，这随随便便一个阿猫阿狗都觉得他们三兄妹好欺负，都敢下场，以后还如何劫掠，更如何在魔殿中混下去。</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './952.html'
+				}else if (start - end < -100) {
+					window.location.href = './950.html'
 				}
-				
 			})
 		}
 	</script>

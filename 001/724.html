@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第537章 准帝境划分！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“应该！”</p>
 <p>佛教的普贤菩萨目中的杀意收敛，单手竖十，念叨着南无阿弥陀佛，而枯瘦脸颊上的杀意也转化冷漠，道：“杀了佛子便应承受其恶果，这般在腐朽中死去也是对他的惩罚！”</p>
 <p>“我们走吧！”</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './725.html'
+				}else if (start - end < -100) {
+					window.location.href = './723.html'
 				}
-				
 			})
 		}
 	</script>

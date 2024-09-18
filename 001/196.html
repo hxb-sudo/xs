@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第158章 天蟒九剑！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“第五层！”</p>
 <p>楚询来到第五层空间内，与正常的世界并无区别，只是一座宽阔的角斗台，而在擂台上站着一位灰袍冷峻剑客，他也在俯视楚询，蹙眉道：“圣人六境巅峰！”</p>
 <p>“有些弱！”</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './197.html'
+				}else if (start - end < -100) {
+					window.location.href = './195.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第351章 如影随形！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“我先来！”许娘子深吸口气，一双丹凤眼弥漫着倔强，双手环圆，身后刹那浮现一柄柄玉剑凝聚成剑圆，如同盛开的剑花，在她指尖点去时，叱道：“去！”</p>
 <p>“铮！”</p>
 <p>剑圆颤鸣！</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './466.html'
+				}else if (start - end < -100) {
+					window.location.href = './464.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第94章 破绽！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>东临宗内。</p>
 <p>叶倾城也在人群中，离开了东临宗她一时间不知该去往哪里，又想看到东临宗最后的落幕，便在城中一间酒楼内住下。</p>
 <p>刚刚感受浩瀚如天威的圣人降临，她从酒楼内透过窗户仰望到上空的寂静圣人，心不由的颤了起来，可让她紧随而来的就是羞耻。</p>
@@ -102,12 +102,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './94.html'
+				}else if (start - end < -100) {
+					window.location.href = './92.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第640章 结束了？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“魔狱第二层！”楚询愣了，他的思绪也在不断的回归，眼前的情景也清晰起来。</p>
 <p>在他眼前呈现昏暗的景象，在昏暗的尽头有一道身影盘踞在那，它额头有着两根触角，全身覆着黑色的鳞甲，一根根铁链将它拴在那里，动弹不得。</p>
 <p>“魔狱！”</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './845.html'
+				}else if (start - end < -100) {
+					window.location.href = './843.html'
 				}
-				
 			})
 		}
 	</script>

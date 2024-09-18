@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第284章 入庭院！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“恐怖！”年轻道士倒吸凉气，他知道这不是一般的言出法随，而是圣人言，蕴含天地间的至臻至理，更加的可怕，这时候已经可以笃定简青竹动真格了。</p>
 <p>“要翻船了！”</p>
 <p>老农灵魂都在颤栗，明明此时已经有了准帝的修为，可在这一连套的组合下，被打的毫无还手之力。</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './367.html'
+				}else if (start - end < -100) {
+					window.location.href = './365.html'
 				}
-				
 			})
 		}
 	</script>

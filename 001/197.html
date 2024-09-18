@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第159章 群友的震惊！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“咻！”</p>
 <p>一剑之后。</p>
 <p>再起一剑，一条纯粹的剑意凝成的浩瀚长河，横亘在无垠的星空之中，连天上的日月星辰都给压盖，白茫茫的剑气令人震撼。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './198.html'
+				}else if (start - end < -100) {
+					window.location.href = './196.html'
 				}
-				
 			})
 		}
 	</script>

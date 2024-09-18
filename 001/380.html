@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第297章 书院学生的质疑！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>眨眼之间。</p>
 <p>碧绿的生机从一棵棵小草上焕发新生，原本枯萎一触即破的泛黄花草眨眼功夫便生机盎然，招摇着苍翠碧绿的生机，但这种生机刚刚降临便又被此界一股强大的荒芜吞噬能力，无情的剥夺，重新泛着枯萎。</p>
 <p>言出法随的能力。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './381.html'
+				}else if (start - end < -100) {
+					window.location.href = './379.html'
 				}
-				
 			})
 		}
 	</script>

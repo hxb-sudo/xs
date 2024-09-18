@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第456章 道果圆满之境！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>魔戟喷涌而出的煞气没入秦元盛体内，又从体内释放出更加凶狠的兵煞，为边疆战斗浴血砥砺而成的血煞，格外的霸道，如此反馈在魔戟上让其更加的鲜红，如若要活了般的诡异。</p>
 <p>“域外一战！”</p>
 <p>秦元盛眼瞳冰冷。</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './609.html'
+				}else if (start - end < -100) {
+					window.location.href = './607.html'
 				}
-				
 			})
 		}
 	</script>

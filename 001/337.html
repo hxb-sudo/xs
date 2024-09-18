@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第259章 秦南拜访荒天宫！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这是没办法的事！”荒天宫宫主也轻声道，这若是放在平常，一颗力之法则的果实每吞噬一口果肉都要仔细品味其中的道韵，不浪费一点精华，一颗果实吃上三五天才能完整消化道韵属于正常。</p>
 <p>然而，在这非常时期根本没这么多时间让楚询感悟其中的精华，只能一口果肉接连一口果肉的吞噬，始终让自己保持最巅峰的状态，以最快的速度凝结大圣道果，好在楚询也没有辜负所望，当第九颗道果吃完后。</p>
 <p>“轰！”</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './338.html'
+				}else if (start - end < -100) {
+					window.location.href = './336.html'
 				}
-				
 			})
 		}
 	</script>

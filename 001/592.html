@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第444章 退兵！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这荒州你秦皇朝还吃不下！”看到姜尘一行人的动作，楚询彻底放心下去。</p>
 <p>反而是秦元盛眸光冰冷，宛若九幽的眸光在盯着那群年轻人，他们宛若一柄杀伐恐怖的利剑，贯串在大军，沿途所过两旁秦皇朝修士入薄纸般脆弱，无人可挡他们的锋芒，哪怕是数十人联手，却被轻而易举的一剑或是一指溃败。</p>
 <p>姜尘。</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './593.html'
+				}else if (start - end < -100) {
+					window.location.href = './591.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第65章 姜氏危机！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>许久之后。</p>
 <p>姜氏大殿。</p>
 <p>姜贞山一脸疲倦的返回，与之同回的还有一批族老，只是这些人都神情低落，脸色暗淡，后山禁地不知什么原因复苏了，有一尊魔修差点趁机逃出，哪怕姜氏集众强者之力，也不过勉强镇压，却有一位人皇八境的强者因此而陨。</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './42.html'
+				}else if (start - end < -100) {
+					window.location.href = './40.html'
 				}
-				
 			})
 		}
 	</script>

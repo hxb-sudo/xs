@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第520章 不死药！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>弹指之间。</p>
 <p>便是半月光阴。</p>
 <p>相比于紧张气氛如乌云压顶的儒州，外界则是经历了不断的震颤，楚询与叶无双一战，开始陆续传出，半月时间足以席卷九洲各地，甚至于从未去过的禹州，战州等地都有二人的名气。</p>
@@ -118,12 +118,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './701.html'
+				}else if (start - end < -100) {
+					window.location.href = './699.html'
 				}
-				
 			})
 		}
 	</script>

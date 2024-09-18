@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第228章 东域新圣！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>血刃宗掌门深吸口气，强压着心底的焦虑，可忽然看到密室上方弥漫出万千祥瑞，有紫霞涌入过来，虚空凝结金莲，天地间更是诞生灵雨笼罩此地，后者欣喜若狂，手舞足蹈欢悦道：“成了，成了，老祖成圣了！”</p>
 <p>“哈哈哈！”</p>
 <p>“老祖成圣了！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './298.html'
+				}else if (start - end < -100) {
+					window.location.href = './296.html'
 				}
-				
 			})
 		}
 	</script>

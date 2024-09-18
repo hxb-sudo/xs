@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第38章 收徒典礼！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“太多了！”</p>
 <p>楚询轻轻感叹，这热闹的人群，即便是那些闯入关卡的天才都有数千，并且这个数字还在源源不断的激增。</p>
 <p>“先瞅瞅有没有什么好苗子！”</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './5.html'
+				}else if (start - end < -100) {
+					window.location.href = './3.html'
 				}
-				
 			})
 		}
 	</script>

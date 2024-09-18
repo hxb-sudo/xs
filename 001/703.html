@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第522章 故友探望！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>这种开朗的心情也让院长流露感慨，眼眸当中却又多了几分心疼，多好的孩子啊，倘若没有黑色淤泥沾染不祥这件事，未来如何不能尝试踏足帝境？</p>
 <p>“唉！”</p>
 <p>轻轻一叹。</p>
@@ -135,12 +135,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './704.html'
+				}else if (start - end < -100) {
+					window.location.href = './702.html'
 				}
-				
 			})
 		}
 	</script>

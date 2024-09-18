@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第705章 姬武！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>间隔很久很久。</p>
 <p>【4号：我在这片天地间修行来到了极限，帝战的影响终归还是太恐怖了，我看不到继续前进的可能。】</p>
 <p>【7号：我也有所察觉！】</p>
@@ -118,12 +118,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './918.html'
+				}else if (start - end < -100) {
+					window.location.href = './916.html'
 				}
-				
 			})
 		}
 	</script>

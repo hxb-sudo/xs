@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第538章 偷袭？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“到了！”</p>
 <p>决战日。</p>
 <p>辰州该来的修士皆来了，这既是观战也是观摩此战辰州未来的归属，他们望着辰州道宫宫主，衣着紫色的衣袍，气度与威严聚在，而他身旁则是浩荡的道宫修士。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './726.html'
+				}else if (start - end < -100) {
+					window.location.href = './724.html'
 				}
-				
 			})
 		}
 	</script>

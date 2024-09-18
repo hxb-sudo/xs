@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第222章 一剑千万里！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>荒宫。</p>
 <p>事情传入姜尘与柳剑耳中，这位师兄弟对视一眼也流露灿烂的笑意，这三人除了白陆离之外，其余人真正意义上都算不上楚询的弟子，却做到这般地步，这身为徒弟又怎能无动于衷。</p>
 <p>姜尘丰神如玉，气质超然，淡然道：“既然叶师姐他们三人在斗战宫立下了一座擂台，那我二人便去圣贤宫与刑法宫吧！”</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './289.html'
+				}else if (start - end < -100) {
+					window.location.href = './287.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第759章 全灭！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唰~！”</p>
 <p>风家旁系家主表情凝固起来，几乎是刹那便盯着陌生的青衫男子，神情冰冷，吐字清晰道：“阁下是谁，也想与我风家过不去吗？”</p>
 <p>楚询却是不曾看向他，而是望向这个满头白发，疲倦又沧桑的弟子，语气始终温和，道：“首至此刻，还不愿称呼我一声师尊吗？”</p>
@@ -101,12 +101,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './972.html'
+				}else if (start - end < -100) {
+					window.location.href = './970.html'
 				}
-				
 			})
 		}
 	</script>

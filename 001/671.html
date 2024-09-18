@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第504章 大战在即！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“柳老！”</p>
 <p>楚询也看到这位走来的大儒，是书院颇有盛名的一位前辈，当日在自己掌握‘儒教道果’时，便是这位大儒第一位现身，便带着许多大儒前来道贺，因此印象很深。</p>
 <p>“嗯……！”柳董华微微顿足，筹措者词汇，有些话院长不方便讲出来，同样他也要考虑如何委婉的让楚询接受，毕竟天衍道统覆灭后，不再用十方图遮盖天机，这些古老而最顶尖的势力纷纷进行复盘，让时光短暂的逆流。</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './672.html'
+				}else if (start - end < -100) {
+					window.location.href = './670.html'
 				}
-				
 			})
 		}
 	</script>

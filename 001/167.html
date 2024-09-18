@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第137章 神女宗圣人陨！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“卡住了！”</p>
 <p>南天殿圣人轻声呢喃，这已经是第二天了，之前卡住若禅寺佛圣最久的一次也仅仅耗时六个时辰，而这一次已经是第二天了，并且还不知要多久才能彻底瓦解。</p>
 <p>“阿弥陀佛！”若禅寺的佛圣念叨佛号，佛眸当中弥漫着复杂，这座大阵的难解程度远远超出他的想象，轻声道：“这应该是一座大型阵法，也是至关重要的一座阵法，哪怕有天机盘的辅佐也为并未找到阵眼！”</p>
@@ -96,12 +96,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './168.html'
+				}else if (start - end < -100) {
+					window.location.href = './166.html'
 				}
-				
 			})
 		}
 	</script>

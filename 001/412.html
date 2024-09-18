@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第316章 连同一体！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>界心令内。</p>
 <p>这些群友，面色古怪的看着界心令三号发的信息，他们有点懵可认真想起来，三号似乎是只知道九号是荒州人士，除此之外便对楚询的任何信息都无。</p>
 <p>不像他们，界心令群友之间的小聚会已经完成，彼此信息清晰知道，而三号纵然知道九号被简青竹邀请过来作客，也不知道九号的本名是什么。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './413.html'
+				}else if (start - end < -100) {
+					window.location.href = './411.html'
 				}
-				
 			})
 		}
 	</script>

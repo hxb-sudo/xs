@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第704章 界心令的对话！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>域外。</p>
 <p>星空中。</p>
 <p>透着荒凉与死寂，原本这片星域有一颗颗星辰，组合在一起瑰美而绚丽，可经过那一场场帝战的冲击，让域外也早己陷入混沌朦胧中，到处可见死寂的星辰。</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './916.html'
+				}else if (start - end < -100) {
+					window.location.href = './914.html'
 				}
-				
 			})
 		}
 	</script>

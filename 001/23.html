@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第53章 癞蛤蟆想吃天鹅肉！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>几位各大势力的掌控者，瞳孔都是收缩，想到了这是何方人物，在数百年前血祭东域，引发滔天罪孽，甚至是各圣人联手围剿才勉强杀死，哪想到它本尊竟未死，反而折服在这，对视一眼都有惊惧，却有怒火。</p>
 <p>更多的则是庆幸。</p>
 <p>若非是他们打头阵先来到殷王朝废墟，以那些年轻一辈的天才闯入进来，十死无生，全部给他送上血食，到时候不仅东域年青一代尽数夭折，东域恐又生大乱。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './24.html'
+				}else if (start - end < -100) {
+					window.location.href = './22.html'
 				}
-				
 			})
 		}
 	</script>

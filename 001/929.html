@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第717章 青睐！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询并不知这些。</p>
 <p>他沉浸在悟道中，往日困惑的也在迎刃而解，他的眼前又浮现了星河之主那伟岸的身影，似是光的化身，庞大到无以比拟，帝道在他面前微弱而渺小，从其中又窥视出时间的其他大道，宛若光之大道，时间大道等等。</p>
 <p>它们都在逐一映现，呈现在眼前，让楚询保留一缕清醒的神智也泛着迷蒙，轻声自语道：“在九洲进无可进的修为，来到外界的第一天便有了收获，明白了为何帝境修士甘愿离开故土，在外漂泊了！”</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './930.html'
+				}else if (start - end < -100) {
+					window.location.href = './928.html'
 				}
-				
 			})
 		}
 	</script>

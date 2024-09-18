@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第50章 截胡叶尘天大机缘！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>姜氏飞舟临近。</p>
 <p>姜尘也看到飞舟上的另外一位老人，三爷爷，也笑着道：“三爷爷也来了啊，看来殷墟现世，闹腾的挺热闹的！”</p>
 <p>“殷墟内恐有大传承，更多的则是危机伴随，你们一行人稍后要结伴前行！”飞舟上的三爷爷佯装听不见，转而对姜珏等人开口。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './19.html'
+				}else if (start - end < -100) {
+					window.location.href = './17.html'
 				}
-				
 			})
 		}
 	</script>

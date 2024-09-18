@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第437章 荒州底蕴！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“道法！”</p>
 <p>王也自身与天道所契合，不再执着于驾驭道教的九尊真神，而此等攻击比起先前竟毫不逊色，当降临时，一位身上弥漫着璀璨金色佛光的和尚立身在姬氏帝子身前，饱含歉意，轻声道：“阿弥陀佛，贫僧来晚了！”</p>
 <p>楚询心头一沉，这还尚未三息佛门和尚便杀了过来，令他忍不住回头望去，只见到素来儒雅随和的简青竹，此时面色苍白，唇角溢出一抹血迹，单手抚着胸口；显然是遭遇创伤未曾拦住这个佛教和尚，被他硬杀了过来。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './585.html'
+				}else if (start - end < -100) {
+					window.location.href = './583.html'
 				}
-				
 			})
 		}
 	</script>

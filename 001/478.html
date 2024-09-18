@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第360章 传道圣地！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>三号：【我去凑什么热闹】</p>
 <p>四号：【？】</p>
 <p>正在书院当中的简青竹盯着界心令上的信息，书卷气弥漫的侧脸也浮现诧异，喃喃道：“这么快就要破大圣境了吗！”</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './479.html'
+				}else if (start - end < -100) {
+					window.location.href = './477.html'
 				}
-				
 			})
 		}
 	</script>

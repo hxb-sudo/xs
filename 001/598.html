@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第449章 青年五巨头！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>哪怕是骄傲的秦皇朝都熄火了。</p>
 <p>而外界修士也懵懵的看着这幕，足足过了良倾缓过神来，愣愣道：“荒州最强的不是荒天宫，是这所名不见经传的圣地传承东临宗？”</p>
 <p>而荒州发生的事。</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './599.html'
+				}else if (start - end < -100) {
+					window.location.href = './597.html'
 				}
-				
 			})
 		}
 	</script>

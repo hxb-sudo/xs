@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第834章 众人的猜测！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“是崇行，还是晋真元？”暗渊小队的林统也神色凝重的喃喃，他的身上不自觉披上了甲胄，平常很自负，认为无人可将他伤到这般而风啸的惨状却提醒这他，混乱星域出了了不得的存在，六境无敌也非真无敌了。</p>
 <p>“昔日能将风啸压制的唯有两人‘林白’‘崇行’”林白身为九曲道尊的弟子实力毋庸置疑，隐隐为混乱星域第一人，而崇行即便性子懒散，修行随意可也无人小觑他，那可是域府主的第二子，可称呼太行道尊师祖。</p>
 <p>“但林白突破七境后被调走便不可能是他，本来大概率是崇行能做到这一步，可小道消息流传晋真元又有突破，所以他也成了最有可能的人。”一首不曾与楚询碰面的元煞也在轻声低语，神情中尽是凝重。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1049.html'
+				}else if (start - end < -100) {
+					window.location.href = './1047.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第515章 三身合一！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>只是。</p>
 <p>刚刚忽然看到东临宗的气运虽暗淡却并未灭绝，反而在此刻扶摇直上，这让他不免盯着那两道长虹，梦呓喃喃：“这便是他的后手吗？”</p>
 <p>“咻！”</p>
@@ -130,12 +130,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './691.html'
+				}else if (start - end < -100) {
+					window.location.href = './689.html'
 				}
-				
 			})
 		}
 	</script>

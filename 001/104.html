@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第100章 指法，我也会！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>只是脚步被震的踉跄。</p>
 <p>一点伤势也没有。</p>
 <p>“这……！”姜贞山松缓口气，也默默道：“这便是圣人的可怕之处吗，如此刁钻的突然偷袭都能避开！”</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './105.html'
+				}else if (start - end < -100) {
+					window.location.href = './103.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第480章 羊脂白玉小瓶！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“不可能！”</p>
 <p>最先震动的自然是在外盘踞的普贤菩萨，他身材枯瘦，面目慈祥，流露着我佛慈悲的悲天悯人，脸上的笑容刚刚开始灿烂的绽放，此刻直接僵硬在那。</p>
 <p>目光呆滞。</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './642.html'
+				}else if (start - end < -100) {
+					window.location.href = './640.html'
 				}
-				
 			})
 		}
 	</script>

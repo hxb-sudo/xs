@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第183章 期望！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>时间如流水。</p>
 <p>转眼之间楚询便来到了荒天宫半年之久，这段时间不断的翻阅经文，其中大多数在他眼中都极其普通，许多阐述过于繁琐，修行起来较于麻烦，比较平庸，不是他所喜，却也偶尔有令他眼睛一亮的。</p>
 <p>殊不知。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './231.html'
+				}else if (start - end < -100) {
+					window.location.href = './229.html'
 				}
-				
 			})
 		}
 	</script>

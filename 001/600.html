@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第450章 圣人榜前十！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>武真君也瓮声道，他那泛白的竖眸也闪烁沉思，在思考要不要也去荒州试试看，往日这些高手难得一见，现在汇聚在一起，无论是观战还是切磋都有益于自己的修行。</p>
 <p>“先看下去再说！”火女却是盯着圣人榜排名轻声道，看到后续两个名字，连天机阁都无法探出详情。</p>
 <p>神秘黑衣斗笠男子。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './601.html'
+				}else if (start - end < -100) {
+					window.location.href = './599.html'
 				}
-				
 			})
 		}
 	</script>

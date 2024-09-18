@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第800章 伤及心神！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“啵~！”</p>
 <p>磅礴的生命力在体内滋生，溢散在西肢百骸间驱散体内的空虚感，那种极致的饿意也在驱散，在刚刚他甚至觉得自己能一口气吞掉十颗生命星辰上的活物，涌来滋润这极致虚弱的肉身。</p>
 <p>“饿！”</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1014.html'
+				}else if (start - end < -100) {
+					window.location.href = './1012.html'
 				}
-				
 			})
 		}
 	</script>

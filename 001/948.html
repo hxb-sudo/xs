@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第736章 终相逢！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>轰~！</p>
 <p>面对那肆意的人流。</p>
 <p>天魔三兄妹流露讥讽神色，魔殿以劫掠最为擅长，这种情况怎会没有应付，便见到摆摆手，原本隐匿在阵法下的一位位斗笠黑袍身影，浮现出来，他们环绕在炽阳城的西周，将西个出口方位全部堵死。</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './949.html'
+				}else if (start - end < -100) {
+					window.location.href = './947.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第874章 风阳神君死！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗤~！”</p>
 <p>一道弯月剑光斩下，皎月色的剑潮海浪足足照亮两座星域，让无数座城池的百姓都惊骇的仰望域外星空，望着那磅礴如皎月般的剑海，心中泛起千层浪，惊骇道：“这道剑光……是何境修士所斩？”</p>
 <p>他们实在无法想象这一剑的伟岸程度，肉眼根本望不到剑海的极限，似是在将整片星空一切为二，有帝者站在无垠的星空中，眺望着此剑，怕是此生难以忘怀，而看到交锋的双方后更是瞳孔收缩，骇然道：“这是……追杀？”</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1089.html'
+				}else if (start - end < -100) {
+					window.location.href = './1087.html'
 				}
-				
 			})
 		}
 	</script>

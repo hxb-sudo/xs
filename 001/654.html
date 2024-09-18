@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第492章 拦截！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>只是。</p>
 <p>当他赶到时已经有人在此等候，书院院长头戴高冠，衣着儒袍，袖袍处弥漫着浩然气，两袖清风的立身在那，眸光温和道：“等候你良久！”</p>
 <p>武神眉头微皱却并无过多的意外，眼角弥漫着一缕讥讽，道：“真是爱管闲事的读书人，什么破事都要掺和一手！”</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './655.html'
+				}else if (start - end < -100) {
+					window.location.href = './653.html'
 				}
-				
 			})
 		}
 	</script>

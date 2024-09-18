@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第755章 落寞的归来！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>而远远踏出域外的秦云也转身望了一眼，目光是那座酒楼，带着眷恋，带着不舍，还带着期待，喃喃道：“您放心，在外无论如何我也不会报出你的尊号！”旋即又自嘲一笑，与前辈相处这么多年，自己可就是不知前辈的尊号？</p>
 <p>当时是生怕自己陷入绝境时无意识喊出了前辈的名讳，可渐渐的他己习惯这种方式，也淡淡道：“这样最好，无论如何我都不会供出前辈！”</p>
 <p>“走了！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './968.html'
+				}else if (start - end < -100) {
+					window.location.href = './966.html'
 				}
-				
 			})
 		}
 	</script>

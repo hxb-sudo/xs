@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第279章 深入！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗯！”</p>
 <p>年轻道士王也也微微眯眼，看来是被这株花给缠上了，早先这朵花出现在一片岩浆地当中，九号嗅到了威胁绕道而行，不去招惹这朵花，没想到现在又给冒出来了，并且出现在另外一处场地当中，看来眼前的土地是虚幻，花才是真实的。</p>
 <p>“很神奇的一朵花。”四号站在那里驻足，眼中弥漫着蠢蠢欲动。</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './362.html'
+				}else if (start - end < -100) {
+					window.location.href = './360.html'
 				}
-				
 			})
 		}
 	</script>

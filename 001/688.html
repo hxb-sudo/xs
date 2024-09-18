@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第514章 破准帝！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>看到了那位清风徐徐的年轻人，心中产生颤音：“整个荒州，能救叶无双的唯有他，可他会救吗？”</p>
 <p>禹州圣子。</p>
 <p>战州战子。</p>
@@ -126,12 +126,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './689.html'
+				}else if (start - end < -100) {
+					window.location.href = './687.html'
 				}
-				
 			})
 		}
 	</script>

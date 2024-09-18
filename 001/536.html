@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第401章 一死一逃！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>天地间。</p>
 <p>呼啸的满是剑气。</p>
 <p>这是楚询真正意义上的巅峰一剑，蕴含了剑道的所有道果，更将青莲剑意也包括其中，更夹杂了儒教的言出法随，若仅仅如此也就罢了，那天地间笼罩的繁琐大阵更是瞬息化作杀伐之阵，凝聚出杀伐剑意，肆虐在天地间。</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './537.html'
+				}else if (start - end < -100) {
+					window.location.href = './535.html'
 				}
-				
 			})
 		}
 	</script>

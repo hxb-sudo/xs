@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第291章 儒州秘诀！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“自己进去的！”</p>
 <p>“自己进去的？”扫地老人脸上写满了一万个不信，心想就你，别吹了老哥，刚刚想要个书本都做不到，现在张口就来自己进入静室的，也太夸张了，不过难得找到一个闲聊散心的人，他也不介意。</p>
 <p>笑呵呵道：“那老兄还是挺厉害的，我当年学言出法随足足读书三十年才买入初始阶段，感应天道，当时在我那小地方已经成为小天才，只是儒州太大，最后混个书院打杂身份，不过说出去也倍有面子，倒是老兄读到哪里了，我给你讲解讲解！”</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './374.html'
+				}else if (start - end < -100) {
+					window.location.href = './372.html'
 				}
-				
 			})
 		}
 	</script>

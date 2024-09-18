@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第584章 首次联动！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唰！”</p>
 <p>天空中。</p>
 <p>来的不止武神一位，剑州好歹是九洲之一要给予应有的尊重，此行出来的除却武神外还有秦皇的亲信秦泛，也是准帝修士，羽化皇朝的事便是这位告知，至于更多的人手不是秦皇朝调御不来，而是太多了恐有异动。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './780.html'
+				}else if (start - end < -100) {
+					window.location.href = './778.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第266章 小阵法！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“好！”</p>
 <p>璃圣看了眼年轻道士手中的准帝器放下心来，并不动声色的移到了九号身旁，在此地大凶之地下没有成就大圣境的九号如同蝼蚁，修为一旦被压制到人皇境后，那些诡异生灵刹那就能夺走九号的生命。</p>
 <p>“不要动准帝器！”突兀之间，一道声音降临在这里，让正准备动用准帝器的七号骤然愣了愣，他缓缓抬头，能见到远方那盘坐的身影，正凝视这里像是能勘破一切迷雾，他重复道：“不能用！”</p>
@@ -121,12 +121,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './345.html'
+				}else if (start - end < -100) {
+					window.location.href = './343.html'
 				}
-				
 			})
 		}
 	</script>

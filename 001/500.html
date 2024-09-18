@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第376章 姬氏动手！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“想走？”</p>
 <p>书院的大祭酒却是微微眯眼，将手中的一页书册撕下燃烧，这趟既然动手即便杀不死秦恬也要让他好受。</p>
 <p>“嗡！”</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './501.html'
+				}else if (start - end < -100) {
+					window.location.href = './499.html'
 				}
-				
 			})
 		}
 	</script>

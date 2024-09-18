@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第139章 圣人五境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“好胆！”</p>
 <p>圣火教圣人心中澎湃无穷怒火，杀意沸腾的盯着楚询，从牙齿缝隙中蹦出几个字：“就因为东域那些蝼蚁，楚圣便要与我等作对吗？”</p>
 <p>他在克制。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './172.html'
+				}else if (start - end < -100) {
+					window.location.href = './170.html'
 				}
-				
 			})
 		}
 	</script>

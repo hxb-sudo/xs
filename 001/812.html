@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第611章 暴风雨前的宁静！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这家伙！”</p>
 <p>这让一行人又气又恼，看向后者有恨铁不成钢的迹象，又咬牙道：“往日他也不是这般怕死啊！”</p>
 <p>“或许是活的时间越久，越畏惧死亡吧！”道门老道士也道，在弱小时拼搏，真正成就一定地步为一州的老祖，过久了手握大权的生杀夺于，越是迷恋活着的滋味，不然那些禁区至尊又怎会无声息的沦为一方禁地呢？</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './813.html'
+				}else if (start - end < -100) {
+					window.location.href = './811.html'
 				}
-				
 			})
 		}
 	</script>

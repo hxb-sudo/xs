@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第326章 碾压！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“啊……！”莫说是其他人，哪怕是楚询的几位弟子都要高潮了，这是师尊从未展现过的一面，竟如此可爱！</p>
 <p>“师尊！”白陆离眼眸绽放强烈的光泽，既有兴奋也有灿烂的笑意，真正算起来师尊比他们大不了多少，这才是师尊真实的一面呀！</p>
 <p>姜尘。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './430.html'
+				}else if (start - end < -100) {
+					window.location.href = './428.html'
 				}
-				
 			})
 		}
 	</script>

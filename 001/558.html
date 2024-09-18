@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第417章 秦皇太子！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>这是旁人眼中的禁地。</p>
 <p>四周暗存无数死士。</p>
 <p>哪怕是当朝宰相都要请见后才可来到这里，但羽化皇朝的三皇子却截然不同，母亲是羽化皇朝帝王最宠爱的女子，本身又是幼子，外加卓绝的天赋早已被立为第一继承人，无视那些宫女与太监，直接走入了宫殿，喊道：“父王，父王！”</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './559.html'
+				}else if (start - end < -100) {
+					window.location.href = './557.html'
 				}
-				
 			})
 		}
 	</script>

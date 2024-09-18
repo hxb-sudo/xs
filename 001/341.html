@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第263章 时间法则！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“燃烧吧！”</p>
 <p>“大日！”</p>
 <p>叶凰在心中默默念叨，她的体内有一股无与伦比的炽热散发，若是仔细观摩会发现她的心脏处犹如一轮闪耀的大日，在蛰伏了漫长岁月后骤然之间的爆发，顷刻间，她的身后凝聚一轮璀璨到极致的光辉。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './342.html'
+				}else if (start - end < -100) {
+					window.location.href = './340.html'
 				}
-				
 			})
 		}
 	</script>

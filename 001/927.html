@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第715章 黑化（下）！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“接下来我不再将希望捆绑在他们身上，我开始投资自己，知道唯有自己才会真正帮助自己，我将目光落在了太行道域内的一座禁区，寻常生灵不敢进入，可里面发生变故疑似恐怖的存在逝去，里面有大传承。”</p>
 <p>“我疯了般当做第一批人，很侥幸，似是上天的眷顾让我看到希望，在那里我收获了可治愈自身的冰魄神药，同样也观看到一幅上古圣贤所遗留的‘诛仙剑阵’图，可还未来得及高兴，便遭遇了劫掠！”</p>
 <p>‘这般珍贵的地方早己惊动太行道域，那些顶尖势力将他们当做小白鼠后，确定无事后也进入里面，很不巧我碰到了风家的人，其中风涅便在里面，仗着家族的势力对我进行劫掠，刚得到的冰魄神药被抢了，我的希望又破灭了！’</p>
@@ -96,12 +96,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './928.html'
+				}else if (start - end < -100) {
+					window.location.href = './926.html'
 				}
-				
 			})
 		}
 	</script>

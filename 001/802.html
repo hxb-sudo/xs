@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第604章 拒绝至尊！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>不得不说。</p>
 <p>很惊艳。</p>
 <p>纵使楚询见过的绝美女子不在少数，却依旧被禹陵之主的小女给惊艳到了，哪怕她在沉睡，也有那种安详的气息流露，并非是那种依仗着父亲仗势欺人的骄慢，反而有些很温柔，面相极其和善。</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './803.html'
+				}else if (start - end < -100) {
+					window.location.href = './801.html'
 				}
-				
 			})
 		}
 	</script>

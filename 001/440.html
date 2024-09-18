@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第333章 我特么还有系统！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>刚刚连续数剑，不是被缠就是被躲，明明感觉这一剑中了，实则是镜花水月，但这种交手也给了他兴致，难得能找到一个棋逢对手还是对方故意喂招那肯错过，青藤剑在掌心转了个剑花，身影如流光般冲去，周身伴随着剑域。</p>
 <p>叮叮当当！</p>
 <p>青藤剑与青铜剑之间的碰撞摩擦，两人身上的剑域也在不断交锋，可怕的剑意时而化作剑龙，时而化作朱雀，在彼此争锋，可谓是全方面都在厮杀！</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './441.html'
+				}else if (start - end < -100) {
+					window.location.href = './439.html'
 				}
-				
 			})
 		}
 	</script>

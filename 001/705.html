@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第523章 批阅经文！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>短暂的凶煞淹没了心灵，哪怕是清醒过来后楚询依旧紧紧的闭着眼眸，体悟这那种源自灵魂最深处的颤栗与疯狂。</p>
 <p>那种嗜血。</p>
 <p>那种渴求。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './706.html'
+				}else if (start - end < -100) {
+					window.location.href = './704.html'
 				}
-				
 			})
 		}
 	</script>

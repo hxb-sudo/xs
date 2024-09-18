@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第751章 滚！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗯……！”楚询半垂的眼皮微睁。</p>
 <p>“咳咳！”</p>
 <p>秦云干咳，看着桌上的新鲜饭菜，也灿烂笑道：“吾，前辈的眼光不错啊，这道红鳞鱼属于酒楼的特产，美味的很，最近才成为新晋招牌就被前辈点来了！”</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './964.html'
+				}else if (start - end < -100) {
+					window.location.href = './962.html'
 				}
-				
 			})
 		}
 	</script>

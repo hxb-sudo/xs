@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第718章 入道院！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“我愿意！”</p>
 <p>没有过多的迟疑，在未找到二号他们之前，太行道院无疑是最好的选择，况且是如此大人物的青睐，足以让他省了许多麻烦，可缓缓望去时也带着一缕困惑，这样的大人物在太行道域应该不缺弟子，为何青睐与自己？</p>
 <p>星河之主微微一笑，那庞大的身躯立身在那，伸展出掌心，楚询自然而然便落在上面，他向前踱步，周围的星河都在飞速的倒退，对楚询的疑惑他并未解释，或许冥冥中的感应，也或是心动了，一念起既做的小事。</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './931.html'
+				}else if (start - end < -100) {
+					window.location.href = './929.html'
 				}
-				
 			})
 		}
 	</script>

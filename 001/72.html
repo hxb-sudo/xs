@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第83章 尘埃落定！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>亿万滔天的剑河沸腾中自那九霄而来，滂沱的水滴沸腾中交融，一道道无形剑气贯穿虚无，绵延纵横，路过一处处宗门，让那些小宗门骇然的仰头，不知这滔天的剑河从何而来。</p>
 <p>“斩！”</p>
 <p>楚询挥动手中的青藤剑，碧绿青翠，弥漫着勃勃生机，看不到任何杀意，可当这柄剑爆发时，却有一道青色的巨大虚剑挥斩而出。</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './73.html'
+				}else if (start - end < -100) {
+					window.location.href = './71.html'
 				}
-				
 			})
 		}
 	</script>

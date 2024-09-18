@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第185章 主考官名单！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>藏经阁内。</p>
 <p>一袭白衣的楚询并不清楚这些，如今他徐徐闭合的眼眸悠悠睁开，弥漫出奇异之色，这在藏经阁的一段时间，不仅观书十万还将这些融会贯通，如今意识格外的清醒，只差最后的实践，身影一闪也消失在藏经阁。</p>
 <p>出现在测试塔内。</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './233.html'
+				}else if (start - end < -100) {
+					window.location.href = './231.html'
 				}
-				
 			})
 		}
 	</script>

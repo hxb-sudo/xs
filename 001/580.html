@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第434章 不动明王法相！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“道友！”佛教的佛子样貌清秀英俊，年纪也极小若是在世俗当中行走，会被那些风韵犹存的女子调戏，觉得能与小和尚来一场露水姻缘也是善事，但在此地他却是佛教的佛子，佛陀的唯一真传。</p>
 <p>“佛子！”</p>
 <p>“迦叶格清仕呐！”</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './581.html'
+				}else if (start - end < -100) {
+					window.location.href = './579.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第580章 如何选择！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“哦。”楚询不咸不淡。</p>
 <p>“少年人，不要自悟哦，你要知道你所面临的并非是一位禁区复苏，而是有西位禁区至尊，知晓你年轻气盛，但有时候也要分清局势，在大势所趋面前无人能阻拦至尊的复苏！”清秀少年人微笑中又透露出一条重大消息。</p>
 <p>西位禁区至尊？</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './774.html'
+				}else if (start - end < -100) {
+					window.location.href = './772.html'
 				}
-				
 			})
 		}
 	</script>

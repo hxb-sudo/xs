@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第581章 天地大乱！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“楚询！”</p>
 <p>在此地的不仅是他一人，剑州的老祖宗也在陪从，却感知到楚询身上陡然冒出的强烈戾气，不免上前问发生了什么。</p>
 <p>略作犹豫楚询将发生的事告诉了这位剑州老祖宗，而后者也在皱眉中感受到了棘手，低语道：“完了，九洲恐要乱？”</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './775.html'
+				}else if (start - end < -100) {
+					window.location.href = './773.html'
 				}
-				
 			})
 		}
 	</script>

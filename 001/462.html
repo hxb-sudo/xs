@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第349章 曹盟主！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>天运古战场。</p>
 <p>是彻底爆火了。</p>
 <p>随着小道消息的传开，外界的哪位剑客欲要在此迎战，让剑州无数剑修蜂拥荟萃，无数天才，各方势力的掌舵者纷纷降临。</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './463.html'
+				}else if (start - end < -100) {
+					window.location.href = './461.html'
 				}
-				
 			})
 		}
 	</script>

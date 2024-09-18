@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第48章 符纸展威！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗯？”</p>
 <p>盘踞在飞舟内的老道眼皮子豁然一跳，隐有不祥预感，这让他警惕，要知道此次闭关突破人皇九境后，能威胁他的人已经不多。</p>
 <p>而刚刚的躁动让他极度不安，却依旧大手摁下，冷漠道：“东临宗能威胁我的只有圣人，而圣人又即将坐化无暇外出，谁又能威胁我？”</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './17.html'
+				}else if (start - end < -100) {
+					window.location.href = './15.html'
 				}
-				
 			})
 		}
 	</script>

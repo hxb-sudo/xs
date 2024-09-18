@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第831章 战风啸！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>杀意滋生。</p>
 <p>风啸死死的盯着楚询，他从未见识过如此妖孽的人，刚突破六境便能在自己手中坚持十余个呼吸，而后一步比一步逆天，能阻拦旁人一生的路在他面前似不存在，明明在之前还是个弱鸡，转眼就成长到这步。</p>
 <p>他不敢想若是再给楚询一段时间，他会强到什么程度，甚至在想若是将楚询逼入的是丹药阁，药园等地，他的修为是不是将更加逆天？</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1046.html'
+				}else if (start - end < -100) {
+					window.location.href = './1044.html'
 				}
-				
 			})
 		}
 	</script>

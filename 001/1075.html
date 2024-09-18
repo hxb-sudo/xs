@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第861章 破七境（上）（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“小家伙，你很对我脾气，要不要……！”九曲剑尊心动道，这在混乱星域强势镇杀风天华，他不仅没感受到麻烦，反而很欣赏，男人就要如此，不服就干，若是有这实力而畏畏缩缩的，反而让他无趣。</p>
 <p>星河之主微微皱眉，也让九曲剑尊的后续话给憋了回去，瞥了眼星河之主暗暗道：真小气，自己憋着想收弟子又不敢，还不让旁人收。</p>
 <p>“晚辈多谢两位前辈！”楚询也起身行礼，风涅的蛮横与猖狂明显超出他的预料，可心中也有一道疑惑，姬武曾在日记中记载过，自己遭遇一群仗着身份地位不断欺辱的富家子弟，其中风涅便是其中之一，按理说风涅应该资质平平，怎会成长为八境前辈？</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1076.html'
+				}else if (start - end < -100) {
+					window.location.href = './1074.html'
 				}
-				
 			})
 		}
 	</script>

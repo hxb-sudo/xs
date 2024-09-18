@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第411章 压迫！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>此番动静。</p>
 <p>震动九洲。</p>
 <p>“秦皇朝也太恐怖了，竟联合佛教，姬氏同时出动了数位准帝压迫儒州，这是要将儒教狠狠的摁在原地，不让他们驰援荒州！”</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './549.html'
+				}else if (start - end < -100) {
+					window.location.href = './547.html'
 				}
-				
 			})
 		}
 	</script>

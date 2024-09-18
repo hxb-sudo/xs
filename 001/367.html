@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第285章 各自的机缘！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这里很不错！”</p>
 <p>“适合修行！”</p>
 <p>楚询也寻到一处地方，是曾经儒帝在此修行之地，他只是靠近这处区域便有些意识恍惚，眼前的这棵古树之下本是一张石桌和几个石椅，曾是儒帝闲暇时在此休息饮茶，或与故友相逢，坐而论道的地方。</p>
@@ -108,12 +108,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './368.html'
+				}else if (start - end < -100) {
+					window.location.href = './366.html'
 				}
-				
 			})
 		}
 	</script>

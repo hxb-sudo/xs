@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第521章 楚询醒来！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>收敛情绪，楚询缓缓內视，而随着一分一秒的过去，石室内的气氛也愈发的凝重，当楚询再睁开眼睛时，眸光闪烁短暂的黯然。</p>
 <p>他废了。</p>
 <p>体内能量。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './703.html'
+				}else if (start - end < -100) {
+					window.location.href = './701.html'
 				}
-				
 			})
 		}
 	</script>

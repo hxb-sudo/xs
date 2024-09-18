@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第812章 鸠鹤前辈归来！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>道院。</p>
 <p>回来的第七天。</p>
 <p>这几天中前来拜访的有‘延意师兄’，‘绱汤师兄’，‘流染师兄’，他们都是仅次林白的道院强者，并且都拥有自己的小队成员，也是听闻了黑煞渊的事特来拜访，楚询依旧以正在修行为借口，闭门谢客。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1027.html'
+				}else if (start - end < -100) {
+					window.location.href = './1025.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第742章 简守！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“结，结，结束了！”此时有人脸上挂着少许的茫然，望着那庞大的身躯夷为齑粉，还有不切实际的感觉。</p>
 <p>那可是天魔三兄妹啊，身为魔殿当中的一员，早些年纵横在太行道院的边域，能与他们动手的不多，历来都是洗劫哪座城池，哪座城池被灭，可而今他们却踢到了铁板，冒出一个神秘高手，将他们三兄妹统统杀了。</p>
 <p>甚至对方此刻还游刃有余的模样，像是没用全力，不免让人心颤，敬仰道：“他究竟有多强？”</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './955.html'
+				}else if (start - end < -100) {
+					window.location.href = './953.html'
 				}
-				
 			})
 		}
 	</script>

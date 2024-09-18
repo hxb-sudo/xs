@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第439章 秦皇朝大军入荒州！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗡！”</p>
 <p>陷阵之内。</p>
 <p>弥漫着一道微弱的光，宛若是无形的量劫之光，他蕴含着极致的劫意，令人触碰便如要转世重修的劫难，而随着光芒闪烁，这道量劫之光化作十，十化百，百化千，千化亿万！漫天上下，阵法之内无穷的量劫之光闪烁。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './587.html'
+				}else if (start - end < -100) {
+					window.location.href = './585.html'
 				}
-				
 			})
 		}
 	</script>

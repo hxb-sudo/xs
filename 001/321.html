@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第244章 荒天宫宫主回归！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>儒州。</p>
 <p>一座由儒家学宫开启的圣地，最初时并不叫儒州，而是诞生了一位极富传奇，极有人格魅力的儒帝，一位读书读成了帝境的传奇人物，这放眼九洲都是不可思议的事，但哪位儒帝却确确实实做到了，凭借以言出法随，极其妖孽的手段位列帝境。</p>
 <p>同境之中即便是与之抗衡的人都极其少见，擅长无数种战斗方式，最擅长的便是以理服人，自那之后儒州便开启了另类的修行方式，在这里最喜读书，无数读书种子在这诞生，身负浩然气，无惧妖邪魔。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './322.html'
+				}else if (start - end < -100) {
+					window.location.href = './320.html'
 				}
-				
 			})
 		}
 	</script>

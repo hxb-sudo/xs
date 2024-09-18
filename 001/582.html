@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第435章 三息！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嗡！”</p>
 <p>强大的青色巨剑依旧残留威视，在向那已经没了法相庇佑的小和尚斩去，而后者眼中却有智慧的佛眸，平静道：“我可不是只会一种佛教金身法相！”</p>
 <p>上前一步虚空骤然间陷入了定格之内，时间也陷入凝固之中，唯有佛教的玄净安然的可以活动，他面向那同样定格的青色巨剑，羊脂白玉般的手指轻轻一点，那残与的余波瞬间裂纹弥漫，眨眼之间便崩碎成虚无。</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './583.html'
+				}else if (start - end < -100) {
+					window.location.href = './581.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第524章 不服气！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“天凤九舞！”</p>
 <p>“步法？”</p>
 <p>楚询眼中弥漫一抹诧异，低境界的步法还是常见，而到了准帝层次，所有效的步伐却是很难获得，毕竟大家都是同境之人，动辄之间便是裹挟天地之势进行轰杀，范围极广，而想要依靠步伐躲避还是极难。</p>
@@ -121,12 +121,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './708.html'
+				}else if (start - end < -100) {
+					window.location.href = './706.html'
 				}
-				
 			})
 		}
 	</script>

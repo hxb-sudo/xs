@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第251章 真武大圣！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唰唰唰！”</p>
 <p>楚询在阵法之道突飞猛进时外界也不平静，荒天宫宫主入了一趟荒宫的禁地，从那里取走了一件至宝，准帝器。</p>
 <p>这在荒天宫引发波澜，准帝器属于荒天宫的镇族至宝，哪里能轻易动用，除非是宗门危机时刻，否则不准轻易携带，哪怕是五宫宫主也同是，因为一不小心陨落在外，便可能造就准帝器的流失，这是荒天宫不能允许的。</p>
@@ -118,12 +118,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './330.html'
+				}else if (start - end < -100) {
+					window.location.href = './328.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第608章 屠戮生灵！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>那些腾空的修士勃然大怒，他们当中有年轻气盛的壮丁，也有年迈的老者，更有女子气血旺盛，无一不是圣境修士，她们愤怒的盯着这头老龙，胸中带着怒火，那城池内可有他们的后生晚辈，却全没了。</p>
 <p>“杀！”</p>
 <p>他们爆喝。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './810.html'
+				}else if (start - end < -100) {
+					window.location.href = './808.html'
 				}
-				
 			})
 		}
 	</script>

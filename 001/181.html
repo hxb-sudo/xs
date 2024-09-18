@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第147章 东临宗姜尘……请赐教！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>飞舟上。</p>
 <p>萧容鱼眼神清冷的俯瞰这一幕，在心中也并无多大的变化，从荒天宫那道旨意下来时她就知道会是这样结局，外界圣人不准踏足东域，神行宗等宗门又撤离加盟，这座声势浩荡的势力衰败也就在一夜之间。</p>
 <p>“我选择加入东域学宫！”</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './182.html'
+				}else if (start - end < -100) {
+					window.location.href = './180.html'
 				}
-				
 			})
 		}
 	</script>

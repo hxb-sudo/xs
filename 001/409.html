@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第314章 各势力的反应！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“楚询！”</p>
 <p>“他是谁？”</p>
 <p>火女魅惑的眸子也流露奇色以及少许的战意，她这次仍然没有位列圣人榜前七十二名，却处在七十五名，这个名额距离真正的七十二名已经相当近，但她更想真正位列其中，入选那金色的榜单，被各大势力所收集信息。</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './410.html'
+				}else if (start - end < -100) {
+					window.location.href = './408.html'
 				}
-				
 			})
 		}
 	</script>

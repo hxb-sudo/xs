@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第583章 武神压剑州！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>他似在寻找什么，漫无目的，身影却是越入越深，当来到一处庞大的巍峨山脉群体前，他的眼中浮现一缕喜色，轻声喃喃道：“好地方，好地方。”</p>
 <p>“嗡！”</p>
 <p>拂袖一挥。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './779.html'
+				}else if (start - end < -100) {
+					window.location.href = './777.html'
 				}
-				
 			})
 		}
 	</script>

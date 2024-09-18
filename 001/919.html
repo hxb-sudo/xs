@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第707章 世人谤我，欺我，辱我……（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“我己活出第二世，你我之间并无旧恨，那张皮犯下了滔天罪孽哪怕是你不处理，我自己也会解决！”姬武微笑的看着他，那张俊美的脸庞异常的好看，在真挚的眼神下，稍有不坚定便会被迷惑。</p>
 <p>“不是吗？”</p>
 <p>他有道。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './920.html'
+				}else if (start - end < -100) {
+					window.location.href = './918.html'
 				}
-				
 			})
 		}
 	</script>

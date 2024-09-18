@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第813章 林白破七境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这……！”</p>
 <p>紫姨脸上透着茫然，这金色卷轴不是来历重大，连鸠鹤前辈都不敢轻易下定论，抱着它回到道院了吗，怎么又将这卷轴给带回了？</p>
 <p>鸠鹤前辈盘坐在那，红润的脸颊带着笑意，为众人解惑道：“老夫是将这卷轴带回了道院，请示两位副院长，但这卷轴过于珍贵，连两位副院长都不敢首接下定论，便请示太行道尊。”</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1028.html'
+				}else if (start - end < -100) {
+					window.location.href = './1026.html'
 				}
-				
 			})
 		}
 	</script>

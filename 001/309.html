@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第236章 荒天宫叶凰临！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>陈浔父母。</p>
 <p>星辰宗老祖。</p>
 <p>除了这两位客人之外，并无第三人降临，如此看来星辰宗老祖诚意当真已经极大，而上空中王鹤与姜长老也连忙上前迎接，知道这是一位在荒州四域都极负盛名的老人，圣人八境无敌的星辰宗老祖。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './310.html'
+				}else if (start - end < -100) {
+					window.location.href = './308.html'
 				}
-				
 			})
 		}
 	</script>

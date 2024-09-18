@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第490章 出荒州！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>半日后。</p>
 <p>又有一行衣着天机阁道袍的身影降临此地，凝望着天衍道统，看到里面的情况无不是头皮发麻，内心深处萌生一大股寒气，直冲天灵盖，震颤道：“这也太疯狂了。”</p>
 <p>将天衍道统领域内的生灵全部献祭，这种疯狂的事也能做出来？他们不可思议的看向同行而来的长者，这位衣着蓝白道袍的中年男子留着胡须，眉头紧锁，凝重道：“是那件邪兵！”</p>
@@ -103,12 +103,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './653.html'
+				}else if (start - end < -100) {
+					window.location.href = './651.html'
 				}
-				
 			})
 		}
 	</script>

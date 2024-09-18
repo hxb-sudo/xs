@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第274章 狼狈逃走！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“这是？”</p>
 <p>秦南也擦拭唇角的血迹，目中绽放精芒。</p>
 <p>灰袍老仆传音道：“帝器仿制品，真武大圣有预感若是你解决不掉时，可催动这仿制品以绝后患，只是没想到楚询还没见到，就要被动用了！”</p>
@@ -108,12 +108,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './354.html'
+				}else if (start - end < -100) {
+					window.location.href = './352.html'
 				}
-				
 			})
 		}
 	</script>

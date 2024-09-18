@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第82章 蜡炬成灰！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>仿佛是里面有什么大凶之物在挣脱束缚，而夏阳眼中也弥漫着少许失落，理想状态中则是这大钟竭力镇压，能镇杀一尊最好，可惜这二人都太强了，尤其是二人联手，在生死危机下不再顾忌其他，竭尽全力的动手。</p>
 <p>嘭~！</p>
 <p>钟声震颤。</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './72.html'
+				}else if (start - end < -100) {
+					window.location.href = './70.html'
 				}
-				
 			})
 		}
 	</script>

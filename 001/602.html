@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第452章 观战！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>附近的山头汇聚满了人群，许多九洲的游侠豪杰都荟萃在此，有极其年轻的小辈脸上还透着懵懂的纯真，仰着头，清澈的眼睛透着好奇与严肃，这与他们来说是观摩前辈交手的难得机会，还是此等强者。</p>
 <p>也有位列神州天才榜的修士，面色凝重的盘坐在山洞之内等候着这场大战，于他们而言纵使与双方有差距也不大，其中有修行时间一脉的人想从白陆离这里借鉴效仿，毕竟，白陆离的成名手段便是时间一脉。</p>
 <p>同样，也有无数闲暇的修士。</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './603.html'
+				}else if (start - end < -100) {
+					window.location.href = './601.html'
 				}
-				
 			})
 		}
 	</script>

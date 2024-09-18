@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第98章 差一点！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询眼中弥漫着冷意，这三头神兽平常在圣人手下没少作威作福，现在到时护主心切，但也要有这个实力，青藤剑挥下，一道磅礴的剑光直接将一头黄金神兽给力劈，庞大的身躯从中切斩成两半。</p>
 <p>血雨倾盆，五脏六腑哗啦啦的向下流淌，这一幕让仙道宗圣人既悲愤又有狂怒，可这也给他争取了些许时间，斩掉的尸首重新衔接。</p>
 <p>“斩！”</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './102.html'
+				}else if (start - end < -100) {
+					window.location.href = './100.html'
 				}
-				
 			})
 		}
 	</script>

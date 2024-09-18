@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第472章 他究竟有多强！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“怎会这样强！”年轻道士嘴里叼着的一根马尾草也是骤然一怔，呆呆的愣在那里，看着对方的一击久久无神。</p>
 <p>何止是他。</p>
 <p>外面。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './633.html'
+				}else if (start - end < -100) {
+					window.location.href = './631.html'
 				}
-				
 			})
 		}
 	</script>

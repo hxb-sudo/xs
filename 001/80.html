@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第87章 东临宗封宗！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>没由来的心里一颤。</p>
 <p>在人群中的叶倾城内心没由来一慌，心底的后悔突兀达到了极致，因为她蓦然想起，自己一旦离开了东临宗，谁又能拂照自己？</p>
 <p>修行不单单只靠自己。</p>
@@ -96,12 +96,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './81.html'
+				}else if (start - end < -100) {
+					window.location.href = './79.html'
 				}
-				
 			})
 		}
 	</script>

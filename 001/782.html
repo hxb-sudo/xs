@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第586章 雷劫！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“啊？”</p>
 <p>绝望下的剑州老祖宗豁然大喜，将目光咻的下落在那位青衫年轻人身上，只见到他依旧盘坐在那，而从九天上接引下来的剑州漫天剑道气运却是从未衰败，而是一道道，一遍遍，不停的冲刷他的身躯。</p>
 <p>每次冲刷都有诡异不祥的黑色污染被驱散，他瞳孔当中的眼睛也是愈发的澄澈与明亮，心灵更是愈发的纯粹，那些驱逐的黑色雾气也在漫天剑气下凋零成虚无，并无构成任何威胁。</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './783.html'
+				}else if (start - end < -100) {
+					window.location.href = './781.html'
 				}
-				
 			})
 		}
 	</script>

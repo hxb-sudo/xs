@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第370章 大佬云集！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>原本是抱着无所谓的阴阳家少主，此时也正眼看了下荒州一群人，若这次横渡虚空过来的人也和荒州有关那就有意思了，本以为是自己举手之劳的事，不曾想到这事情远比自己想象的还要有趣。</p>
 <p>琉璃宫。</p>
 <p>神霄宗宗主。</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './495.html'
+				}else if (start - end < -100) {
+					window.location.href = './493.html'
 				}
-				
 			})
 		}
 	</script>

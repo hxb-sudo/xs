@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第148章 无敌风采！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“噗！”</p>
 <p>“咳咳！”</p>
 <p>废墟当中的秦观，身体在不断抽搐，四肢断裂，胸口骨崩碎，嘴角不断淌血里面混杂这内脏碎片，有老者急匆匆赶来，连忙取出大把的丹药塞入他的口中，眼神满是心疼与担忧，这是他的后辈，怎能不关切？</p>
@@ -109,12 +109,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './184.html'
+				}else if (start - end < -100) {
+					window.location.href = './182.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第592章 二身合一！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“浓郁！”</p>
 <p>“生命精华！”</p>
 <p>白衣楚询仅仅是呼吸便觉得身体削弱的生能以肉眼可见的速度恢复，而满身的焦黑也在褪去，那种堪比生命精华的浓缩，让他不仅双手探入雷劫池内。</p>
@@ -103,12 +103,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './790.html'
+				}else if (start - end < -100) {
+					window.location.href = './788.html'
 				}
-				
 			})
 		}
 	</script>

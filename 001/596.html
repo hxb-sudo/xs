@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第448章 留情！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“完了！”</p>
 <p>那位秦皇朝大圣脸色苍白，透着前所未有的萎靡，而身旁这群年轻男女也察觉了不对，忍不住轻声道：“赵将军？”</p>
 <p>“速走！”</p>
@@ -103,12 +103,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './597.html'
+				}else if (start - end < -100) {
+					window.location.href = './595.html'
 				}
-				
 			})
 		}
 	</script>

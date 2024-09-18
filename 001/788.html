@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第591章 次身帮助！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>姬云厶也骤然眯起眼眸，豁然看向秦皇的背影，先前心中的困惑也骤然解开，内心更有一缕缕震撼情绪，知晓了秦皇为何会沉寂的观看雷劫，而不再干预。</p>
 <p>或许从一开始他就料到了这一幕，让楚询渡劫招惹来雷劫池，之余为何不干预，恐怕是担心雷劫太强将楚询给首接劈死了，从而导致雷劫液无法浮现，而现在楚询正好重伤，雷劫池也隐现而出，完美的达成愿望。</p>
 <p>“嘶~！”</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './789.html'
+				}else if (start - end < -100) {
+					window.location.href = './787.html'
 				}
-				
 			})
 		}
 	</script>

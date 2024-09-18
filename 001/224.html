@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第179章 赔礼道歉！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>悬天殿。</p>
 <p>悬天殿殿主本来是不信外界这些传闻，哪怕是他的一位长老说的有鼻子有眼，可心中依旧不以为意，若楚长老这么容易被废，也活不到现在，而眼下随着外界势力再度踏足东域，却让他微微颤抖了。</p>
 <p>“难不成！”</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './225.html'
+				}else if (start - end < -100) {
+					window.location.href = './223.html'
 				}
-				
 			})
 		}
 	</script>

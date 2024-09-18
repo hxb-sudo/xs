@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第360章 传道圣地！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>落在楚询身上。</p>
 <p>轻声道：“后来者，当你进入这片领域空间便说明与我有缘，本座清风子，圣人榜63名，也算一代人杰，此行前去除我剑州一位大患，自知一去很难复返，一身传承若是遗失当真可惜，便遗留在此，等待后来人……看好，我且为你演剑！”</p>
 <p>“嗡！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './480.html'
+				}else if (start - end < -100) {
+					window.location.href = './478.html'
 				}
-				
 			})
 		}
 	</script>

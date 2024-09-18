@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第529章 七年！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>院长一语不发。</p>
 <p>转身离去。</p>
 <p>前往至圣道宫今日发生的事让他也感受前所未有的触动，那贪婪的魔气竟能影响人的心神，在无形之中将人控制，此事他要与至圣道宫掌舵者商议。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './715.html'
+				}else if (start - end < -100) {
+					window.location.href = './713.html'
 				}
-				
 			})
 		}
 	</script>

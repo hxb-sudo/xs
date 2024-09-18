@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第55章 姜尘气运晋级！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“事已至此！”</p>
 <p>“还是想想对策吧！”</p>
 <p>仙道宗宗主秦禹，收敛手中的黄金长矛，同样染血他的冷淡的矗立在那，分明是不准备将此事有个交代。</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './27.html'
+				}else if (start - end < -100) {
+					window.location.href = './25.html'
 				}
-				
 			})
 		}
 	</script>

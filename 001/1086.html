@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第872章 征婚人！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“先生正义，为民除害，实乃我辈楷模！”古阳城主恭维道，只是略微停顿又恭敬道：“实不相瞒，风氏在我古阳城为祸作乱，古阳早己看不入眼，不知多少天才惨遭风氏的荼毒！”</p>
 <p>“对对对，那风氏当真可恶，仗着是最古老的风氏，将其余人都视为蝼蚁，连我等都惨遭欺凌，可想而知其余人的生活困境！”那天空上还残留的两位五境心惊胆战道。</p>
 <p>毕竟他们自身也有问题，只是没有那么严重罢了，眼前这位青衫男子又是嫉恶如仇，他们生怕将他们那点小事翻出来，也顺手灭了。</p>
@@ -79,12 +79,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1087.html'
+				}else if (start - end < -100) {
+					window.location.href = './1085.html'
 				}
-				
 			})
 		}
 	</script>

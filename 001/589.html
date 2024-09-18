@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第441章 死战！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>叹道：“前往东域欲行霸道之事，便起了波澜，本想将佛法传递入东域，自诩佛心深向佛州，为我佛传递佛法，难道真是为了佛法，今日荒州劫难，焉有旁观之理；楚施主崛起于东域却对昔日之事既往不咎，何等心胸，贫僧焉能因旁人三两言便目睹往日好友血战而陨！”</p>
 <p>“若禅寺！”</p>
 <p>“在！”</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './590.html'
+				}else if (start - end < -100) {
+					window.location.href = './588.html'
 				}
-				
 			})
 		}
 	</script>

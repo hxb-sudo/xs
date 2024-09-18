@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第451章 弟子之战！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“成了！”</p>
 <p>白衣楚询分身也流露轻松的神色，青衣本尊早早掌控了力之道果推演到极深的境界，以力可破万法，诸邪不近，若是单纯的走武夫之道，凭借本尊浑厚的气息以及掌控的力之道果，轻易便能化作力拔山兮气盖世的绝世武夫。</p>
 <p>而黑袍次身也不例外的修成了虚空法则，随意的行走在虚空当中，可以轻易前往荒州各地查看，就连那荒州边缘都截杀了秦皇朝一位圣人榜级战将。</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './602.html'
+				}else if (start - end < -100) {
+					window.location.href = './600.html'
 				}
-				
 			})
 		}
 	</script>

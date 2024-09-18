@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第605章 突破准帝后期！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>岂止他一人？</p>
 <p>截天教算是难得的在乱世中独善其身之一，截天教教主也自然关注着九洲这位风流人物，甚至与内心深处不止一次感慨过楚询崛起的时间太短暂了，若是给他二百年，五百年的修行，这场黑暗动乱究竟会怎样仍是两说。</p>
 <p>可在如今他望去，看着那青衫男子每个呼吸修为都在增进，吐纳之间，身旁还凝聚成气旋，并在愈发的扩大，让他倒吸凉气，惊骇道：“怎会这样？”</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './805.html'
+				}else if (start - end < -100) {
+					window.location.href = './803.html'
 				}
-				
 			})
 		}
 	</script>

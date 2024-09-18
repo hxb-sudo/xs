@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第614章 战至尊！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>咚咚咚！</p>
 <p>两者的交手，顷刻间便过去了数十击，而天穹上的最后雷霆劫光于乌云也散开，那位大帝也逐渐显露身影，他在禁地的上空，真身朦朦胧胧，模模糊糊，甚至有些虚淡，并不真实，可这便是真正的帝者。</p>
 <p>昔日的大帝。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './819.html'
+				}else if (start - end < -100) {
+					window.location.href = './817.html'
 				}
-				
 			})
 		}
 	</script>

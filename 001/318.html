@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第241章 万象宫主到来！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>哪怕是东临宗的修士也有些摸不着头脑了，搞不清这位前辈意义何在，星辰宗老祖念着往日的旧情，壮着胆子，向前试探性问道：“前辈，您此行所来是？”</p>
 <p>“祝贺啊！”</p>
 <p>万象宫小老头笑眯眯都：“东临宗与东凰圣地合并是件好事，这是老夫的贺礼，大圣级道果功法十本，大圣道果级兵器三件，其余诸多传承，灵药，阵法石块不计其数，都是老夫的贺礼！”</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './319.html'
+				}else if (start - end < -100) {
+					window.location.href = './317.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第803章 太行道尊！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>他降临时宏大的气息笼罩整座道院，一道身影也浮现在道院的后山，低境修士无法察觉，可那些七境却感受到了，无不是眺望后山，朦胧中看到一位浑身散发着光的伟岸身影，他似世间的主宰。</p>
 <p>降临道院，连这片天地的规则都要被压制，这让他们屏住呼吸，心生敬畏，恭敬喃喃：“院长！”</p>
 <p>而六境修士则无法察觉，只觉朦胧天威笼罩他们带来莫名的压抑。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1017.html'
+				}else if (start - end < -100) {
+					window.location.href = './1015.html'
 				}
-				
 			})
 		}
 	</script>

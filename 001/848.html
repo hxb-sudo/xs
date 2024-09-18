@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第644章 三位黑暗至尊！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“道州沦陷了……！”道州老道士脸色陡然垮了，望向他的家乡，那里血气蒸腾，浑浊的污气蒸腾，那是禁区至尊复苏，无尽的妖邪淹没哪里。</p>
 <p>“是谁！”</p>
 <p>“我道州怎有至尊沉睡！”道州老道士不敢相信眼前的一幕，那里弥漫着浓郁的污浊，血气蒸腾，释放出大片的杀光，让他化作流光冲去，却被书院院长大喊拦下：“你一人不行，我们联手！”</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './849.html'
+				}else if (start - end < -100) {
+					window.location.href = './847.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第556章 谁是凶手！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>但转瞬书院院长便脸色煞白的将这个念头猜测，倘若真是黑暗禁区的至尊复苏，那动静必然极大，不可能吞噬第九峰后便隐匿十年，他们撑不住，一旦自沉睡中复苏，那干涸的皮囊将无限渴望气血，不吞吸到一定程度绝不罢休！</p>
 <p>“呼！”</p>
 <p>脸色煞白的书院院长稍微好转些许，念头也从广法，秦皇，以及未来的羽化皇朝三者中流转，动手者必然是他们三人之一。</p>
@@ -121,12 +121,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './748.html'
+				}else if (start - end < -100) {
+					window.location.href = './746.html'
 				}
-				
 			})
 		}
 	</script>

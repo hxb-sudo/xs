@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第782章 手段齐出！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“没死！”风啸眼眸中闪烁轻微的诧异，即便这一剑很强在他的预算中也足以碾碎剑印，并将残留的指引轰在对方身躯上，从而抹杀，但这一击从容的击溃了剑意，却没抹除对方，令他带着诧异，喃喃道：“炼体了？”</p>
 <p>他很好奇。</p>
 <p>正常剑修。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './995.html'
+				}else if (start - end < -100) {
+					window.location.href = './993.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第471章 阵道无双！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“他太强了！”佛教佛子玄净轻声呢喃，纵使楚询未曾可以动用自身实力，却也表露出阵法之道，已经触及‘大道。’可以借此证道准帝。</p>
 <p>什么概念？</p>
 <p>何曾骇然。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './631.html'
+				}else if (start - end < -100) {
+					window.location.href = './629.html'
 				}
-				
 			})
 		}
 	</script>

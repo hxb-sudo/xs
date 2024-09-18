@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第879章 讲道（下）（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>侃侃而谈。</p>
 <p>闲散自在。</p>
 <p>完全就是寻常聊天般，闲散随意，却在三言两语下将这些弟子的困惑一一解答，实际上这些弟子询问的大道有许多楚询涉猎极少，奈何不住他的境界高啊，七境的修为，早己窥视问题的根本。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1094.html'
+				}else if (start - end < -100) {
+					window.location.href = './1092.html'
 				}
-				
 			})
 		}
 	</script>

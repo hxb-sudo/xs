@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第250章 第二种道果！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“阵法之道！”</p>
 <p>“果真博大精通！”</p>
 <p>楚询眼中弥漫着奇异之色，越是深入的研究，越能体悟阵法一道的奥妙，同时也深感其中精髓，若是在阵法之道并无天赋之人，参悟起来，将如观天书，哪怕修为极高的圣人榜上强者，参悟阵法也会困难重重。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './328.html'
+				}else if (start - end < -100) {
+					window.location.href = './326.html'
 				}
-				
 			})
 		}
 	</script>

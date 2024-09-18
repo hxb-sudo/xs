@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第209章 楚询：名单有问题吗？（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“啊？”</p>
 <p>侍女是完全懵了，说实话她对白陆离的印象还是挺深的，第一个拜访楚长老的，不过太过于堕落便没有给过好脸色，哪想到摇身一变竟便成这般人物。</p>
 <p>中年仆从想的却是从圣人一境到圣人六境，这之间的跨度竟只用了短暂的一年，这让他震撼的合不拢嘴，几乎不可思议的看去。</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './267.html'
+				}else if (start - end < -100) {
+					window.location.href = './265.html'
 				}
-				
 			})
 		}
 	</script>

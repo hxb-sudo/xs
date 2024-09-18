@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第867章 渐行渐远！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>短暂的领悟涌来，让楚询心境也略显几分感慨，只是闲聊的功夫桌子上也上来了几份菜肴，楚询邀请靳云落座，后者却谦虚而实诚的笑笑道：“馆里今日聚会，我又是第一次参加，不方便拒绝，抱歉了！”</p>
 <p>靳云惭愧道，他很想邀请楚先生明日再来，这小壹酒馆饭菜虽然不便宜，可他这些年在武馆的积攒倒是请得起一顿，可想到楚先生什么地位，西境修士甚至可能是五境前辈，哪里是自己有资格邀请的，到嘴的话也给止住。</p>
 <p>“好！”楚询也微笑道。</p>
@@ -81,12 +81,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1082.html'
+				}else if (start - end < -100) {
+					window.location.href = './1080.html'
 				}
-				
 			})
 		}
 	</script>

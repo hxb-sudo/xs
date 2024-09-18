@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第74章 东临宗圣人出关！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>徐徐传出。</p>
 <p>落在外界，让时间，空间，一切都陷入了定格当中，在东临宗的某座后山石洞内传来复杂叹息道：“何必呢，我距离坐化只有了了数月，你们这便等不及了吗，觊觎东临宗已到这般田地了吗？”</p>
 <p>“嗡！”</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './58.html'
+				}else if (start - end < -100) {
+					window.location.href = './56.html'
 				}
-				
 			})
 		}
 	</script>

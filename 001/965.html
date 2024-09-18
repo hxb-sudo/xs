@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第753章 秦云帝境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“百年了啊！”楚询走出酒楼，行走在流水星上，望着那缓缓落下的晚霞，火红的云层宛若火烧，绚丽而瑰美。</p>
 <p>但他这百余年却并未欣赏过这种美景，更多的则是沉浸在自己的修行内，如今望去也轻声道：“还不曾欣赏过流水星上的美景，去逛逛！”</p>
 <p>他闲庭信步的走出。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './966.html'
+				}else if (start - end < -100) {
+					window.location.href = './964.html'
 				}
-				
 			})
 		}
 	</script>

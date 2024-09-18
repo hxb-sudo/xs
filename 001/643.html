@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第481章 打劫成功！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>秦皇朝准帝。</p>
 <p>姬氏准帝。</p>
 <p>皆凝现出身影，若是书院院长动手，可能在荒州之外便直接上演一场准帝级的交锋，但书院院长眼角余光一扫，并未瞅到秦皇朝哪位武神，便坦然的站在那，道：“小辈之间的交手，产生意外我很抱歉，可尽最大诚意让楚询将尸体送出！”</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './644.html'
+				}else if (start - end < -100) {
+					window.location.href = './642.html'
 				}
-				
 			})
 		}
 	</script>

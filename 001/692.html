@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第516章 誓约失效！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>斩了天衍道统的祖师。</p>
 <p>尤其是先前到来，一直都是酣畅淋漓无敌的化身，强大如独孤绝被秒败，楚询也多次陷入绝境，可即便这样最终的胜利竟不是叶无双而是楚询。</p>
 <p>荒州边界。</p>
@@ -132,12 +132,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './693.html'
+				}else if (start - end < -100) {
+					window.location.href = './691.html'
 				}
-				
 			})
 		}
 	</script>

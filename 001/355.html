@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第275章 终见面！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>可若是去采摘。</p>
 <p>将是陷阱。</p>
 <p>甚至有一处地方，他们路过之后隐隐感受准帝的气息，这让一群人头皮发麻，这要是有一尊准帝级的妖兽或庞然大物，他们这趟必定要减员，便这样不断的在躲避绕路当中，逐渐接近四号，此时他们已经可以看到四号的身影。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './356.html'
+				}else if (start - end < -100) {
+					window.location.href = './354.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第161章 修为突破！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“圣人七境！”</p>
 <p>楚询轻声呢喃，眼神当中泛着少许意外，却也在情理之中，他在圣人六境巅峰已经卡了一段时间，如今接连掌控两门大圣道果级传承《东凰心经》《天蟒九剑》就连灵魂类秘法都获得一门帝级传承。</p>
 <p>在获得这么大收获之余，身上的境界也徐徐突破。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './201.html'
+				}else if (start - end < -100) {
+					window.location.href = './199.html'
 				}
-				
 			})
 		}
 	</script>

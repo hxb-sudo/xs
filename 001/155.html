@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第129章 欲建学宫！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>如此景象。</p>
 <p>早已惊动城中每一人。</p>
 <p>看着那三头可怕的凶禽随便一位都能将一座城池给吞噬，眼中既有恐惧，也有慌乱，这时候东域的强者到哪了？</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './156.html'
+				}else if (start - end < -100) {
+					window.location.href = './154.html'
 				}
-				
 			})
 		}
 	</script>

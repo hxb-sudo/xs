@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第277章 阵法传承！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嘶！”</p>
 <p>楚询瞳孔微微凝固，他不知道这邋遢老者说的是不是真话，如若是真的那就有些过于惊骇，一小觉便是数十万年，若是大梦一场又该是何等沧海桑田。</p>
 <p>“小家伙！”</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './358.html'
+				}else if (start - end < -100) {
+					window.location.href = './356.html'
 				}
-				
 			})
 		}
 	</script>

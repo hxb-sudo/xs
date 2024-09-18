@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第644章 三位黑暗至尊！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>立身在上空。</p>
 <p>他们眺望远方。</p>
 <p>整座神州大陆沦为了血与乱当中，入目的到处都是疮痍，无数生灵被惨死，这般绝望的生机下连这些自负心性冰冷的准帝都为之森寒，武神声音沙哑道：“与之对比，天衍圣地的陨落，算不得什么！”</p>
@@ -89,12 +89,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './850.html'
+				}else if (start - end < -100) {
+					window.location.href = './848.html'
 				}
-				
 			})
 		}
 	</script>

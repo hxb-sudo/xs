@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第114章 贺礼！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“多长时间了！”</p>
 <p>藏经阁内。</p>
 <p>一位青衫温和老人徐徐睁开眼眸，只觉得感悟与收获不过是弹指一瞬，而随着掐指一算，眉梢也微微挑起，意外道：“月余了！”</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './131.html'
+				}else if (start - end < -100) {
+					window.location.href = './129.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第283章 单挑！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>老农也见到这一幕，眼中不断滋生出强烈的杀意，看着这群人感受强烈的棘手状态，若是这个组合随便少个一两人他都无惧，哪怕是一位真正的准帝到来也不会让他如此束手无策。</p>
 <p>言出法随。</p>
 <p>想要什么有什么。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './366.html'
+				}else if (start - end < -100) {
+					window.location.href = './364.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第855章 败七境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>轰轰轰~！</p>
 <p>这次交锋震动的不仅是其余人，风阳神君便是被震撼的其中一人，他那浑浊的眼眸瞬间一扫而空，化作的唯有清明与冷冽，瞳孔释放出冷电，死死的盯着楚询，手臂传来的震颤麻木告诉他刚刚那是真的。</p>
 <p>“妖孽！”风阳神君深吸口气，坐镇此地，楚询的成名自然让他关注过楚询的崛起与来历，可越看越心惊，怎么看都觉得对方是必成八境的修士，可这些都不如眼前这幕令他震撼。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1070.html'
+				}else if (start - end < -100) {
+					window.location.href = './1068.html'
 				}
-				
 			})
 		}
 	</script>

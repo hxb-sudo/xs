@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第774章 追赶几人！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“热！”</p>
 <p>“出汗水了！”</p>
 <p>楚询轻声低语，他的掌心湿湿黏黏的出现汗液，头顶的那颗巨大太阳转动时散发炽热的温度，辐照整坐太阳域，无数微弱的生命星辰都在承受他的光辉，而现在盯着可怕的热流缓缓攀登，压力不是一般的大。</p>
@@ -96,12 +96,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './987.html'
+				}else if (start - end < -100) {
+					window.location.href = './985.html'
 				}
-				
 			})
 		}
 	</script>

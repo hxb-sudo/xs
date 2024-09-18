@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第182章 任职藏经阁长老！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“藏经阁吧！”楚询眼眸闪烁温润之色。</p>
 <p>“藏经阁！”</p>
 <p>叶凰微微错愕，似是没想到这样的结果，站在她的角度来看楚长老去法则阁是最合适的选择，在哪里坐镇一座法则宫殿，也能趁机在里面修行，弥补在东域的不足，只需要十数年便会提升到圣人九境。</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './230.html'
+				}else if (start - end < -100) {
+					window.location.href = './228.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第805章 风天华！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>嗖！</p>
 <p>木船漂流在黑煞渊内，天花灵果留下了坐标，无论是楚询遗留的阵法位置，还是林白的坐标都不会让他们迷失，在半月后途径天花灵果的位置，而望去时一片平静，和其他地方没什么区别。</p>
 <p>可船上的几人却松口气。</p>
@@ -105,12 +105,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1019.html'
+				}else if (start - end < -100) {
+					window.location.href = './1017.html'
 				}
-				
 			})
 		}
 	</script>

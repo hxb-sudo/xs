@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第764章 再次观摩！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“太强了！”</p>
 <p>楚询轻声低语。</p>
 <p>他如今虽然不曾突破帝道六境，却也在五境中来到了极限，他此时的身躯足有十二个生命星辰般庞大，真真切切来到了帝道五境中的极限，只需要再在境界上有所感悟便会自然而然的突破帝道六境。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './977.html'
+				}else if (start - end < -100) {
+					window.location.href = './975.html'
 				}
-				
 			})
 		}
 	</script>

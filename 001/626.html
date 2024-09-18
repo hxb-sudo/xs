@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第469章 秦元盛的突破！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>荒州。</p>
 <p>有一处戒备森严的秦皇朝大军，只是这两日格外的森严，几乎不用上面下命令，底下的士卒自行便谨慎起来，并时不时的看向外界的天空，面露忧愁。</p>
 <p>楚询突破了。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './627.html'
+				}else if (start - end < -100) {
+					window.location.href = './625.html'
 				}
-				
 			})
 		}
 	</script>

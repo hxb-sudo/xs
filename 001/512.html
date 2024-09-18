@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第384章 开盘！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>简青竹眸子也绽放一缕奇异之色，这开盘之事固然容易理解，只是天机阁已经太久不曾开盘，似乎没有出现过这么轰动的人物，并且即便出现大家对他的战力也清晰的有个了解，反而是楚询他们一概不知，连天机阁都不知具体实力。</p>
 <p>这次开盘。</p>
 <p>还是极其轰动。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './513.html'
+				}else if (start - end < -100) {
+					window.location.href = './511.html'
 				}
-				
 			})
 		}
 	</script>

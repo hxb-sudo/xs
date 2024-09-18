@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第820章 战莫路夜！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>紫姨，青墨皆是眯起了眼，从莫路夜的目光停留在他们身上时，只用一个呼吸便确定了他们的想法，喃喃道：“他们要动手！”</p>
 <p>“嗯！”</p>
 <p>小华也神情犀利的眯起了眼，对方己经不在这块天暗陨石上停留，明摆着放弃了，却将目光灼灼的逗留在他们身上，往日有林白在仗着楚询的瞬移术无敌，现在林白走了，谁都想挑衅挑衅了，也轻声道：“这一战必不可免了！”</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1035.html'
+				}else if (start - end < -100) {
+					window.location.href = './1033.html'
 				}
-				
 			})
 		}
 	</script>

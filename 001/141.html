@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第120章 他不是才圣人一境？（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>感动之余还有深深的担忧与害怕，因为知道楚询的强大，那是双圣联手都不是对手，如今他们圣人遭遇重创伤势还没修复，又怎是对手，有长老感动中也大呼：“楚遵圣人，你快走，不要回来！”</p>
 <p>“圣人！”</p>
 <p>“师尊！”</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './142.html'
+				}else if (start - end < -100) {
+					window.location.href = './140.html'
 				}
-				
 			})
 		}
 	</script>

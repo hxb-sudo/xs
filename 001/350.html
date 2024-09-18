@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第272章 以大欺小！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“轰！”</p>
 <p>大圣级强者动手，几乎是顷刻间便封锁了虚空，对付一位圣人七境的修士本以为是手到擒来的事情，哪里想到那枚道字顷刻绽放无穷的威压，瞬间撕裂了大圣境的封锁，并强势的镇杀下去。</p>
 <p>灰袍老仆心中悸动，愤怒的眼神当中蕴含强烈的杀意，对这个白衣后生起了忌惮的念头，才圣人七境就如此卓绝，若是未来给他成长的空间，将会是公子的大敌，必须要斩杀在这，念头变换时已经顾不得公子的交代。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './351.html'
+				}else if (start - end < -100) {
+					window.location.href = './349.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第214章 阵法之道！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>看到这楚询也微微一笑，不再为他讲解阵法之道，微笑道：“这些已经够你钻研一段时间了！”</p>
 <p>“噢！”</p>
 <p>陈浔迷蒙而茫然。</p>
@@ -86,12 +86,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './276.html'
+				}else if (start - end < -100) {
+					window.location.href = './274.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第427章 青藤剑！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>而姬氏帝子的六位战仆此刻也退到了一起，那紫发青年也在同伴的帮助之下脱困，可几人都面色难看，他们一同出手本是瞬杀任何人，可现在反而有一人被重创，另一人也险些遭劫，简直是耻辱。</p>
 <p>“该死！”</p>
 <p>“我等联手！”</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './573.html'
+				}else if (start - end < -100) {
+					window.location.href = './571.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第64章 勾结魔族！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“哇！”</p>
 <p>从虚空通道中逃出的青牛魔君张口就喷出浓郁的精血，猩红的眼瞳带着愤怒以及炽盛的杀气，道：“这群狗皮膏药！”</p>
 <p>当年他就是被东域这群圣人追杀的上天无路入地无门，硬生生避到殷墟，若非那时候的殷王朝恰巧陨落，他恐怕也要在搜寻当中被镇杀。</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './41.html'
+				}else if (start - end < -100) {
+					window.location.href = './39.html'
 				}
-				
 			})
 		}
 	</script>

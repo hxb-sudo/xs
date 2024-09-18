@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第594章 主身临！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>都是从时空之兽身上学到的高级法则，哪怕是秦皇动用时间与空间的规则手段对他来说也是无用，也因此他游走在虚空中，凭空出现，拦截在秦皇身前。</p>
 <p>“退开，朕可保你无忧！”秦皇蹙眉道。</p>
 <p>“哦？”</p>
@@ -85,12 +85,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './792.html'
+				}else if (start - end < -100) {
+					window.location.href = './790.html'
 				}
-				
 			})
 		}
 	</script>

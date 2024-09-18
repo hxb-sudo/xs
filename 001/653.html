@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第491章 准帝钓鱼！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>外界。</p>
 <p>来到荒州的边界楚询只是微微停顿便跨步走了出去，来到外界便意味着准帝可以肆无忌惮的对他动手，但他已经顾不了这么多，独孤绝有恩与荒州，昔日的承诺没有兑现，若是连独孤绝都夭折了，那才是真的愧对天衍道统。</p>
 <p>“啵！”</p>
@@ -114,12 +114,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './654.html'
+				}else if (start - end < -100) {
+					window.location.href = './652.html'
 				}
-				
 			})
 		}
 	</script>

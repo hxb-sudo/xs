@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第729章 帝道五境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“该构建庞大的生命体了！”楚询轻声自语。</p>
 <p>帝道五境不同于之前的数境，若是帝道一重天突破二重天，甚至是三重天本质上不会产生什么变化，但帝道五境却是触摸到星空中的一缕本源之意，可以吸收庞大的日月精华，来构建自己的生命体。</p>
 <p>宛若徐峰他的身影若是正常形态将比起一颗生命星辰还要庞大，盘坐在星空中无比的巍峨，那是帝道五境所产生的变化，可帝道西境便是寻寻常常的普通人，本质上没什么区别，也是为何到了五境便会被道院受职。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './942.html'
+				}else if (start - end < -100) {
+					window.location.href = './940.html'
 				}
-				
 			})
 		}
 	</script>

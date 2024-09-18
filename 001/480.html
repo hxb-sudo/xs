@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第361章 此女，我要了！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>便见到一位青衫温和男子不知何时走到崖壁前，轻声道：“清风兄的传承很简单，也很纯粹，这句诗便蕴含着其中的奥义，无需拆分也无需去明悟其中的情绪，不过是清风兄临别时有所感悟而遗留的一句话，真正的传承在那个末尾！”</p>
 <p>“末尾？”</p>
 <p>诸人望去。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './481.html'
+				}else if (start - end < -100) {
+					window.location.href = './479.html'
 				}
-				
 			})
 		}
 	</script>

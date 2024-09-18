@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第133章 楚询临！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“师尊！”</p>
 <p>神行宗宗主戴拿流露迟疑与紧张，在这个关键时候，东域各大势力纷纷降临东域学宫，眼瞅着一场浩荡的盛况即将开启，倘若这时候外界来的三大势力因为分神，导致圣人不在，那会不会形成虎头蛇尾。</p>
 <p>“还有十一天时间！”</p>
@@ -117,12 +117,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './162.html'
+				}else if (start - end < -100) {
+					window.location.href = './160.html'
 				}
-				
 			})
 		}
 	</script>

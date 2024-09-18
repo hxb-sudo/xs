@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第798章 悟性逆天！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“铮铮~！”</p>
 <p>这是一页看上去就不凡的银色纸张，悬浮在身前，意识落在上面随着思维的眼神，这页银色纸张也变的无比大，似能将整个疆域，宇宙都容纳里面，令人不禁遐想道：“这真的是一页纸张？”</p>
 <p>“它有什么作用！”</p>
@@ -113,12 +113,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1012.html'
+				}else if (start - end < -100) {
+					window.location.href = './1010.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第308章 欲破大圣境！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>清气入体。</p>
 <p>气运加身。</p>
 <p>无与伦比的磅礴力量在汹涌的没入楚询身躯，他肆意，而野蛮，犹如野龙在体内疯狂肆虐，狰狞而咆哮，撕裂的五脏六腑移位，隐隐淌血。</p>
@@ -99,12 +99,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './400.html'
+				}else if (start - end < -100) {
+					window.location.href = './398.html'
 				}
-				
 			})
 		}
 	</script>

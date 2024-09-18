@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第203章 被罚禁闭！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>……</p>
 <p>数位主考官散去后。</p>
 <p>洛棠揉了揉眉心，觉得一阵心里憔悴，那想到他担任的这一届主考官竟发生这事，也无奈的起身向着荒天宫行去，外界长老可入这里，他们自然也可出去。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './257.html'
+				}else if (start - end < -100) {
+					window.location.href = './255.html'
 				}
-				
 			})
 		}
 	</script>

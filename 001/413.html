@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第316章 连同一体！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询轻声喃喃，原本他还想在儒州书院逛逛，若是能去一趟‘理圣’的悟道之地，那自然那是最好，若还能再去一趟至圣道宫，瞻仰一下至圣先师无疑是完美的，但现在他不敢继续停顿儒州，怕真破了大圣境界，那未免太过可惜。</p>
 <p>“啵！”</p>
 <p>轻轻迈出一步。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './414.html'
+				}else if (start - end < -100) {
+					window.location.href = './412.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第201章 递出名单！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>前三位属于常青树，屹立不倒，从初选时便是他们占据前三如今仍然也是，反而是姜尘与柳剑这两个陌生的名字突然闯入前十，引发不小的轰动，在弟子们引发一阵波澜，毕竟谁有了收获都是一点点的前去闯塔，随着排名前进也能得到主考官的指点。</p>
 <p>反而是他们这样。</p>
 <p>未去请教。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './252.html'
+				}else if (start - end < -100) {
+					window.location.href = './250.html'
 				}
-				
 			})
 		}
 	</script>

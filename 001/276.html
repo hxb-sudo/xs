@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第215章 盖亚的回应！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>这般消息。</p>
 <p>传入斗战宫。</p>
 <p>本来盖亚就对考核秘境的事耿耿于怀，他承认，自己看走眼了，可那也不是楚长老以七境微弱修为该挑衅他的理由，尤其是对楚询这种扮猪吃虎刻意放在最后让自己难堪而恼火，但在宫主的压力下，这事算是结过。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './277.html'
+				}else if (start - end < -100) {
+					window.location.href = './275.html'
 				}
-				
 			})
 		}
 	</script>

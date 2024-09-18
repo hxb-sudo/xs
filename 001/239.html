@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第192章 白陆离！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>楚询却不知这些，悠哉悠哉的吃着瓜果，手中拿着这一届新人的信息在迅速翻阅，不过转眼便来到了三千二百名。</p>
 <p>“白陆离？”</p>
 <p>楚询微微一愣，他对这个人还是很有印象的，在酒楼吃饭时遇到的特殊命格，当日想再看而后者已经抽身离去，如今又看到他的信息，也认真看去。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './240.html'
+				}else if (start - end < -100) {
+					window.location.href = './238.html'
 				}
-				
 			})
 		}
 	</script>

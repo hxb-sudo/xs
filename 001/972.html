@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第760章 系统反馈奖励！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>风家旁系家主临死前还带着悲催，似是不知道为什么报上了老祖的名号，对方杀意反而更盛了，并令他感受悲催与绝望的是秦云这个小畜生，明明有着天大的靠山，却装作毫无背景，在这里狠狠阴了他一手，带着满心的不甘与怨恨身躯化作飞灰。</p>
 <p>烟雨朦胧。</p>
 <p>剑气潇潇。</p>
@@ -115,12 +115,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './973.html'
+				}else if (start - end < -100) {
+					window.location.href = './971.html'
 				}
-				
 			})
 		}
 	</script>

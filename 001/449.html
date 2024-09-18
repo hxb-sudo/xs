@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第341章 囚禁的犯人！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“哼！”</p>
 <p>那阴柔的小太监并未着急上神龙之上，而是面色难看的看着白陆离，被院长当众掌掴也就罢了，一个蛮荒之地的小宗门，圣人九境修为，也妄图挑衅他，随手一巴掌便要拍死他，掌心内蕴含诡异波纹，实则暗藏汹涌杀招。</p>
 <p>白陆离长发飞舞，璀璨的星辰眸子绽放明亮的光泽，他的身上骤然扶摇直上一股璀璨的神华，虚空上诞生一枚‘道’字，弥漫着强烈的道韵展露的一瞬间，连四王爷，书院院长，秦皇朝战车内的贵人都流露侧目！</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './450.html'
+				}else if (start - end < -100) {
+					window.location.href = './448.html'
 				}
-				
 			})
 		}
 	</script>

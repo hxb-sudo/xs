@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第172章 星辰宗老祖！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>李牧神色上有落寞与恍惚，没想到真的走到了这一步，从初见楚询时他就有这种预感，却依仗着对小瑶池的爱意强行压了下去，只是没想到，最终还是走到这一步。</p>
 <p>他缓缓起身。</p>
 <p>走下高台。</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './214.html'
+				}else if (start - end < -100) {
+					window.location.href = './212.html'
 				}
-				
 			})
 		}
 	</script>

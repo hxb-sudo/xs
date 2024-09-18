@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第181章 邀请！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“荒天宫！”</p>
 <p>“竟然是荒天宫！”</p>
 <p>“可是哪个一言定下，外界圣人不敢踏足东域的荒天宫！”底下议论纷纷，交头接耳，仍记得若禅寺，南天殿，圣火教圣人降临东域后遭遇挫折，是荒天宫的一道法纸，让外界圣人不敢踏足，也是东域学府落败的主要原因。</p>
@@ -112,12 +112,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './228.html'
+				}else if (start - end < -100) {
+					window.location.href = './226.html'
 				}
-				
 			})
 		}
 	</script>

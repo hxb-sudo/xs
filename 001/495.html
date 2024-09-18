@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第371章 战车内的人！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>酒楼内。</p>
 <p>有一行衣着富贵之人正在那看戏，正是秦皇朝的这群人，其中秦南面无表情的看着这幕，哪怕是秦皇朝遭遇欺辱，被诸多势力冰冷的压迫，也依旧冷淡道：“小场面！”</p>
 <p>在他的对面有位异常俊美的妖邪男子，他微微眯眼的看着叶凰，眼中的痴迷不加遮掩，对那里发生的事丝毫不感兴趣。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './496.html'
+				}else if (start - end < -100) {
+					window.location.href = './494.html'
 				}
-				
 			})
 		}
 	</script>

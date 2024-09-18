@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第108章 掌掴！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>杜森眼神阴翳，阴冷的看着迅速过来的神行宗弟子，冷淡道：“是不是萧容鱼逃脱了，已经来到天宝城了？”</p>
 <p>那负责情报的弟子愣了愣，这话似有些对，又有些不对，萧容鱼是离开东临宗了不过不是逃走，而是光明正大的离开，再者说，什么时候来到天宝城了？</p>
 <p>看到后者的样子。</p>
@@ -100,12 +100,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './120.html'
+				}else if (start - end < -100) {
+					window.location.href = './118.html'
 				}
-				
 			})
 		}
 	</script>

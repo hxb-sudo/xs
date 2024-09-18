@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第119章 圣人，他一直在！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>天机宗。</p>
 <p>手持天机盘的老人看到镜像内呈现出的身影，眼中浮现复杂与落寞，轻叹道：“何必呢？”真武宗圣人已经被打的远遁，何必要痛下杀手？</p>
 <p>真武宗不同于其他，还有真武大圣活着，外出游历多年，只有他的一桩桩传说传递出来，知道后者来到匪夷所思的境界，不是寻常人可敌，若是识趣，楚长老就该安安稳稳的苟在东临宗，不做任何事情。</p>
@@ -106,12 +106,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './140.html'
+				}else if (start - end < -100) {
+					window.location.href = './138.html'
 				}
-				
 			})
 		}
 	</script>

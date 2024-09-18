@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第464章 诛杀！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“嘶！”</p>
 <p>秦恬瞳孔剧烈的收缩，哪怕自身在金色甲胄的覆盖之下也难以遮掩他瞳孔当中的震撼情绪，那股强烈的危机感卷席身上的每一个毛孔，让他几欲炸毛，本能就惊骇道：“陈飞龙，快来救我！”</p>
 <p>什么颜面。</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './622.html'
+				}else if (start - end < -100) {
+					window.location.href = './620.html'
 				}
-				
 			})
 		}
 	</script>

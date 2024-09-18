@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第66章 十倍返还！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“姜尘！”</p>
 <p>“堂哥！”</p>
 <p>姜珏也在大殿后的一角，看着那堂而皇之走入殿堂的年轻人，眼中的妒忌达到极点，同为姜氏天才，他只能在大殿的偏角偷摸的看着，反观堂哥无需通报，就可堂而皇之的进入殿内，偏偏还无一人觉得有问题。</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './44.html'
+				}else if (start - end < -100) {
+					window.location.href = './42.html'
 				}
-				
 			})
 		}
 	</script>

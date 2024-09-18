@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第396章 秦笙之死！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“杀，杀……杀了他！”在屋内的叶凰声音虚弱，似是还能听到外面的动静，又怎会容忍这么污蔑自己的名声。</p>
 <p>“嗤~！”</p>
 <p>荒天宫宫主眼中杀意更是绽放到极致，掌心不断紧握之下，秦笙只觉得无法形容的窒息压迫的他难以呼吸，就在他眼前昏暗已经走马观花的时候，无与伦比的灼热从脖颈处传来，让荒天宫宫主都不免倒退两步。</p>
@@ -113,12 +113,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './531.html'
+				}else if (start - end < -100) {
+					window.location.href = './529.html'
 				}
-				
 			})
 		}
 	</script>

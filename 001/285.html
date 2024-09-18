@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第220章 叶凰的愤怒！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“没关系的！”</p>
 <p>楚询也放下手中的书籍，事情的经过他已经知道，荒宫选出了一位名额，那是一位年岁不小的长老，却对宗门有着极高的贡献，纵然这份名额从手心中溜走有浅浅的失落，可很快也回复了寻常心。</p>
 <p>一如荒宫给出的理由，自己入宗门时间太短，又无任何贡献，这机缘之地的名额只能放于下一届。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './286.html'
+				}else if (start - end < -100) {
+					window.location.href = './284.html'
 				}
-				
 			})
 		}
 	</script>

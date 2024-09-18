@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第187章 自爆身份！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>日子一天天流逝。</p>
 <p>在藏经阁当中楚询也渐渐明白了今日发生之事，荒天宫三年一度的招生之日即将开启，而自己更是被列为了五位主考官之人，难怪近来会有这么多人对自己有意见。</p>
 <p>只是，他略微茫然的是为什么，荒天宫的强者多不胜数，为什么会选择自己，尤其是荒宫，更是荒天宫中最强的一宫，里面圣人九境诸多，圣人八境同是，至于七境强者更是不计其数，为何偏偏选中了自己。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './235.html'
+				}else if (start - end < -100) {
+					window.location.href = './233.html'
 				}
-				
 			})
 		}
 	</script>

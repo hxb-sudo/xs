@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第433章 迟到的佛子！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“啊！”</p>
 <p>死亡危机汹涌。</p>
 <p>姬子眼神血红，身上的帝道真血在急速流动，他的肌肤都散发出蓝色的烟雾，双眸更是猩红一片，帝族的绝学更是被运用而出，他的周身浮现一面巨大的空洞镜子，那并非是虚幻，而是有一件准帝器道兵。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './580.html'
+				}else if (start - end < -100) {
+					window.location.href = './578.html'
 				}
-				
 			})
 		}
 	</script>

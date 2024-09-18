@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第287章 简青竹的邀请！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“咻！”</p>
 <p>“咻咻咻！”</p>
 <p>他们极速暴退，而帝陵守陵人也在后面追赶，简青竹频频依仗着言出法随的逆天一面，硬生生挽回着局势，在赢拖时间，凭借着圣人榜第二的恐怖实力，纵然是帝陵守陵人都未曾在第一时间奈何的他。</p>
@@ -109,12 +109,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './370.html'
+				}else if (start - end < -100) {
+					window.location.href = './368.html'
 				}
-				
 			})
 		}
 	</script>

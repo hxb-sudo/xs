@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第144章 一封禁令！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>东域学宫至高殿，一袭华丽衣袍的秦观脸色桀骜，颇为不屑的俯瞰那密集人流，嘲讽道：“这些都是东域的好苗子？真期待将他们践踏在脚下的那一刻！”</p>
 <p>身旁的老者也面露微笑，也道：“不知遗迹内的事如何了，想必也该结束了！”他神色轻松，颇为自在，认为自家圣人携带至宝进去，理应在里面大杀四方。</p>
 <p>“叮叮！”</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './178.html'
+				}else if (start - end < -100) {
+					window.location.href = './176.html'
 				}
-				
 			})
 		}
 	</script>

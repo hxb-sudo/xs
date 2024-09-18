@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第393章 真武大圣：你太慢了！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>秦皇朝的镇南将军眼角也带着若有若无的嘲讽，向着身旁之人淡淡道：“先前将楚询闯塔的事情转告叶无双了吗？”</p>
 <p>“转告了！”</p>
 <p>……</p>
@@ -90,12 +90,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './528.html'
+				}else if (start - end < -100) {
+					window.location.href = './526.html'
 				}
-				
 			})
 		}
 	</script>

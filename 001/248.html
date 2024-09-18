@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第199章 自毁前程！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>翌日。</p>
 <p>楚询见到了纪践云确实与东方塑所说的大差无几，是个好苗子，但想进前百却有些困难，在他一番指点后也道：“你随后每月来我这一趟，只要用心修行考核结束，会入荒天宫！”</p>
 <p>“多谢楚长老！”</p>
@@ -106,12 +106,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './249.html'
+				}else if (start - end < -100) {
+					window.location.href = './247.html'
 				}
-				
 			})
 		}
 	</script>

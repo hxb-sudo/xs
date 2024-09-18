@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第188章 特殊命格！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“可惜！”</p>
 <p>“1号，2号，8号没有出来回应！”</p>
 <p>按照三号所说，这三位都是最早的一批，并且三人应该相识，自从他进入界心令时聊天群便没见过三人冒泡，根据他的猜测三位应该修行到了一定境界，不需依靠界心令，所以对后者的关心也极少，还有另外一种可能便是陨落了。</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './236.html'
+				}else if (start - end < -100) {
+					window.location.href = './234.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第626章 重回帝境！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>毫无疑问，在两位禁区至尊尚未复苏之前，胜负仍是未定，霸皇动用参天之术，功参造化，吸取域外日月星浓缩神华，没入体内，让他在大战中负伤的身躯顷刻愈合，不仅如此，就连满头黑发都愈发的茂密，明显更强，只可惜此法不可多用。</p>
 <p>即便如此，短暂的逆天之术也让他迎来小规模的蜕变，动用可怕的仙术，一道道羽化飞升般的仙光横击天宇，让域外的星辰簌簌坠落，而楚询也面临这些可怕的仙光，每一道都堪称世间极致的杀伐。</p>
 <p>“轰！”</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './831.html'
+				}else if (start - end < -100) {
+					window.location.href = './829.html'
 				}
-				
 			})
 		}
 	</script>

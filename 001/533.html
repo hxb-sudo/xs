@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第398章 一剑之威！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>放在一刻钟前说出来没人会信，会觉得哪怕是圣人榜前三的人，真武大圣，简青竹，独孤绝他们到后也要考虑一二，可现在货真价实的手段摆在这里，一个照面真的可能秒杀圣人，而更加令人震撼的是，楚询恐怕还未全力！</p>
 <p>不是他们有被害恐惧症。</p>
 <p>而是。</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './534.html'
+				}else if (start - end < -100) {
+					window.location.href = './532.html'
 				}
-				
 			})
 		}
 	</script>

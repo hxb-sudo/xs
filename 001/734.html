@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第545章 战州！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>已经废了。</p>
 <p>哪怕是被其他势力发现，看到这么个不祥玩意，避之不及又怎会主动招惹；而书院院长也是微微颔首，他是领教过楚询的空间之术，相当的凌厉，瞬息便能横跨无数里，连龙场圣地都极难封困他，其余势力怕也够呛。</p>
 <p>至圣道宫掌舵者却不情愿，楚询是儒州的未来，并且身上肩负着儒州半数的气运，哪能以身犯险。</p>
@@ -87,12 +87,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './735.html'
+				}else if (start - end < -100) {
+					window.location.href = './733.html'
 				}
-				
 			})
 		}
 	</script>

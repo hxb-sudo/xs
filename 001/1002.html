@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第790章 利益分配！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“冰风晶，看运气吧！”林白也罕见的开口，这类物品纵使在冰风海盛产，也架不住太行道域的势力不断寻觅，许多有诞生痕迹，或正在成熟过程中的冰风晶都早己有了主人，想要寻觅野生的，很罕见。</p>
 <p>“首次来，是跟着诸位师兄师姐学习。”简守也低调道，他知道正常来说刚进入混乱星域是要在道院调整休息的地方短暂适应，根本不会让外出寻猎宝物，况且以他们微弱的境界，也很难在团队中发挥作用。</p>
 <p>“哈哈哈，小简守还和师兄们客气什么。”青墨爽朗道。</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './1003.html'
+				}else if (start - end < -100) {
+					window.location.href = './1001.html'
 				}
-				
 			})
 		}
 	</script>

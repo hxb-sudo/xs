@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第704章 界心令的对话！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>【5号：荒天宫没了，黑暗动乱前余下的人被我遣散，多数亡于动乱之中，而今荒州大道残缺，高境修士无法诞生，九号，我是否还要重组！】</p>
 <p>能感受出荒天宫宫主的迷茫，之前他的天赋便极强却被荒天宫的琐事所拖累，而今荒州己有东临宗，还有其他顶级势力入驻，荒天宫的优势不在，还有必要重组吗？</p>
 <p>【4号：我想他了，儒州虽躲避了这次灾劫，可我也失去了亲爱的朋友，我很想他！】</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './917.html'
+				}else if (start - end < -100) {
+					window.location.href = './915.html'
 				}
-				
 			})
 		}
 	</script>

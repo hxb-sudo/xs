@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第625章 死局！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>龙皇却是微微皱眉嗅到了一丝不安的情绪，而当他想上前时，只见到至圣道宫掌舵者大步流星冲去，横亘在两者之间，一袭青衣的龙皇流露蔑视神色，什么蝼蚁，准帝后期也敢来叫板他？</p>
 <p>“啪！”</p>
 <p>抬手掌掴，天崩地裂，掌心内有大道光化宛若仙光，无坚不摧，神情始终透着冷漠，寻常准帝后期面对此击，不死也要残废了。</p>
@@ -101,12 +101,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './830.html'
+				}else if (start - end < -100) {
+					window.location.href = './828.html'
 				}
-				
 			})
 		}
 	</script>

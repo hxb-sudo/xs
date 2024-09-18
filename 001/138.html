@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第118章 战利品！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>回到东临宗。</p>
 <p>一切宁静祥和。</p>
 <p>甚至无人知道他外出一圈，将祸乱东域让圣人都人人自危的青牛魔君诛杀了，只怕这时候东域的几位圣人还在提心吊胆，提防着青牛魔君偷袭。</p>
@@ -123,12 +123,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './139.html'
+				}else if (start - end < -100) {
+					window.location.href = './137.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第775章 你还有第四式？（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“开始吧！”</p>
 <p>那双温润的眼眸也泛起斗智，体内那缓慢流动的气血开始加速运转开来，而先前平缓的小步也转化为大步流星的跨步。</p>
 <p>“嗖！”</p>
@@ -103,12 +103,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './988.html'
+				}else if (start - end < -100) {
+					window.location.href = './986.html'
 				}
-				
 			})
 		}
 	</script>

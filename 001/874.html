@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第666章 杀意起！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唰~！”</p>
 <p>这番话语。</p>
 <p>让险些吓跑的多道身影顿住脚步，他们中有人身上弥漫着腐朽的气息，像是刚从大坟当中爬出不久，如毒蛇般盯着楚询，对他很是忌惮，却又理智道：“似真出问题了，可尝试将他留在这里，让他真的死去！”</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './875.html'
+				}else if (start - end < -100) {
+					window.location.href = './873.html'
 				}
-				
 			})
 		}
 	</script>

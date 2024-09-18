@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第517章 混战！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“斩！”</p>
 <p>秦皇立身在那，眸光深邃，只是吐出一字天地间犹如一道巨大的闪电侧刀降临，斩落时连这言出法随的能量都给斩断，让这种儒教手段失效。</p>
 <p>“阿弥陀佛！”普贤菩萨口中念叨着佛号，下手却是丝毫不留情，可怕的金刚手镇压下去，身后更是有佛门怒目的金刚法相凝现，属于主张杀伐的法相，掌心蕴含着可怕的杀气，更有度化一切的决心。</p>
@@ -116,12 +116,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './695.html'
+				}else if (start - end < -100) {
+					window.location.href = './693.html'
 				}
-				
 			})
 		}
 	</script>

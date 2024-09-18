@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第318章 跳梁小丑！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>斗战宫宫主眼瞳冰冷，瓮声道：“那好，本座就看看他有没有这个实力，圣人榜七十二名，真以为是谁想上便上的！”</p>
 <p>“嗡！”</p>
 <p>他向前迈步。</p>
@@ -92,12 +92,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './417.html'
+				}else if (start - end < -100) {
+					window.location.href = './415.html'
 				}
-				
 			})
 		}
 	</script>

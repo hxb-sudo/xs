@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第500章 修为增进！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>书院院长也温和的看向楚询，眸光当中兼具着期待与向往，儒教准帝纵使是知道这种法子可真正去学习掌握的还是少数，并且即便有时间也是用来观书上。</p>
 <p>于他们而言。</p>
 <p>这修行第二种大道。</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './665.html'
+				}else if (start - end < -100) {
+					window.location.href = './663.html'
 				}
-				
 			})
 		}
 	</script>

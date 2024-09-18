@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第53章 癞蛤蟆想吃天鹅肉！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“轰~！”</p>
 <p>人未至，声已临。</p>
 <p>真武宗宗主路南天还在遥远，可他的掌印却已经落下，堂堂正正，动用的乃是佛门的一门掌法，大日如来掌，催动之间，漫天金光璀璨，驱散了朦胧的灰雾。</p>
@@ -88,12 +88,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './23.html'
+				}else if (start - end < -100) {
+					window.location.href = './21.html'
 				}
-				
 			})
 		}
 	</script>

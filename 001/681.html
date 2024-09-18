@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第511章 恐怖的叶无双！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“他打不过！”闷了半天，普贤菩萨涨红着脸道，楚询召唤的佛教法相比起叶无双少了一尊，不仅如此，更重要的是那尊大日如来法相才是真正宏伟而无敌的法相，凭借这一尊大日如来便能碾压其他法相。</p>
 <p>荒州上空，叶无双矗立在那，黑袍无风自舞，眸光幽深而冷淡，不动声色道：“这种旁门左道又能持续多少时间？”</p>
 <p>儒教法则。</p>
@@ -107,12 +107,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './682.html'
+				}else if (start - end < -100) {
+					window.location.href = './680.html'
 				}
-				
 			})
 		}
 	</script>

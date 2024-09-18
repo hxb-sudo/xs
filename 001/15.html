@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第47章 秒败！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>反观叶尘衣衫破烂，身上有剑痕残留，唇角更是弥漫出血迹，狼狈不堪，更重要的是他的身前站着一位老者，若非后者相救，恐怕已经身陨在剑气下。</p>
 <p>这般反差。</p>
 <p>胜负已了。</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './16.html'
+				}else if (start - end < -100) {
+					window.location.href = './14.html'
 				}
-				
 			})
 		}
 	</script>

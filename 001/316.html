@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第240章 太急了！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“唰！”</p>
 <p>尚未离去的叶凰，身披绚丽的战甲，神采飞扬从顿悟当中醒悟，一步跨出径直站在了高空之上，冷漠而强势的盯着紫色衣袍男子，道：“阁下是何人，为何入我荒州！”</p>
 <p>“荒天宫的小丫头。”紫色衣袍男子笑了笑，又摇头道：“你太弱了！”</p>
@@ -84,12 +84,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './317.html'
+				}else if (start - end < -100) {
+					window.location.href = './315.html'
 				}
-				
 			})
 		}
 	</script>

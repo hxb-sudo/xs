@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第107章 清算！（2 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>一道红袍女子从天而降，衣着鲜艳衣袍，面容清冷而高贵，皎洁如玉的玉足轻轻点缀虚无，降临在此地，一时间，无论是路过的行人，还是四周的商铺全部寂静了，随后一道道瞠目结舌的目光望去，呆呆道：“萧，萧，萧容鱼！”</p>
 <p>他们懵了。</p>
 <p>萧容鱼。</p>
@@ -97,12 +97,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './118.html'
+				}else if (start - end < -100) {
+					window.location.href = './116.html'
 				}
-				
 			})
 		}
 	</script>

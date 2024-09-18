@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第359章 圣人榜变故！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>曹盟主额头顿时沁出冷汗，拱手的腰弯的更深了，连道不敢，却又道：“可是老祖，他终归是一个外州修士啊！”</p>
 <p>“外州？”</p>
 <p>武林盟的老祖宗冷笑一声道：“我剑州如今是空有名声，若是单纯的论剑道在九洲之地，有些势力自会强过我武林盟，然而呢，九洲提及剑道唯一想到的便是我剑州，并非是我剑州在剑术上有多高超。”</p>
@@ -122,12 +122,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './478.html'
+				}else if (start - end < -100) {
+					window.location.href = './476.html'
 				}
-				
 			})
 		}
 	</script>

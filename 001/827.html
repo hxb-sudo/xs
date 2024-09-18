@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第623章 再起大战！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>无数人望着这口损坏的小鼎，即便知晓这是帝器，若是取得将当做镇族之宝，流川万代，却依旧无人敢去打主意，毕竟它的身旁可是盘坐着一位刚刚屠帝的猛人。</p>
 <p>看着他，熟悉楚询的人不自觉笑了起来，即便是荒州的修士脸上也泛起发自肺腑的笑容，那是荣耀，那是自豪，还有无比的骄傲，这是从他们荒州走出去的人，这是他们荒州之主，守护者神州大路。</p>
 <p>自此后，谁还敢言荒州弱？</p>
@@ -94,12 +94,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './828.html'
+				}else if (start - end < -100) {
+					window.location.href = './826.html'
 				}
-				
 			})
 		}
 	</script>

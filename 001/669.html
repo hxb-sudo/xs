@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第503章 九洲态度！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“他怎么回来了！”姜氏家主姜贞山脸色煞白，此时的他浑然没有东域古老势力的掌舵者身份，有的只是深深的恐惧，早些年叶无双离开东域最初人们还关心他的成就，可随着愈来愈高，便不再关注，只觉得无法仰望。</p>
 <p>而楚询将真武宗灭掉时，理当成为东域第一圣地，却罕见的在当时各大势力都选择了避嫌，如天机宗，神女宗，南宫氏都是选择自封，不是不想恭贺，是怕哪位真武大圣突然回归，万一与东临圣地有所牵扯，那就完了。</p>
 <p>但随后。</p>
@@ -95,12 +95,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './670.html'
+				}else if (start - end < -100) {
+					window.location.href = './668.html'
 				}
-				
 			})
 		}
 	</script>

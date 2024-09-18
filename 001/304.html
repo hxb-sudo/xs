@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第233章 圣人阐道！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>东临宗。</p>
 <p>结束了群聊。</p>
 <p>楚询也离开房间，来到外界，感受着东临宗的灵气以肉眼可见的速度充沛，一些重要之地更是弥漫着浓郁的法则之力，藏经阁内的经文更是翻了几番。</p>
@@ -124,12 +124,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './305.html'
+				}else if (start - end < -100) {
+					window.location.href = './303.html'
 				}
-				
 			})
 		}
 	</script>

@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第180章 荒天宫来人！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>消息传开。</p>
 <p>再度在东域掀起滔天波澜，只是相比于上一条谣言这条更加的劲爆与震撼，外界无上的三大势力纷纷前来负荆请罪，表露的诚意也格外真诚。</p>
 <p>镇宗级大圣功法一部，大圣级至宝一样，这在三大势力眼中无异于割肉，这功法还好点，复刻一本过去，而至宝却足以让他们肉痛，哪怕是他们这个级数，大圣级遗留的至宝也少之甚少，早先便损失在东域一件，这又送来一样，可真是心疼死他们。</p>
@@ -93,12 +93,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './226.html'
+				}else if (start - end < -100) {
+					window.location.href = './224.html'
 				}
-				
 			})
 		}
 	</script>

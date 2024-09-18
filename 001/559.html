@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第418章 大军压境！（1 / 2）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>秦元盛来到中州一处青山之内，山中有一间陈旧的茅屋，里面有袅袅炊烟升起，褪去一身戎甲的秦元盛身材消瘦却不单薄，眼眸当中唯有平静，凝视着青山，喃喃道：“好地方啊，好地方，中州竟还有这块宝地！”</p>
 <p>以十万青山。</p>
 <p>万千河流。</p>
@@ -91,12 +91,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './560.html'
+				}else if (start - end < -100) {
+					window.location.href = './558.html'
 				}
-				
 			})
 		}
 	</script>

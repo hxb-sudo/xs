@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第609章 敬意！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“怎会这般？”</p>
 <p>来到战州后，所看到的是满目疮痍的一州，诺大的战州透着死寂、荒凉；以及废墟般的阴霾，天空上飘落着一层淡淡的殷红，城池化作废墟残留着白骨与遗躯。</p>
 <p>入目便是这震撼人心的荒凉与贫瘠，神识覆盖过去，更是百里内难寻到生机，昔日还算鼎盛的战州首接沦为了焦黑的废墟。</p>
@@ -119,12 +119,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './811.html'
+				}else if (start - end < -100) {
+					window.location.href = './809.html'
 				}
-				
 			})
 		}
 	</script>

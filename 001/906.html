@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第695章 体面！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“我后悔啊……！”武神满脸血泪，明明在早期对方还如蝼蚁般，自己可抬手镇杀，如今不过百余年的时间，再相逢，他连伤到对方的资格都不具备，那气血不断逆流，帝威压下崩塌了他体内的肉身规则。</p>
 <p>“杀！”</p>
 <p>秦元盛也嘶吼，向前踏出，一杆重戟落在掌心，一副金色的战甲披在身上，他宛若灿烂朝阳下的天神，持戟杀去，可这种层次，楚询仅仅是撇去一道眼眸，便化作犀利的光束洞穿了他的眉心。</p>
@@ -110,12 +110,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './907.html'
+				}else if (start - end < -100) {
+					window.location.href = './905.html'
 				}
-				
 			})
 		}
 	</script>

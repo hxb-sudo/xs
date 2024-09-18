@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第700章 踏遍禁区！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>东临宗。</p>
 <p>上空。</p>
 <p>楚询徐徐睁开灿烂若星辰的眸光，凝视着远方短暂沉默，徐徐起身，缠绕在身上的万般大道也如失去了源泉，在纷纷震颤，而后从他周身沉淀，重新隐匿，不再显露在天地间，那持续修复的秩序也缓慢起来。</p>
@@ -104,12 +104,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './912.html'
+				}else if (start - end < -100) {
+					window.location.href = './910.html'
 				}
-				
 			})
 		}
 	</script>

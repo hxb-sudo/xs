@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第696章 东域辉煌！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“还是没有……！”楚询翻阅完虚空戒内的神药后脸上流露失落情绪，他原以为秦皇朝与姬氏或留有这种逆天改命的大药，可让慕雪活出第二世，摆脱那不可挽留的伤痕，可无论是秦皇朝也或姬氏都无。</p>
 <p>可他收敛起失落的情绪，目光扫向了其他地方，此地没有不代表别的地方没有，从姬氏走出，整座九洲都在注视他的一举一动。</p>
 <p>先灭秦皇朝。</p>
@@ -111,12 +111,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './908.html'
+				}else if (start - end < -100) {
+					window.location.href = './906.html'
 				}
-				
 			})
 		}
 	</script>

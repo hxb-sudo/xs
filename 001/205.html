@@ -22,11 +22,11 @@
 				padding: 10px;
 			}
 
-			.content {
+			#content {
 				padding: 20px;
 			}
 
-			.content p {
+			#content p {
 				font-size: 24px;
 				text-indent: 2em;
 				line-height: 40px;
@@ -38,7 +38,7 @@
 			<div id="chapterName">
 				<h1>第165章 笑容灿烂！（1 / 1）</h1>
 			</div>
-			<div class="content">
+			<div id="content">
 				<p>“你又是谁？”</p>
 <p>赵烁微微眯眼，看着这个突然出现的老人，其余几位小孩的长辈也神色凝重，这位老人能悄无声息的来到他们身旁还没被发现，便已经证明了实力。</p>
 <p>萧兰雪眼中也弥漫一丝诧异，自然认出了这位老人，只是让她没想到的是他不是应该在东临宗吗，怎么来到了南域星辰宗，朱唇轻启：“楚长老，你先让开，这里的事不是你能掺合的。”</p>
@@ -120,12 +120,19 @@
 	</body>
 	<script>
 		window.onload = () => {
-			let box = document.getElementById('box');
-			box.addEventListener('scroll', () => {
-				if ((Math.ceil(box.scrollTop) + box.clientHeight) >= box.scrollHeight) {
+			let content = document.getElementById('content');
+			let start = 0;
+			let end = 0;
+			content.addEventListener('touchstart', (e)=>{
+				start = e.touches[0].clientX
+			})
+			content.addEventListener('touchend', (e)=>{
+				end = e.changedTouches[0].clientX
+				if (start - end > 100) {
 					window.location.href = './206.html'
+				}else if (start - end < -100) {
+					window.location.href = './204.html'
 				}
-				
 			})
 		}
 	</script>
